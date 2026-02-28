@@ -81,7 +81,7 @@ Key arguments (vary by experiment):
 | Experiment | Hamiltonian | Dimensions tested |
 |------------|-------------|-------------------|
 | **Smooth** | $H(x,p) = -\tfrac{1}{4}\|p\|^2 + p \cdot x$ | 1, 2, 10, 50, 100 |
-| **Non-Smooth** | $H(x,p) = \begin{cases} -\tfrac{\|p\|^2}{4} & \|p\| < 2 \\ -\|p\|+1 & \|p\| \geq 2 \end{cases}$ | 1, 2, 10, 50, 100 |
+| **Non-Smooth** | $H(x,p)=\{-\frac{\|p\|^2}{4}\text{ if }\|p\|<2,\; -\|p\|+1\text{ if }\|p\|\ge2\}$ | 1, 2, 10, 50, 100 |
 | **Obstacle** | Obstacle avoidance with penalty | 2, 10, 50 |
 
 ### Mean Field Games
