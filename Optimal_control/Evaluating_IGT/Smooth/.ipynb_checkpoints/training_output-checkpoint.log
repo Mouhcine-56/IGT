@@ -1,0 +1,33 @@
+Approximate solution by HJB 
+
+Iteration 0: Loss = 2.8834e+01
+
+--- Time t = 0.00 ---
+Relative L2 Error     : 1.1079e-03
+Relative Linf Error   : 4.5881e-03
+MSE                   : 4.5747e-05
+Max Relative Abs Error: 3.3891e-02
+
+--- Time t = 0.25 ---
+Relative L2 Error     : 9.7732e-04
+Relative Linf Error   : 4.0538e-03
+MSE                   : 3.0673e-05
+Max Relative Abs Error: 1.9230e-02
+
+--- Time t = 0.50 ---
+Relative L2 Error     : 8.7803e-04
+Relative Linf Error   : 3.7200e-03
+MSE                   : 1.9795e-05
+Max Relative Abs Error: 1.0813e-02
+
+--- Time t = 0.75 ---
+Relative L2 Error     : 6.9283e-04
+Relative Linf Error   : 3.4434e-03
+MSE                   : 8.9352e-06
+Max Relative Abs Error: 4.7038e-03
+
+--- Time t = 1.00 ---
+Relative L2 Error     : 0.0000e+00
+Relative Linf Error   : 0.0000e+00
+MSE                   : 0.0000e+00
+Max Relative Abs Error: 0.0000e+00

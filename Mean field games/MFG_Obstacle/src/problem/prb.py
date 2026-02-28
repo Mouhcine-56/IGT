@@ -8,14 +8,14 @@ class Obstacle(object):
     """
     def __init__(self, G_NN_list, Round, n, x0_initial, device, VV):
         
-        self.dim = 2
+        self.dim = 10
         self.TT = 1.
         self.X0_ub = 1
         self.c = 3/2
         self.gamma_obst = 3
         self.gamma_cong = 3
         self.psi_scale = 3/2
-        self.target = [[0.75, 0.]]
+        self.target = [[0.75, 0., 0., 0., 0., 0., 0., 0., 0., 0.]]
         self.ODE_solver = 'RK23'
         self.data_tol = 1e-04
         self.max_nodes = 5000
@@ -28,8 +28,24 @@ class Obstacle(object):
         self.n = n
         self.VV = VV
         self.sigma_rho = 0.5
+        
+        # Initialize cache variables
+        self.cached_trajectories = []
+        self.use_precomputed = False
 
-
+    def clear_cache(self):
+        """Clear cached trajectories and G_NN_list to free memory."""
+        if hasattr(self, 'cached_trajectories'):
+            del self.cached_trajectories
+            self.cached_trajectories = []
+        if hasattr(self, 'G_NN_list'):
+            del self.G_NN_list
+            self.G_NN_list = []
+        self.use_precomputed = False
+        import gc
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
 
     def sample_mbar_points(self, num_samples):
         
@@ -50,7 +66,7 @@ class Obstacle(object):
         t_grid = torch.linspace(0., 1., timesteps + 1, device=self.device)         # (T+1,)
         t_test = t_grid.repeat_interleave(num_samples).view(-1, 1)            # ((T+1)*N,1)
 
-        # ---------- réplication de x0 ----------
+        # ---------- replicate x0 ----------
         x_rep  = x0.repeat(timesteps + 1,1)                      # ((T+1)*N,d)
         x_test = torch.tensor(x_rep, dtype=torch.float32, device=self.device)
 
@@ -62,7 +78,7 @@ class Obstacle(object):
             X_out_all.append(X.view(timesteps + 1, num_samples, d))           # (T+1,N,d)
         X_out_all = torch.stack(X_out_all, dim=0)       # (K,T+1,N,d)
 
-        # ---------- échantillonnage de n_vis trajectoires ----------
+        # ---------- sample n_vis trajectories ----------
         gen_idx    = rng.integers(0, K, size=n_vis)            # (n_vis,)
         sample_idx = rng.integers(0, num_samples, size=n_vis)  # (n_vis,)
 
@@ -75,34 +91,31 @@ class Obstacle(object):
 
         return t_repeat.detach().requires_grad_(True), x_batch.to(self.device).detach().requires_grad_(True)
     
-    def sample_x0(self, num_samples, noise_std=0.001):
-
-        valid_samples = []
-        max_attempts = num_samples * 10  # Avoid infinite loops, limit attempts
-        attempts = 0
-
-        while len(valid_samples) < num_samples and attempts < max_attempts:
-            # Generate a random sample in [-1,1] x [-1,1]
-            x = np.random.uniform(-1, 1)
-            y = np.random.uniform(-0.5, 0.5)
-
-
-            # Reject points inside the obstacle (out < 0 means inside)
-            if self.FF_obstacle_func(x, y) <= 0:  # Accept only if outside the obstacle
-                valid_samples.append([x, y])
-                #valid_samples.append([x, y, 0, 0, 0, 0, 0, 0, 0, 0]) # dim=10
-
-            
-            attempts += 1
-
-        valid_samples = np.array(valid_samples)
-
-        if len(valid_samples) < num_samples:
-            print(f"Warning: Only {len(valid_samples)} samples generated out of {num_samples} requested.")
-
-        return torch.tensor(valid_samples, dtype=torch.float32, device=self.device)
+    def sample_x0(self, num_samples, noise_std=0.01):
+        """
+        Sample points uniformly in the domain for HJB training.
+        First 2 dims: uniform in [-1, 1] x [-1, 1]
+        Remaining dims: Gaussian N(0, noise_std^2)
         
-
+        Args:
+            num_samples: Number of samples to generate
+            noise_std: Std for higher dimensions (default 0.1)
+            
+        Returns:
+            Tensor of shape (num_samples, self.dim)
+        """
+        # First 2 dimensions: uniform in [-1, 1]
+        xy = np.random.uniform(-1, 1, size=(num_samples, 2))
+        
+        if self.dim > 2:
+            # Remaining dimensions: Gaussian
+            rest = noise_std * np.random.randn(num_samples, self.dim - 2)
+            samples = np.hstack([xy, rest])
+        else:
+            samples = xy
+        
+        return torch.tensor(samples, dtype=torch.float32, device=self.device)
+        
     def gen_x0(self, num_samples, Torch=False):
 
         mu = np.array([[-0.75, 0.] + [0] * (self.dim - 2)], dtype=np.float32)
@@ -157,7 +170,12 @@ class Obstacle(object):
         - x: Input tensor.
         - smoothness: Controls the sharpness of the transition (higher is sharper).
         """
-        return (1 / smoothness) * torch.log(1 + torch.exp(smoothness * x))
+        # Numerically stable softplus: log(1 + exp(x)) = x + log(1 + exp(-x)) for large x
+        return torch.where(
+            smoothness * x > 20,
+            x,  # For large x, softplus(x) ≈ x
+            (1 / smoothness) * torch.log(1 + torch.exp(smoothness * x))
+        )
 
     def FF_obstacle_func(self, x, y):
         """
@@ -195,45 +213,45 @@ class Obstacle(object):
     def F_obstacle_func_loss(self, xx_inp, scale=1):
         """
         Calculate interaction term. Calculates F(x), where F is the forcing term in the HJB equation.
+        Uses cached constant tensors for speed.
         """
         batch_size = xx_inp.size(0)
         xx = xx_inp[:, 0:2]
         dim = xx.size(1)
         assert dim == 2, f"Require dim=2 but got dim={dim} (BAD)"
 
-        # Two diagonal obstacles
-        # Rotation matrix
-        theta = torch.tensor(np.pi / 0.5, device=self.device)
-        rot_mat = torch.tensor([[torch.cos(theta), -torch.sin(theta)],
-                                [torch.sin(theta), torch.cos(theta)]],
-                               device=self.device).expand(batch_size, dim, dim)
+        # Initialize cached tensors on first call
+        if not hasattr(self, '_obs_rot_mat'):
+            theta = torch.tensor(np.pi / 0.5, device=self.device)
+            self._obs_rot_mat = torch.tensor([[torch.cos(theta), -torch.sin(theta)],
+                                    [torch.sin(theta), torch.cos(theta)]],
+                                   device=self.device)
+            self._obs_center1 = torch.tensor([-0., 0.3], dtype=torch.float, device=self.device)
+            self._obs_center2 = torch.tensor([0., -0.3], dtype=torch.float, device=self.device)
+            self._obs_covar_mat = torch.tensor([[10., 0.], [0., 1.]], dtype=torch.float, device=self.device)
+            self._obs_bb_vec1 = torch.tensor([0., 3.], dtype=torch.float, device=self.device)
+            self._obs_bb_vec2 = torch.tensor([0., -3.], dtype=torch.float, device=self.device)
+
+        # Expand rotation matrix for batch
+        rot_mat = self._obs_rot_mat.unsqueeze(0).expand(batch_size, dim, dim)
 
         # Bottom/Left obstacle
-        center1 = torch.tensor([-0., 0.3], dtype=torch.float, device=self.device)
-        xxcent1 = xx - center1
+        xxcent1 = xx - self._obs_center1
         xxcent1 = xxcent1.unsqueeze(1).bmm(rot_mat).squeeze(1)
-        covar_mat1 = torch.eye(dim, dtype=torch.float, device=self.device)
-        covar_mat1[0:2, 0:2] = torch.tensor([[10, 0], [0, 1]], dtype=torch.float, device=self.device)
-        covar_mat1 = covar_mat1.expand(batch_size, dim, dim)
-        bb_vec1 = torch.tensor([0, 3], dtype=torch.float, device=self.device).expand_as(xx)
+        covar_mat1 = self._obs_covar_mat.unsqueeze(0).expand(batch_size, dim, dim)
         xxcov1 = xxcent1.unsqueeze(1).bmm(covar_mat1)
         quad1 = torch.bmm(xxcov1, xxcent1.unsqueeze(2)).view(-1, 1)
-        lin1 = torch.sum(xxcent1 * bb_vec1, dim=1, keepdim=True)
+        lin1 = torch.sum(xxcent1 * self._obs_bb_vec1, dim=1, keepdim=True)
         out1 = (-1) * ((quad1 + lin1) + 1)
         out1 = scale * out1.view(-1, 1)
-        out1 =  self.smooth_clamp_min(out1)
+        out1 = self.smooth_clamp_min(out1)
 
         # Top/Right obstacle
-        center2 = torch.tensor([0., -0.3], dtype=torch.float, device=self.device)
-        xxcent2 = xx - center2
+        xxcent2 = xx - self._obs_center2
         xxcent2 = xxcent2.unsqueeze(1).bmm(rot_mat).squeeze(1)
-        covar_mat2 = torch.eye(dim, dtype=torch.float, device=self.device)
-        covar_mat2[0:2, 0:2] = torch.tensor([[10, 0], [0, 1]], dtype=torch.float, device=self.device)
-        covar_mat2 = covar_mat2.expand(batch_size, dim, dim)
-        bb_vec2 = torch.tensor([0, -3], dtype=torch.float, device=self.device).expand_as(xx)
-        xxcov2 = xxcent2.unsqueeze(1).bmm(covar_mat2)
+        xxcov2 = xxcent2.unsqueeze(1).bmm(covar_mat1)
         quad2 = torch.bmm(xxcov2, xxcent2.unsqueeze(2)).view(-1, 1)
-        lin2 = torch.sum(xxcent2 * bb_vec2, dim=1, keepdim=True)
+        lin2 = torch.sum(xxcent2 * self._obs_bb_vec2, dim=1, keepdim=True)
         out2 = (-1) * ((quad2 + lin2) + 1)
         out2 = scale * out2.view(-1, 1)
         out2 = self.smooth_clamp_min(out2)
@@ -246,84 +264,282 @@ class Obstacle(object):
 
     def compute_loss_gradients(self, xx_inp):
         """
-        Compute gradients of the loss w.r.t. input.
+        Compute gradients of the obstacle loss w.r.t. first 2 input dimensions.
+        Optimized version using torch.autograd.grad instead of backward().
         """
         # Ensure the input tensor requires gradient
-        xx_inp = xx_inp.clone().detach().requires_grad_(True)
+        xx_inp = xx_inp.detach().requires_grad_(True)
 
         # Compute the loss
         loss = self.F_obstacle_func_loss(xx_inp)
 
-        # Compute gradients using autograd
-        loss.backward(torch.ones_like(loss))
+        # Compute gradients using autograd.grad (faster than backward)
+        grads = torch.autograd.grad(
+            outputs=loss,
+            inputs=xx_inp,
+            grad_outputs=torch.ones_like(loss),
+            create_graph=False,
+            retain_graph=False
+        )[0]
 
         # Extract gradients for x and y
-        loss_gradient_x1 = xx_inp.grad[:, 0]  # Gradient w.r.t. x
-        loss_gradient_x2 = xx_inp.grad[:, 1]  # Gradient w.r.t. y
-
+        loss_gradient_x1 = grads[:, 0]  # Gradient w.r.t. x
+        loss_gradient_x2 = grads[:, 1]  # Gradient w.r.t. y
 
         # Convert gradients to NumPy arrays and return them
-        return np.array([loss_gradient_x1.view(-1).cpu().numpy(), loss_gradient_x2.view(-1).cpu().numpy()])
+        return np.array([loss_gradient_x1.view(-1).cpu().numpy(), 
+                        loss_gradient_x2.view(-1).cpu().numpy()])
 
     
+    def precompute_congestion(self, time_res=51):
+        """
+        Precompute generator trajectories on a time grid for fast interpolation.
+        
+        This caches Y_i(t_k) = G_NN(t_k, x0_i) for all initial points x0_i 
+        and time steps t_k. When evaluating Conv_tor at arbitrary t, we 
+        interpolate these cached trajectories.
+        
+        Mathematical correctness:
+        (rho * m)(x) = int rho(x - y) dm(y) ≈ (1/N) sum_i rho(x - y_i(t))
+        
+        We cache y_i(t_k) and interpolate to get y_i(t).
+        """
+        print("Precomputing generator trajectories...")
+        
+        self.time_res = time_res
+        self.t_grid = torch.linspace(0, self.TT, time_res, device=self.device)  # (T,)
+        
+        N_x0 = self.x0_initial.shape[0]
+        d = self.dim
+        K = len(self.G_NN_list)
+        
+        if K == 0:
+            self.use_precomputed = False
+            print("No generators to precompute.")
+            return
+        
+        # For each generator, store trajectories: shape (K, T, N_x0, d)
+        # But we only need the weighted average trajectories based on VV and n
+        
+        # Expand time and x0 for batch evaluation
+        # t_expanded: (T * N_x0, 1), x0_expanded: (T * N_x0, d)
+        t_expanded = self.t_grid.repeat_interleave(N_x0).view(-1, 1)
+        x0_expanded = self.x0_initial.repeat(time_res, 1)
+        
+        # Compute trajectories for all generators
+        self.cached_trajectories = []  # List of (T, N_x0, 2) tensors
+        
+        with torch.no_grad():
+            for G in self.G_NN_list:
+                traj = G(t_expanded, x0_expanded)  # (T*N_x0, d)
+                traj = traj[:, :2].reshape(time_res, N_x0, 2)  # (T, N_x0, 2)
+                self.cached_trajectories.append(traj)
+        
+        self.use_precomputed = True
+        print(f"Precomputed {K} generator trajectories on {time_res} time points.")
+
+    def _interpolate_trajectories(self, t_query, requires_grad=False):
+        """
+        Interpolate cached trajectories at query times.
+        
+        Args:
+            t_query: (M,) or (M, 1) tensor of query times
+            requires_grad: if True, allow gradient computation through interpolation
+            
+        Returns:
+            List of tensors, each of shape (M, N_x0, 2) - interpolated positions
+        """
+        if t_query.dim() == 2:
+            t_query = t_query.squeeze(-1)  # (M,)
+        
+        M = t_query.shape[0]
+        
+        # Normalize t to [0, time_res-1] for interpolation indices
+        t_normalized = t_query / self.TT * (self.time_res - 1)  # (M,)
+        t_normalized = t_normalized.clamp(0, self.time_res - 1)
+        
+        # Get floor and ceil indices
+        t_floor = t_normalized.floor().long()  # (M,)
+        t_ceil = (t_floor + 1).clamp(max=self.time_res - 1)  # (M,)
+        
+        # Interpolation weight
+        alpha = (t_normalized - t_floor.float()).view(M, 1, 1)  # (M, 1, 1)
+        
+        interpolated = []
+        
+        context = torch.no_grad() if not requires_grad else torch.enable_grad()
+        with context:
+            for traj in self.cached_trajectories:
+                # traj: (T, N_x0, 2)
+                traj_floor = traj[t_floor]  # (M, N_x0, 2)
+                traj_ceil = traj[t_ceil]    # (M, N_x0, 2)
+                
+                # Linear interpolation
+                traj_interp = (1 - alpha) * traj_floor + alpha * traj_ceil  # (M, N_x0, 2)
+                interpolated.append(traj_interp)
+        
+        return interpolated
+
     def Conv_tor(self, t, x):
+        """
+        Compute convolution (rho * m)(x) at time t.
         
-        cov_rho_m = []
-        t_expanded = t.repeat_interleave(self.x0_initial.shape[0]).view(-1,1)
-        x0_expanded = self.x0_initial.repeat(t.shape[0],1)
+        Using Monte Carlo approximation:
+        (rho * m)(x) ≈ (1/N) sum_i rho(x - y_i(t))
         
-        if self.VV == 1:
-            if self.Round == 0: 
-                cov = self.rho(x[:, 0:2].reshape(t.shape[0],1,2) - x0_expanded[:,0:2].reshape(t.shape[0], self.x0_initial.shape[0], 2))
-                cov = torch.mean(cov, dim=1)
-                cov_rho_m.append(cov)
+        where y_i(t) = G_NN(t, x0_i) are samples from the generator.
+        
+        Args:
+            t: (Mt, 1) or (1, 1) time tensor. If (1, 1), broadcasts to all x points.
+            x: (Nx, dim) spatial tensor
+        """
+        Nx = x.shape[0]  # Number of spatial points
+        Mt = t.shape[0]  # Number of time points
+        
+        # Handle broadcasting: if t has 1 row but x has many, expand t
+        if Mt == 1 and Nx > 1:
+            t = t.expand(Nx, -1)
+            Mt = Nx
+        
+        if getattr(self, 'use_precomputed', False) and len(self.cached_trajectories) > 0:
+            # Use precomputed and interpolated trajectories
+            N_x0 = self.x0_initial.shape[0]
+            
+            # Get interpolated trajectories for all generators at query times
+            # Each element: (Mt, N_x0, 2)
+            interp_trajs = self._interpolate_trajectories(t.view(-1))
+            
+            # x: (Mt, dim) -> (Mt, 1, 2) for broadcasting
+            x_eval = x[:, :2].view(Mt, 1, 2)
+            
+            if self.VV == 1:
+                # Compute weighted average of convolutions
+                # cov_k = (1/N) sum_i rho(x - y_i^k(t))
+                # m_bar_n = (1/(n+1)) sum_{k=0}^n cov_k (with recursive weighting)
+                
+                # First generator
+                y_0 = interp_trajs[0]  # (Mt, N_x0, 2)
+                cov_0 = self.rho(x_eval - y_0)  # (Mt, N_x0)
+                cov_0 = torch.mean(cov_0, dim=1)  # (Mt,)
                 
                 if self.n == 0:
-                    return cov_rho_m[self.n]
-                else:
-                    for i in range(1, self.n + 1):
-                        New_dist = self.G_NN_list[i-1](t_expanded, x0_expanded)
-                        new_cov = self.rho(x[:, 0:2].reshape(t.shape[0],1,2) - New_dist[:,0:2].reshape(t.shape[0], self.x0_initial.shape[0],2))
-                        new_cov = torch.mean(new_cov, dim=1)
-                        cov_rho_m.append((1 / (i + 1)) * new_cov + (i / (i + 1)) * cov_rho_m[i-1]) 
-                        #cov_rho_m.append((1/2) * new_cov + (1/2) * cov_rho_m[i-1]) 
-                    return cov_rho_m[self.n]
+                    return cov_0
+                
+                cov_prev = cov_0
+                for i in range(1, min(self.n + 1, len(interp_trajs))):
+                    y_i = interp_trajs[i]  # (Mt, N_x0, 2)
+                    new_cov = self.rho(x_eval - y_i)  # (Mt, N_x0)
+                    new_cov = torch.mean(new_cov, dim=1)  # (Mt,)
+                    cov_prev = (1 / (i + 1)) * new_cov + (i / (i + 1)) * cov_prev
+                
+                return cov_prev
             else:
-                New_dist = self.G_NN_list[0](t_expanded, x0_expanded)
-                cov_0 = self.rho(x[:, 0:2].reshape(t.shape[0],1,2) - New_dist[:,0:2].reshape(t.shape[0], self.x0_initial.shape[0],2))
-                cov_0 = torch.mean(cov_0, dim=1)
-                cov_rho_m.append(cov_0)
-                if self.n == 0: 
-                    return cov_rho_m[self.n]
-                else:
-                    for i in range(1, self.n + 1):
-                        New_dist = self.G_NN_list[i](t_expanded, x0_expanded)
-                        new_cov = self.rho(x[:, 0:2].reshape(t.shape[0],1,2) - New_dist[:,0:2].reshape(t.shape[0], self.x0_initial.shape[0],2))
-                        new_cov = torch.mean(new_cov, dim=1)
-                        cov_rho_m.append((1 / (i + 1)) * new_cov + (i / (i + 1)) * cov_rho_m[i-1])
-                        #cov_rho_m.append((1/2) * new_cov + (1/2) * cov_rho_m[i-1])
-                    return cov_rho_m[self.n]
+                # VV == 2: Use only the last generator
+                y_last = interp_trajs[-1]  # (Mt, N_x0, 2)
+                cov_f = self.rho(x_eval - y_last)  # (Mt, N_x0)
+                cov_f = torch.mean(cov_f, dim=1)  # (Mt,)
+                return cov_f
+
+        # Original computation (no precomputation)
+        cov_rho_m = []
+        t_expanded = t.repeat_interleave(self.x0_initial.shape[0]).view(-1,1)
+        x0_expanded = self.x0_initial.repeat(Mt, 1)
+        
+        if self.VV == 1:
+            
+            New_dist = self.G_NN_list[0](t_expanded, x0_expanded)
+            cov_0 = self.rho(x[:, 0:2].reshape(Mt,1,2) - New_dist[:,0:2].reshape(Mt, self.x0_initial.shape[0],2))
+            cov_0 = torch.mean(cov_0, dim=1)
+            cov_rho_m.append(cov_0)
+            if self.n == 0: 
+                return cov_rho_m[self.n]
+            else:
+                for i in range(1, self.n + 1):
+                    New_dist = self.G_NN_list[i](t_expanded, x0_expanded)
+                    new_cov = self.rho(x[:, 0:2].reshape(Mt,1,2) - New_dist[:,0:2].reshape(Mt, self.x0_initial.shape[0],2))
+                    new_cov = torch.mean(new_cov, dim=1)
+                    cov_rho_m.append((1 / (i + 1)) * new_cov + (i / (i + 1)) * cov_rho_m[i-1])
+                return cov_rho_m[self.n]
         else:
             New_dist = self.G_NN_list[-1](t_expanded, x0_expanded)
-            cov_f = self.rho(x[:, 0:2].reshape(t.shape[0],1,2) - New_dist[:,0:2].reshape(t.shape[0], self.x0_initial.shape[0],2))
+            cov_f = self.rho(x[:, 0:2].reshape(Mt,1,2) - New_dist[:,0:2].reshape(Mt, self.x0_initial.shape[0],2))
             cov_f = torch.mean(cov_f, dim=1)   
             return cov_f
 
         
     def compute_Conv_tor_gradients(self, t, x):
+        """
+        Compute gradients of Conv_tor w.r.t. first 2 spatial dimensions.
+        Uses analytical gradient of rho(x-y) = -rho(x-y) * (x-y) / sigma^2
         
-        # Ensure `x` requires gradients
-        t = t.clone().detach().requires_grad_(True)
-        x = x.clone().detach().requires_grad_(True)
+        d/dx [ (1/N) sum_i rho(x - y_i) ] = (1/N) sum_i d_rho(x - y_i) / dx
+                                          = (1/N) sum_i -rho(x-y_i) * (x-y_i) / sigma^2
+        
+        Args:
+            t: (M, 1) or (1, 1) time tensor. If (1, 1), broadcasts to all x points.
+            x: (Nx, dim) spatial tensor
+        """
+        Nx = x.shape[0]  # Number of spatial points
+        Mt = t.shape[0]  # Number of time points
+        sigma2 = self.sigma_rho ** 2
+        
+        # Handle broadcasting: if t has 1 row but x has many, expand t
+        if Mt == 1 and Nx > 1:
+            t = t.expand(Nx, -1)
+            Mt = Nx
+        
+        if getattr(self, 'use_precomputed', False) and len(self.cached_trajectories) > 0:
+            # Use precomputed trajectories - much faster
+            N_x0 = self.x0_initial.shape[0]
+            
+            # Get interpolated trajectories
+            interp_trajs = self._interpolate_trajectories(t.view(-1), requires_grad=False)
+            
+            # x: (Mt, dim) -> x_2d: (Mt, 1, 2)
+            x_2d = x[:, :2].view(Mt, 1, 2)
+            
+            if self.VV == 1:
+                # Weighted average over generators
+                # First generator
+                y_0 = interp_trajs[0]  # (Mt, N_x0, 2)
+                diff_0 = x_2d - y_0  # (Mt, N_x0, 2)
+                rho_0 = self.rho(diff_0)  # (Mt, N_x0)
+                
+                # Gradient: -rho * diff / sigma^2
+                grad_0 = -rho_0.unsqueeze(-1) * diff_0 / sigma2  # (Mt, N_x0, 2)
+                grad_0 = torch.mean(grad_0, dim=1)  # (Mt, 2)
+                
+                if self.n == 0:
+                    return grad_0.T.cpu().detach().numpy()  # (2, Mt)
+                
+                grad_prev = grad_0
+                for i in range(1, min(self.n + 1, len(interp_trajs))):
+                    y_i = interp_trajs[i]  # (Mt, N_x0, 2)
+                    diff_i = x_2d - y_i
+                    rho_i = self.rho(diff_i)  # (Mt, N_x0)
+                    grad_i = -rho_i.unsqueeze(-1) * diff_i / sigma2
+                    grad_i = torch.mean(grad_i, dim=1)  # (Mt, 2)
+                    grad_prev = (1 / (i + 1)) * grad_i + (i / (i + 1)) * grad_prev
+                
+                return grad_prev.T.cpu().detach().numpy()  # (2, Mt)
+            else:
+                # VV == 2: Use only the last generator
+                y_last = interp_trajs[-1]  # (Mt, N_x0, 2)
+                diff_last = x_2d - y_last
+                rho_last = self.rho(diff_last)
+                grad_last = -rho_last.unsqueeze(-1) * diff_last / sigma2
+                grad_last = torch.mean(grad_last, dim=1)  # (Mt, 2)
+                return grad_last.T.cpu().detach().numpy()  # (2, Mt)
+        
+        # Fallback: use autograd (slower)
+        t_for_grad = t.clone().detach().requires_grad_(False)
+        x_for_grad = x.clone().detach().requires_grad_(True)
 
-        # Compute the output of Conv_tor
-        output = self.Conv_tor(t, x)       
-
+        output = self.Conv_tor(t_for_grad, x_for_grad)       
         output.backward(torch.ones_like(output))
 
-        # Extract gradients with respect to x0 and x1
-        grad_x0 = x.grad[:, 0]  # Gradient with respect to x0
-        grad_x1 = x.grad[:, 1]  # Gradient with respect to x1
+        grad_x0 = x_for_grad.grad[:, 0]
+        grad_x1 = x_for_grad.grad[:, 1]
 
         return np.array([grad_x0.view(-1).cpu().detach().numpy(), grad_x1.view(-1).cpu().detach().numpy()])
 
@@ -364,8 +580,8 @@ class Obstacle(object):
             # Derivative of the terminal cost with respect to the final state
             target_array = np.array(self.target).squeeze()
             #assert target_array.shape == (self.dim,), f"Target shape mismatch: {target_array.shape} vs {(self.dim,)}"
-            dFdXT = np.zeros_like(AT)
-            dFdXT[:2] = 2 * self.psi_scale * (XT[:2] - target_array)
+            #dFdXT = np.zeros_like(AT)
+            dFdXT = 2 * self.psi_scale * (XT - target_array)
 
             # Compute boundary condition residuals
             residuals = np.concatenate((X0 - X0_in, AT - dFdXT, vT))
@@ -392,10 +608,10 @@ class Obstacle(object):
     
     
     def terminal_cost(self, X):
-
-        z = (X[:2]- np.array(self.target).squeeze())
-
-        return self.psi_scale*np.sum(z * z, axis=0, keepdims=True)
+        """Terminal cost for BVP solver (numpy). Uses all dimensions."""
+        target_array = np.array(self.target).squeeze()
+        z = X - target_array
+        return self.psi_scale * np.sum(z * z, axis=0, keepdims=True)
 
 
     def running_cost(self,t, X, U):
@@ -414,11 +630,21 @@ class Obstacle(object):
         U = self.U_star(X_aug)
        
         x = X_aug[:self.dim]
-
         
-        dFF =  self.compute_loss_gradients(torch.tensor(x.T, dtype=torch.float32, device=self.device))
-
-        dCov = self.compute_Conv_tor_gradients(torch.tensor(t, dtype=torch.float32, device=self.device), torch.tensor(x.T, dtype=torch.float32, device=self.device))
+        # Convert to tensors once
+        N = x.shape[1] if x.ndim > 1 else 1
+        
+        # Handle both scalar t and array t
+        if np.isscalar(t):
+            t_tensor = torch.tensor([[t]], dtype=torch.float32, device=self.device)
+        else:
+            t_tensor = torch.tensor(t.reshape(-1, 1), dtype=torch.float32, device=self.device)
+        
+        x_tensor = torch.tensor(x.T if x.ndim > 1 else x.reshape(1, -1), 
+                                dtype=torch.float32, device=self.device)
+        
+        dFF = self.compute_loss_gradients(x_tensor)
+        dCov = self.compute_Conv_tor_gradients(t_tensor, x_tensor)
 
          
         Ax = X_aug[self.dim:2*self.dim]
@@ -432,7 +658,7 @@ class Obstacle(object):
         dAxdt[0:2,:] = - (self.gamma_obst * dFF + self.gamma_cong * dCov)
         
 
-        L = self.running_cost(t, x, U)
+        L = self.running_cost_fast(t_tensor, x_tensor, U)
 
        
         fun = np.vstack((dxdt, dAxdt, -L))
@@ -440,21 +666,29 @@ class Obstacle(object):
 
         return fun
     
+    def running_cost_fast(self, t_tensor, x_tensor, U):
+        """Fast running cost computation with pre-converted tensors."""
+        with torch.no_grad():
+            FF = self.F_obstacle_func_loss(x_tensor).cpu().numpy()
+            Conv = self.Conv_tor(t_tensor, x_tensor).cpu().numpy()
+        
+        return self.c * np.sum(U * U, axis=0, keepdims=True) + self.gamma_obst * FF.T + self.gamma_cong * Conv.reshape((1,-1))
+
+    
 
     
     def terminal(self, xx_inp):
-        
-        z = (xx_inp[:,0:2]-torch.tensor(self.target, device=self.device))
-        
-        return self.psi_scale * torch.sum(z*z, dim=1, keepdim=True)
+        """Terminal cost for neural network training (torch). Uses all dimensions."""
+        target_tensor = torch.tensor(self.target, dtype=torch.float32, device=self.device)
+        z = xx_inp - target_tensor
+        return self.psi_scale * torch.sum(z * z, dim=1, keepdim=True)
     
 
     def psi_func(self, xx_inp):
         """
         The final-time cost function.
         """
-        
-        return self.terminal( xx_inp)
+        return self.terminal(xx_inp)
     
 
             

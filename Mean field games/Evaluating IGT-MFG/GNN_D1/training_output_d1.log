@@ -1,0 +1,479 @@
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--t0', type=int, default=0, help='temps initial')
+parser.add_argument('--t_final', type=int, default=1, help='temps final')
+parser.add_argument('--N', type=int, default=20, help='Number of time step')
+parser.add_argument('--dim', type=int, default=1, help='dimension')
+parser.add_argument('--num_samples_hjb', type=int, default=256, help='Number of Samples for training HJB')
+parser.add_argument('--num_samples_mfg', type=int, default=256, help='Number of Samples for training MFG')
+parser.add_argument('--num_samples_bvp', type=int, default=128, help='Number of Samples for  BVP')
+parser.add_argument('--num_samples_gen', type=int, default=256, help='Number of Samples for training Generator')
+parser.add_argument('--num_samples_conv', type=int, default=256, help='Number of Samples for compute convolution')
+parser.add_argument('--num_points_test', type=int, default=1000)
+parser.add_argument('--Max_Round', type=float, default=1, help='Number of Round')
+parser.add_argument('--num_epoch_hjb', type=float, default=1000, help='Number of training iterations for approximate HJB')
+parser.add_argument('--num_epoch_mfg', type=float, default=3000, help='Number of training iterations for approximate MFG')
+parser.add_argument('--num_epoch_v', type=float, default=500, help='Number of training iterations for approximate V')
+parser.add_argument('--num_epoch_gen', type=float, default=3000, help='Number of training iterations for approximate GEN')
+parser.add_argument('--freq', type=float, default=1000)
+parser.add_argument('--ns_v', default=128, help='Network size of V_net')
+parser.add_argument('--ns_g', default=128, help='Network sizeof G_net')
+parser.add_argument('--lr', default=1e-3, help='learning rate of MFG')
+parser.add_argument('--lr_v', default=1e-4, help='learning rate of V')
+parser.add_argument('--lr_v2', default=1e-4, help='learning rate of V')
+parser.add_argument('--lr_g', default=1e-4, help='learning rate of G')
+parser.add_argument('--betas', default=(0.5, 0.9), help='Adam only')
+parser.add_argument('--weight_decay',default=0*1e-3)
+parser.add_argument('--act_func_v',default= lambda x: torch.tanh(x), help='Activation function for v')
+parser.add_argument('--act_func_g',default= lambda x: torch.relu(x), help='Activation function for g')
+parser.add_argument('--hh', default=0.5, help='ResNet step-size')
+args = parser.parse_args()
+
+
+
+
+
+
+
+
+Round:  0 
+
+
+ Computing The Best Response 0: 
+
+Approximate solution of MFG 
+
+Starting Joint Training of V and G (MFG)...
+Iteration 0: Loss_HJB = 9.4315e-01, Loss_ODE = 1.9919e-01
+Iteration 1000: Loss_HJB = 5.0360e-04, Loss_ODE = 1.0970e-03
+Iteration 2000: Loss_HJB = 1.4518e-04, Loss_ODE = 7.8569e-05
+Iteration 3000: Loss_HJB = 9.8416e-04, Loss_ODE = 1.5829e-04
+
+
+Time t = 0.0
+  Relative L2 Error    = 3.8963e-02
+  Relative Linf Error  = 3.4297e-02
+
+Time t = 0.5
+  Relative L2 Error    = 3.6697e-02
+  Relative Linf Error  = 3.0946e-02
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7241 data from 128/128 BVP solutions in 6.9 sec
+  → Speed: 18.4 BVP/sec, 1042 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 1.8677e-04, Loss_V_x = 2.0072e-04, Loss_HJB = 1.2785e-03, Loss_total = 1.6659e-03
+Iteration 500: Loss_V = 1.1034e-07, Loss_V_x = 2.8089e-06, Loss_HJB = 5.8151e-06, Loss_total = 8.7343e-06
+
+
+Generating data_MFG...
+Generated 5376 data from 256 IVP solutions in 12.2 sec 
+
+Iteration 0:  Loss_G = 1.1571e-05,  Loss_ODE = 8.1234e-05,  Loss_total = 1.9694e-05
+Iteration 1000:  Loss_G = 3.7463e-08,  Loss_ODE = 2.6819e-06,  Loss_total = 3.0566e-07
+Iteration 2000:  Loss_G = 4.0336e-08,  Loss_ODE = 3.1899e-06,  Loss_total = 3.5932e-07
+Iteration 3000:  Loss_G = 3.9100e-08,  Loss_ODE = 2.2470e-06,  Loss_total = 2.6380e-07
+
+
+Time t = 0.0
+  Relative L2 Error    = 3.2385e-03
+  Relative Linf Error  = 2.9957e-03
+
+Time t = 0.5
+  Relative L2 Error    = 5.4329e-03
+  Relative Linf Error  = 4.5152e-03
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+k  0 │ L1=4.484e-04 │ L2=1.324e-04 │ L∞=6.648e-05
+
+Find alpha1
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7232 data from 128/128 BVP solutions in 5.7 sec
+  → Speed: 22.5 BVP/sec, 1270 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 5.3395e-02, Loss_V_x = 2.4980e-01, Loss_total = 3.0320e-01
+
+
+The Exploitibility is : 0.04499000310897827
+
+ Computing The Best Response 1: 
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7655 data from 128/128 BVP solutions in 5.8 sec
+  → Speed: 22.3 BVP/sec, 1331 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 1.4631e-06, Loss_V_x = 3.9202e-06, Loss_HJB = 9.8107e-06, Loss_total = 1.5194e-05
+Iteration 500: Loss_V = 2.2758e-07, Loss_V_x = 1.3725e-06, Loss_HJB = 4.1943e-06, Loss_total = 5.7943e-06
+
+
+Generating data_MFG...
+Generated 5376 data from 256 IVP solutions in 12.0 sec 
+
+Iteration 0:  Loss_G = 3.3037e-07,  Loss_ODE = 1.1176e-05,  Loss_total = 1.4480e-06
+Iteration 1000:  Loss_G = 4.8880e-08,  Loss_ODE = 4.5273e-06,  Loss_total = 5.0161e-07
+Iteration 2000:  Loss_G = 5.0527e-08,  Loss_ODE = 2.6698e-06,  Loss_total = 3.1751e-07
+Iteration 3000:  Loss_G = 4.8597e-08,  Loss_ODE = 2.1544e-06,  Loss_total = 2.6404e-07
+
+
+Time t = 0.0
+  Relative L2 Error    = 1.1059e-03
+  Relative Linf Error  = 8.2138e-04
+
+Time t = 0.5
+  Relative L2 Error    = 2.2192e-03
+  Relative Linf Error  = 2.3924e-03
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+k  1 │ L1=2.045e-04 │ L2=5.657e-05 │ L∞=2.600e-05
+
+Find alpha1
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7724 data from 128/128 BVP solutions in 5.8 sec
+  → Speed: 22.1 BVP/sec, 1333 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 2.2466e-04, Loss_V_x = 4.3470e-03, Loss_total = 4.5716e-03
+
+
+The Exploitibility is : 0.004980582743883133
+
+ Computing The Best Response 2: 
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7379 data from 128/128 BVP solutions in 5.4 sec
+  → Speed: 23.7 BVP/sec, 1367 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 1.3621e-07, Loss_V_x = 2.1326e-06, Loss_HJB = 5.3344e-06, Loss_total = 7.6033e-06
+Iteration 500: Loss_V = 4.7493e-08, Loss_V_x = 1.1531e-06, Loss_HJB = 2.0705e-06, Loss_total = 3.2711e-06
+
+
+Generating data_MFG...
+Generated 5376 data from 256 IVP solutions in 11.9 sec 
+
+Iteration 0:  Loss_G = 2.7578e-07,  Loss_ODE = 7.6283e-06,  Loss_total = 1.0386e-06
+Iteration 1000:  Loss_G = 3.7647e-08,  Loss_ODE = 2.0967e-06,  Loss_total = 2.4732e-07
+Iteration 2000:  Loss_G = 2.5057e-08,  Loss_ODE = 1.4493e-06,  Loss_total = 1.6999e-07
+Iteration 3000:  Loss_G = 3.3361e-08,  Loss_ODE = 2.0989e-06,  Loss_total = 2.4325e-07
+
+
+Time t = 0.0
+  Relative L2 Error    = 6.6224e-04
+  Relative Linf Error  = 4.9041e-04
+
+Time t = 0.5
+  Relative L2 Error    = 1.0974e-03
+  Relative Linf Error  = 1.5762e-03
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+k  2 │ L1=1.056e-04 │ L2=2.898e-05 │ L∞=1.299e-05
+
+Find alpha1
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7807 data from 128/128 BVP solutions in 5.8 sec
+  → Speed: 22.0 BVP/sec, 1343 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 4.8738e-06, Loss_V_x = 4.7310e-05, Loss_total = 5.2184e-05
+
+
+The Exploitibility is : 0.0043244995176792145
+
+ Computing The Best Response 3: 
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 6891 data from 128/128 BVP solutions in 5.3 sec
+  → Speed: 24.3 BVP/sec, 1306 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 2.5498e-08, Loss_V_x = 1.3117e-06, Loss_HJB = 2.3503e-06, Loss_total = 3.6875e-06
+Iteration 500: Loss_V = 1.7435e-07, Loss_V_x = 8.1468e-07, Loss_HJB = 2.1580e-06, Loss_total = 3.1470e-06
+
+
+Generating data_MFG...
+Generated 5376 data from 256 IVP solutions in 11.8 sec 
+
+Iteration 0:  Loss_G = 7.8387e-08,  Loss_ODE = 6.3400e-06,  Loss_total = 7.1239e-07
+Iteration 1000:  Loss_G = 2.9041e-08,  Loss_ODE = 1.5075e-06,  Loss_total = 1.7979e-07
+Iteration 2000:  Loss_G = 6.7929e-08,  Loss_ODE = 1.4565e-06,  Loss_total = 2.1357e-07
+Iteration 3000:  Loss_G = 4.6207e-08,  Loss_ODE = 2.1715e-06,  Loss_total = 2.6336e-07
+
+
+Time t = 0.0
+  Relative L2 Error    = 1.3540e-03
+  Relative Linf Error  = 7.8767e-04
+
+Time t = 0.5
+  Relative L2 Error    = 1.5232e-03
+  Relative Linf Error  = 1.1436e-03
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+k  3 │ L1=5.755e-05 │ L2=1.559e-05 │ L∞=7.384e-06
+
+Find alpha1
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7485 data from 128/128 BVP solutions in 6.0 sec
+  → Speed: 21.4 BVP/sec, 1253 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 1.8672e-06, Loss_V_x = 2.3017e-05, Loss_total = 2.4884e-05
+
+
+The Exploitibility is : 0.0036099404096603394
+
+ Computing The Best Response 4: 
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7345 data from 128/128 BVP solutions in 6.5 sec
+  → Speed: 19.5 BVP/sec, 1122 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 3.7614e-07, Loss_V_x = 6.3212e-07, Loss_HJB = 2.1454e-06, Loss_total = 3.1536e-06
+Iteration 500: Loss_V = 2.0914e-08, Loss_V_x = 4.2515e-07, Loss_HJB = 1.5001e-06, Loss_total = 1.9462e-06
+
+
+Generating data_MFG...
+Generated 5376 data from 256 IVP solutions in 12.0 sec 
+
+Iteration 0:  Loss_G = 1.9499e-07,  Loss_ODE = 1.0704e-05,  Loss_total = 1.2654e-06
+Iteration 1000:  Loss_G = 3.2944e-08,  Loss_ODE = 2.4349e-06,  Loss_total = 2.7643e-07
+Iteration 2000:  Loss_G = 4.3137e-08,  Loss_ODE = 2.4104e-06,  Loss_total = 2.8417e-07
+Iteration 3000:  Loss_G = 3.6858e-08,  Loss_ODE = 1.4882e-06,  Loss_total = 1.8567e-07
+
+
+Time t = 0.0
+  Relative L2 Error    = 4.3333e-04
+  Relative Linf Error  = 3.5162e-04
+
+Time t = 0.5
+  Relative L2 Error    = 9.1179e-04
+  Relative Linf Error  = 1.4106e-03
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+k  4 │ L1=4.715e-05 │ L2=1.274e-05 │ L∞=5.563e-06
+
+Find alpha1
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7851 data from 128/128 BVP solutions in 6.7 sec
+  → Speed: 19.1 BVP/sec, 1170 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 1.2096e-06, Loss_V_x = 1.3194e-05, Loss_total = 1.4404e-05
+
+
+The Exploitibility is : 0.003888249397277832
+
+ Computing The Best Response 5: 
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7585 data from 128/128 BVP solutions in 6.9 sec
+  → Speed: 18.6 BVP/sec, 1103 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 7.7981e-08, Loss_V_x = 8.7265e-07, Loss_HJB = 2.3680e-06, Loss_total = 3.3186e-06
+Iteration 500: Loss_V = 5.4455e-08, Loss_V_x = 6.1776e-07, Loss_HJB = 9.8474e-07, Loss_total = 1.6570e-06
+
+
+Generating data_MFG...
+Generated 5376 data from 256 IVP solutions in 12.0 sec 
+
+Iteration 0:  Loss_G = 8.5227e-08,  Loss_ODE = 5.3303e-06,  Loss_total = 6.1826e-07
+Iteration 1000:  Loss_G = 5.0956e-08,  Loss_ODE = 2.3705e-06,  Loss_total = 2.8800e-07
+Iteration 2000:  Loss_G = 3.1195e-08,  Loss_ODE = 1.1694e-06,  Loss_total = 1.4813e-07
+Iteration 3000:  Loss_G = 4.1530e-08,  Loss_ODE = 2.8325e-06,  Loss_total = 3.2478e-07
+
+
+Time t = 0.0
+  Relative L2 Error    = 7.7157e-04
+  Relative Linf Error  = 5.8330e-04
+
+Time t = 0.5
+  Relative L2 Error    = 6.2792e-04
+  Relative Linf Error  = 7.1604e-04
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+k  5 │ L1=4.623e-05 │ L2=1.276e-05 │ L∞=5.780e-06
+
+Find alpha1
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7712 data from 128/128 BVP solutions in 5.4 sec
+  → Speed: 23.5 BVP/sec, 1419 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 7.7874e-07, Loss_V_x = 4.4451e-06, Loss_total = 5.2238e-06
+
+
+The Exploitibility is : 0.002545595169067383
+
+ Computing The Best Response 6: 
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7516 data from 128/128 BVP solutions in 6.3 sec
+  → Speed: 20.4 BVP/sec, 1198 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 5.8484e-08, Loss_V_x = 5.7105e-07, Loss_HJB = 1.0593e-06, Loss_total = 1.6889e-06
+Iteration 500: Loss_V = 2.3470e-08, Loss_V_x = 4.2286e-07, Loss_HJB = 9.6583e-07, Loss_total = 1.4122e-06
+
+
+Generating data_MFG...
+Generated 5376 data from 256 IVP solutions in 12.1 sec 
+
+Iteration 0:  Loss_G = 5.9290e-08,  Loss_ODE = 6.1776e-06,  Loss_total = 6.7705e-07
+Iteration 1000:  Loss_G = 3.5779e-08,  Loss_ODE = 1.8726e-06,  Loss_total = 2.2304e-07
+Iteration 2000:  Loss_G = 2.7667e-08,  Loss_ODE = 1.3225e-06,  Loss_total = 1.5992e-07
+Iteration 3000:  Loss_G = 3.7801e-08,  Loss_ODE = 1.3377e-06,  Loss_total = 1.7157e-07
+
+
+Time t = 0.0
+  Relative L2 Error    = 8.3801e-04
+  Relative Linf Error  = 6.7863e-04
+
+Time t = 0.5
+  Relative L2 Error    = 5.3708e-04
+  Relative Linf Error  = 8.4332e-04
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+k  6 │ L1=3.573e-05 │ L2=9.881e-06 │ L∞=5.276e-06
+
+Find alpha1
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7822 data from 128/128 BVP solutions in 5.5 sec
+  → Speed: 23.3 BVP/sec, 1423 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 5.8611e-07, Loss_V_x = 2.2269e-06, Loss_total = 2.8130e-06
+
+
+The Exploitibility is : 0.0015659444034099579
+
+ Computing The Best Response 7: 
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 6780 data from 128/128 BVP solutions in 5.4 sec
+  → Speed: 23.8 BVP/sec, 1259 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 1.8882e-08, Loss_V_x = 9.4451e-07, Loss_HJB = 9.2781e-07, Loss_total = 1.8912e-06
+Iteration 500: Loss_V = 2.9608e-08, Loss_V_x = 6.6923e-07, Loss_HJB = 9.9824e-07, Loss_total = 1.6971e-06
+
+
+Generating data_MFG...
+Generated 5376 data from 256 IVP solutions in 11.5 sec 
+
+Iteration 0:  Loss_G = 3.7747e-08,  Loss_ODE = 8.8852e-06,  Loss_total = 9.2627e-07
+Iteration 1000:  Loss_G = 3.5486e-08,  Loss_ODE = 2.4674e-06,  Loss_total = 2.8222e-07
+Iteration 2000:  Loss_G = 3.6580e-08,  Loss_ODE = 2.1946e-06,  Loss_total = 2.5604e-07
+Iteration 3000:  Loss_G = 3.1528e-08,  Loss_ODE = 1.9174e-06,  Loss_total = 2.2327e-07
+
+
+Time t = 0.0
+  Relative L2 Error    = 5.6624e-04
+  Relative Linf Error  = 4.9059e-04
+
+Time t = 0.5
+  Relative L2 Error    = 5.1301e-04
+  Relative Linf Error  = 7.3581e-04
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+k  7 │ L1=2.934e-05 │ L2=7.698e-06 │ L∞=3.322e-06
+
+Find alpha1
+
+Generating data_OC (ThreadPool, N=128)...
+8 workers will be used.
+
+Generated 7287 data from 128/128 BVP solutions in 5.2 sec
+  → Speed: 24.6 BVP/sec, 1399 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 3.8805e-06, Loss_V_x = 2.4034e-06, Loss_total = 6.2839e-06
+
+
+The Exploitibility is : 0.0010538195967674255
+
+ 

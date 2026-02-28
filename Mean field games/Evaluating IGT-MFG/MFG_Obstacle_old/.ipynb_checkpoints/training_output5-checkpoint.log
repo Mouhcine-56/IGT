@@ -1,0 +1,4376 @@
+========= Round 0 =========
+
+
+--- Step 0 ---
+
+Training V1 solution by HJB
+Iteration 0: Loss = 3.1421e+01
+Iteration 1000: Loss = 3.0662e+00
+Iteration 2000: Loss = 7.6122e-01
+Iteration 3000: Loss = 6.4522e-01
+Iteration 4000: Loss = 5.0084e-02
+Iteration 5000: Loss = 3.6047e-02
+
+
+Generating data...
+Solver failed (1/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6858e-01
+Iteration 1000: Loss = 1.7385e-02
+
+
+Solver failed (2/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1217e-02
+Iteration 1000: Loss = 8.1594e-03
+
+
+Solver failed (3/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.3735e-02
+Iteration 1000: Loss = 8.0112e-03
+
+
+Solver failed (4/45): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2887e-01
+Iteration 1000: Loss = 4.4166e-03
+
+
+Solver failed (5/43): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.9494e-02
+Iteration 1000: Loss = 2.4616e-03
+
+
+Solver failed (6/40): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3341e-02
+Iteration 1000: Loss = 2.6217e-03
+
+
+Solver failed (7/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.8304e-02
+Iteration 1000: Loss = 2.8384e-03
+
+
+Solver failed (8/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.0861e-03
+Iteration 1000: Loss = 2.1514e-03
+
+
+Solver failed (9/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.9063e-02
+Iteration 1000: Loss = 2.5337e-03
+
+
+Solver failed (10/33): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.6454e-02
+Iteration 1000: Loss = 1.9939e-03
+
+
+Solver failed (11/31): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5897e-03
+Iteration 1000: Loss = 1.0358e-03
+
+
+Solver failed (12/31): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.1054e-02
+Iteration 1000: Loss = 1.1391e-03
+
+
+Solver failed (13/30): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.7263e-03
+Iteration 1000: Loss = 1.4470e-03
+
+
+Solver failed (14/29): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5265e-02
+Iteration 1000: Loss = 1.0615e-03
+
+
+Solver failed (15/29): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.8983e-02
+Iteration 1000: Loss = 8.7291e-04
+
+
+Solver failed (16/29): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.5507e-02
+Iteration 1000: Loss = 1.8370e-03
+
+
+Solver failed (17/27): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2889e-02
+Iteration 1000: Loss = 1.1849e-03
+
+
+Solver failed (18/23): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.4839e-03
+Iteration 1000: Loss = 1.1699e-03
+
+
+Solver failed (19/23): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.7348e-03
+Iteration 1000: Loss = 7.8272e-04
+
+
+Solver failed (20/22): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.1345e-03
+Iteration 1000: Loss = 3.1753e-04
+
+
+Solver failed (21/20): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6495e-02
+Iteration 1000: Loss = 8.1099e-04
+
+
+Maximum retries reached. Exiting.
+Generated 76846 data from 44 BVP solutions in 402.0 sec 
+
+Training V1 solution of BVP
+Iteration 0: Loss_V = 7.1423e+00, Loss_V_x = 3.9183e-01, Loss_HJB = 1.3317e-02,  Loss_total = 7.5474e+00
+Iteration 1000: Loss_V = 1.9891e-03, Loss_V_x = 4.8129e-03, Loss_HJB = 1.0412e-02,  Loss_total = 1.7214e-02
+Iteration 2000: Loss_V = 3.6990e-04, Loss_V_x = 1.4257e-03, Loss_HJB = 3.4147e-03,  Loss_total = 5.2103e-03
+Iteration 3000: Loss_V = 1.4465e-04, Loss_V_x = 9.0168e-04, Loss_HJB = 2.0870e-03,  Loss_total = 3.1333e-03
+Iteration 4000: Loss_V = 8.1035e-05, Loss_V_x = 5.4689e-04, Loss_HJB = 1.7669e-03,  Loss_total = 2.3948e-03
+Iteration 5000: Loss_V = 4.9300e-05, Loss_V_x = 4.0229e-04, Loss_HJB = 1.6040e-03,  Loss_total = 2.0555e-03
+
+
+Generated 2688 data from 128 IVP solutions in 34.5 sec 
+
+Iteration 0:  Loss_G = 5.2036e-02,  Loss_ODE = 2.5498e+00,  Loss_total = 5.2036e-02
+Iteration 1000:  Loss_G = 1.4809e-05,  Loss_ODE = 2.1887e+00,  Loss_total = 1.4809e-05
+Iteration 2000:  Loss_G = 1.0002e-05,  Loss_ODE = 2.1914e+00,  Loss_total = 1.0002e-05
+Iteration 3000:  Loss_G = 5.8680e-06,  Loss_ODE = 2.1925e+00,  Loss_total = 5.8680e-06
+
+
+Computed J: 2.411719
+Training V2 solution by HJB
+Iteration 0: Loss = 1.3376e+00
+Iteration 1000: Loss = 5.9998e-03
+Iteration 2000: Loss = 2.5259e-03
+Iteration 3000: Loss = 1.4965e-03
+Iteration 4000: Loss = 1.5565e-03
+Iteration 5000: Loss = 1.2341e-03
+
+
+Generating data...
+Solver failed (1/64): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.7339e-03
+Iteration 1000: Loss = 1.0079e-03
+
+
+Solver failed (2/64): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5669e-02
+Iteration 1000: Loss = 9.2560e-04
+
+
+Solver failed (3/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.5053e-03
+Iteration 1000: Loss = 6.4982e-04
+
+
+Solver failed (4/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2322e-02
+Iteration 1000: Loss = 9.2513e-04
+
+
+Solver failed (5/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1312e-02
+Iteration 1000: Loss = 5.9378e-04
+
+
+Solver failed (6/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.6627e-03
+Iteration 1000: Loss = 2.8888e-04
+
+
+Solver failed (7/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.9478e-03
+Iteration 1000: Loss = 6.4819e-04
+
+
+Solver failed (8/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8641e-03
+Iteration 1000: Loss = 7.0063e-04
+
+
+Solver failed (9/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.1909e-02
+Iteration 1000: Loss = 3.7249e-04
+
+
+Solver failed (10/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5964e-03
+Iteration 1000: Loss = 7.1676e-04
+
+
+Solver failed (11/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.5706e-03
+Iteration 1000: Loss = 4.1441e-04
+
+
+Solver failed (12/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5156e-03
+Iteration 1000: Loss = 5.1676e-04
+
+
+Solver failed (13/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.7918e-03
+Iteration 1000: Loss = 3.2816e-04
+
+
+Solver failed (14/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6695e-03
+Iteration 1000: Loss = 5.2137e-04
+
+
+Solver failed (15/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.6699e-02
+Iteration 1000: Loss = 4.6521e-04
+
+
+Solver failed (16/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.1784e-03
+Iteration 1000: Loss = 5.0497e-04
+
+
+Solver failed (17/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.4642e-03
+Iteration 1000: Loss = 4.6906e-04
+
+
+Solver failed (18/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.3033e-02
+Iteration 1000: Loss = 6.3650e-04
+
+
+Solver failed (19/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.7053e-03
+Iteration 1000: Loss = 3.5922e-04
+
+
+Solver failed (20/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3546e-03
+Iteration 1000: Loss = 1.1603e-04
+
+
+Solver failed (21/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.0218e-02
+Iteration 1000: Loss = 3.3473e-04
+
+
+Solver failed (22/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.7422e-04
+Iteration 1000: Loss = 4.0995e-04
+
+
+Solver failed (23/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.7948e-03
+Iteration 1000: Loss = 5.9988e-04
+
+
+Solver failed (24/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6776e-03
+Iteration 1000: Loss = 2.5153e-04
+
+
+Solver failed (25/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.2391e-04
+Iteration 1000: Loss = 3.0236e-04
+
+
+Solver failed (26/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.1859e-03
+Iteration 1000: Loss = 4.9207e-04
+
+
+Solver failed (27/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.8569e-03
+Iteration 1000: Loss = 2.5913e-04
+
+
+Solver failed (28/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6491e-02
+Iteration 1000: Loss = 4.3145e-04
+
+
+Solver failed (29/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4097e-03
+Iteration 1000: Loss = 2.3546e-04
+
+
+Solver failed (30/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4896e-03
+Iteration 1000: Loss = 1.5646e-04
+
+
+Solver failed (31/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1656e-03
+Iteration 1000: Loss = 2.1212e-04
+
+
+Solver failed (32/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1491e-03
+Iteration 1000: Loss = 3.0552e-04
+
+
+Solver failed (33/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.8593e-03
+Iteration 1000: Loss = 3.1526e-04
+
+
+Solver failed (34/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.2401e-03
+Iteration 1000: Loss = 4.4460e-04
+
+
+Solver failed (35/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5740e-03
+Iteration 1000: Loss = 3.8334e-04
+
+
+Solver failed (36/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6247e-03
+Iteration 1000: Loss = 2.8241e-04
+
+
+Solver failed (37/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0707e-03
+Iteration 1000: Loss = 3.2984e-04
+
+
+Solver failed (38/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.7696e-03
+Iteration 1000: Loss = 2.8197e-04
+
+
+Solver failed (39/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.9619e-03
+Iteration 1000: Loss = 3.0077e-04
+
+
+Solver failed (40/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0676e-03
+Iteration 1000: Loss = 2.4191e-04
+
+
+Solver failed (41/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1551e-03
+Iteration 1000: Loss = 1.7383e-04
+
+
+Solver failed (42/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.3070e-03
+Iteration 1000: Loss = 1.7139e-04
+
+
+Solver failed (43/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.2294e-03
+Iteration 1000: Loss = 3.4394e-04
+
+
+Solver failed (44/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.8740e-03
+Iteration 1000: Loss = 5.1747e-04
+
+
+Solver failed (45/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2937e-03
+Iteration 1000: Loss = 3.2501e-04
+
+
+Solver failed (46/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2435e-03
+Iteration 1000: Loss = 9.8618e-05
+
+
+Solver failed (47/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.7331e-03
+Iteration 1000: Loss = 2.8782e-04
+
+
+Solver failed (48/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.1657e-03
+Iteration 1000: Loss = 3.4365e-04
+
+
+Solver failed (49/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6455e-03
+Iteration 1000: Loss = 5.5576e-04
+
+
+Solver failed (50/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.7981e-03
+Iteration 1000: Loss = 3.3146e-04
+
+
+Solver failed (51/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.1350e-03
+Iteration 1000: Loss = 2.4418e-04
+
+
+Solver failed (52/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.2548e-04
+Iteration 1000: Loss = 3.2150e-04
+
+
+Solver failed (53/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6031e-02
+Iteration 1000: Loss = 3.2364e-04
+
+
+Solver failed (54/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.1194e-03
+Iteration 1000: Loss = 2.1450e-04
+
+
+Solver failed (55/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.9316e-03
+Iteration 1000: Loss = 3.8029e-04
+
+
+Solver failed (56/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.7579e-03
+Iteration 1000: Loss = 3.2669e-04
+
+
+Solver failed (57/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.5526e-03
+Iteration 1000: Loss = 2.9048e-04
+
+
+Solver failed (58/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.5578e-03
+Iteration 1000: Loss = 2.8752e-04
+
+
+Solver failed (59/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2913e-03
+Iteration 1000: Loss = 2.4502e-04
+
+
+Solver failed (60/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1826e-03
+Iteration 1000: Loss = 2.8964e-04
+
+
+Solver failed (61/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.8341e-03
+Iteration 1000: Loss = 3.1126e-04
+
+
+Solver failed (62/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.9347e-03
+Iteration 1000: Loss = 1.5707e-04
+
+
+Maximum retries reached. Exiting.
+Generated 3477 data from 4 BVP solutions in 1228.6 sec 
+
+Training V2 solution of BVP
+Iteration 0: Loss_V = 8.3538e-02, Loss_V_x = 5.8034e-02, Loss_HJB = 1.0578e-03,  Loss_total = 1.4263e-01
+Iteration 1000: Loss_V = 8.1075e-03, Loss_V_x = 4.6933e-03, Loss_HJB = 1.3821e-03,  Loss_total = 1.4183e-02
+Iteration 2000: Loss_V = 6.1182e-03, Loss_V_x = 4.0011e-03, Loss_HJB = 7.4490e-04,  Loss_total = 1.0864e-02
+Iteration 3000: Loss_V = 5.6893e-03, Loss_V_x = 3.0955e-03, Loss_HJB = 6.4161e-04,  Loss_total = 9.4264e-03
+Iteration 4000: Loss_V = 4.8095e-03, Loss_V_x = 2.4382e-03, Loss_HJB = 4.4954e-04,  Loss_total = 7.6972e-03
+Iteration 5000: Loss_V = 3.6453e-03, Loss_V_x = 1.6056e-03, Loss_HJB = 8.0643e-04,  Loss_total = 6.0573e-03
+
+
+Generating data...
+Generated 6192 data from 64 BVP solutions in 82.4 sec 
+
+Training V2 solution of BVP
+Iteration 0: Loss_V = 1.3650e-03, Loss_V_x = 1.2618e-02, Loss_HJB = 2.8741e-03,  Loss_total = 1.6857e-02
+Iteration 1000: Loss_V = 2.7277e-05, Loss_V_x = 6.0858e-04, Loss_HJB = 8.5470e-04,  Loss_total = 1.4906e-03
+Iteration 2000: Loss_V = 1.1448e-05, Loss_V_x = 3.6086e-04, Loss_HJB = 4.6663e-04,  Loss_total = 8.3894e-04
+Iteration 3000: Loss_V = 1.1027e-05, Loss_V_x = 2.4456e-04, Loss_HJB = 4.4840e-04,  Loss_total = 7.0399e-04
+Iteration 4000: Loss_V = 9.5838e-06, Loss_V_x = 1.9940e-04, Loss_HJB = 7.5023e-04,  Loss_total = 9.5921e-04
+Iteration 5000: Loss_V = 7.1751e-06, Loss_V_x = 1.7316e-04, Loss_HJB = 6.2075e-04,  Loss_total = 8.0108e-04
+
+
+Computed V0: 1.322257
+Exploitability: 1.089462
+Step Time: 2005.8 sec
+
+
+--- Step 1 ---
+
+Training V1 solution by HJB
+Iteration 0: Loss = 3.4959e-01
+Iteration 1000: Loss = 5.8702e-04
+Iteration 2000: Loss = 8.4329e-04
+Iteration 3000: Loss = 6.2366e-04
+Iteration 4000: Loss = 5.0869e-04
+Iteration 5000: Loss = 1.0051e-04
+
+
+Generating data...
+Solver failed (1/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.5929e-04
+Iteration 1000: Loss = 3.7421e-04
+
+
+Solver failed (2/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8051e-03
+Iteration 1000: Loss = 1.8883e-04
+
+
+Solver failed (3/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1233e-04
+Iteration 1000: Loss = 3.0564e-04
+
+
+Solver failed (4/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5505e-03
+Iteration 1000: Loss = 2.1251e-04
+
+
+Solver failed (5/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.2957e-03
+Iteration 1000: Loss = 1.5159e-04
+
+
+Solver failed (6/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.7759e-03
+Iteration 1000: Loss = 2.6874e-04
+
+
+Solver failed (7/49): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8416e-03
+Iteration 1000: Loss = 1.4643e-04
+
+
+Solver failed (8/49): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.7412e-03
+Iteration 1000: Loss = 1.7041e-04
+
+
+Solver failed (9/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2917e-03
+Iteration 1000: Loss = 2.4577e-04
+
+
+Solver failed (10/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1165e-03
+Iteration 1000: Loss = 3.8175e-04
+
+
+Solver failed (11/45): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0315e-03
+Iteration 1000: Loss = 1.7789e-04
+
+
+Solver failed (12/43): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.7572e-03
+Iteration 1000: Loss = 1.3390e-04
+
+
+Solver failed (13/43): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4661e-03
+Iteration 1000: Loss = 2.2505e-04
+
+
+Solver failed (14/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.4125e-03
+Iteration 1000: Loss = 2.6415e-04
+
+
+Solver failed (15/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.3415e-03
+Iteration 1000: Loss = 1.0208e-04
+
+
+Solver failed (16/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4214e-03
+Iteration 1000: Loss = 3.4839e-04
+
+
+Solver failed (17/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.2168e-03
+Iteration 1000: Loss = 1.4732e-04
+
+
+Solver failed (18/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.1043e-03
+Iteration 1000: Loss = 3.0173e-04
+
+
+Solver failed (19/38): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5206e-03
+Iteration 1000: Loss = 1.2941e-04
+
+
+Solver failed (20/36): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.7674e-04
+Iteration 1000: Loss = 1.5769e-04
+
+
+Solver failed (21/36): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6977e-03
+Iteration 1000: Loss = 1.7387e-04
+
+
+Solver failed (22/36): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.6709e-04
+Iteration 1000: Loss = 1.6905e-04
+
+
+Solver failed (23/36): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.0160e-04
+Iteration 1000: Loss = 1.7700e-04
+
+
+Solver failed (24/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4387e-03
+Iteration 1000: Loss = 9.4224e-05
+
+
+Solver failed (25/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.1901e-04
+Iteration 1000: Loss = 6.2047e-05
+
+
+Solver failed (26/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5037e-03
+Iteration 1000: Loss = 1.0305e-04
+
+
+Solver failed (27/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.9948e-04
+Iteration 1000: Loss = 1.5583e-04
+
+
+Solver failed (28/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.9916e-04
+Iteration 1000: Loss = 1.2379e-04
+
+
+Solver failed (29/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1154e-03
+Iteration 1000: Loss = 3.7635e-05
+
+
+Solver failed (30/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.7597e-03
+Iteration 1000: Loss = 1.3802e-04
+
+
+Solver failed (31/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0777e-03
+Iteration 1000: Loss = 7.0490e-05
+
+
+Solver failed (32/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3128e-02
+Iteration 1000: Loss = 9.7027e-05
+
+
+Solver failed (33/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.0297e-03
+Iteration 1000: Loss = 1.5684e-04
+
+
+Solver failed (34/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0823e-03
+Iteration 1000: Loss = 1.0719e-04
+
+
+Solver failed (35/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.1276e-03
+Iteration 1000: Loss = 9.4350e-05
+
+
+Maximum retries reached. Exiting.
+Generated 32521 data from 29 BVP solutions in 908.8 sec 
+
+Training V1 solution of BVP
+Iteration 0: Loss_V = 9.7021e-02, Loss_V_x = 5.7081e-02, Loss_HJB = 8.0797e-04,  Loss_total = 1.5491e-01
+Iteration 1000: Loss_V = 9.0044e-05, Loss_V_x = 9.2475e-04, Loss_HJB = 4.0916e-04,  Loss_total = 1.4240e-03
+Iteration 2000: Loss_V = 3.7287e-05, Loss_V_x = 4.8777e-04, Loss_HJB = 3.7617e-04,  Loss_total = 9.0122e-04
+Iteration 3000: Loss_V = 1.9846e-05, Loss_V_x = 3.3542e-04, Loss_HJB = 2.4434e-04,  Loss_total = 5.9960e-04
+Iteration 4000: Loss_V = 1.9952e-05, Loss_V_x = 2.7906e-04, Loss_HJB = 2.4246e-04,  Loss_total = 5.4146e-04
+Iteration 5000: Loss_V = 1.2514e-05, Loss_V_x = 2.3710e-04, Loss_HJB = 2.7006e-04,  Loss_total = 5.1968e-04
+
+
+Generated 2688 data from 128 IVP solutions in 29.5 sec 
+
+Iteration 0:  Loss_G = 1.9000e-02,  Loss_ODE = 1.9379e+00,  Loss_total = 1.9000e-02
+Iteration 1000:  Loss_G = 2.2068e-05,  Loss_ODE = 1.3842e+00,  Loss_total = 2.2068e-05
+Iteration 2000:  Loss_G = 1.0612e-05,  Loss_ODE = 1.3811e+00,  Loss_total = 1.0612e-05
+Iteration 3000:  Loss_G = 9.1988e-06,  Loss_ODE = 1.3808e+00,  Loss_total = 9.1988e-06
+
+
+Computed J: 2.115288
+Training V2 solution by HJB
+Iteration 0: Loss = 2.0160e-01
+Iteration 1000: Loss = 4.6495e-04
+Iteration 2000: Loss = 3.7163e-04
+Iteration 3000: Loss = 2.1552e-04
+Iteration 4000: Loss = 1.2801e-04
+Iteration 5000: Loss = 2.0541e-04
+
+
+Generating data...
+Solver failed (1/64): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.9007e-03
+Iteration 1000: Loss = 1.2261e-04
+
+
+Solver failed (2/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1171e-03
+Iteration 1000: Loss = 8.1308e-05
+
+
+Solver failed (3/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.7243e-03
+Iteration 1000: Loss = 1.1664e-04
+
+
+Solver failed (4/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.0433e-03
+Iteration 1000: Loss = 1.0501e-04
+
+
+Solver failed (5/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.1764e-04
+Iteration 1000: Loss = 8.9121e-05
+
+
+Solver failed (6/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2500e-03
+Iteration 1000: Loss = 9.5117e-05
+
+
+Solver failed (7/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.3463e-03
+Iteration 1000: Loss = 1.0758e-04
+
+
+Solver failed (8/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6484e-03
+Iteration 1000: Loss = 1.6696e-04
+
+
+Solver failed (9/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1819e-03
+Iteration 1000: Loss = 8.0902e-05
+
+
+Solver failed (10/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1335e-03
+Iteration 1000: Loss = 5.8997e-05
+
+
+Solver failed (11/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.8767e-04
+Iteration 1000: Loss = 6.7605e-05
+
+
+Solver failed (12/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.3413e-03
+Iteration 1000: Loss = 1.0901e-04
+
+
+Solver failed (13/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1922e-03
+Iteration 1000: Loss = 8.9504e-05
+
+
+Solver failed (14/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.2074e-04
+Iteration 1000: Loss = 1.0395e-04
+
+
+Solver failed (15/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.9426e-04
+Iteration 1000: Loss = 5.3643e-05
+
+
+Solver failed (16/49): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.2585e-04
+Iteration 1000: Loss = 1.3114e-04
+
+
+Solver failed (17/43): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5478e-03
+Iteration 1000: Loss = 8.8467e-05
+
+
+Solver failed (18/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.2832e-04
+Iteration 1000: Loss = 1.2514e-04
+
+
+Solver failed (19/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.0819e-03
+Iteration 1000: Loss = 7.7081e-05
+
+
+Solver failed (20/40): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.1197e-03
+Iteration 1000: Loss = 1.1942e-04
+
+
+Solver failed (21/40): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.7951e-03
+Iteration 1000: Loss = 6.3318e-05
+
+
+Solver failed (22/40): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.2265e-04
+Iteration 1000: Loss = 6.7435e-05
+
+
+Solver failed (23/40): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3120e-03
+Iteration 1000: Loss = 6.9924e-05
+
+
+Solver failed (24/40): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.0671e-04
+Iteration 1000: Loss = 6.1110e-05
+
+
+Solver failed (25/38): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.3888e-04
+Iteration 1000: Loss = 7.5960e-05
+
+
+Solver failed (26/32): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.0353e-03
+Iteration 1000: Loss = 7.0455e-05
+
+
+Solver failed (27/31): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.9200e-04
+Iteration 1000: Loss = 1.1912e-04
+
+
+Solver failed (28/30): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.4009e-04
+Iteration 1000: Loss = 4.5227e-05
+
+
+Solver failed (29/29): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5008e-04
+Iteration 1000: Loss = 6.6838e-05
+
+
+Maximum retries reached. Exiting.
+Generated 38679 data from 35 BVP solutions in 766.6 sec 
+
+Training V2 solution of BVP
+Iteration 0: Loss_V = 9.2464e-02, Loss_V_x = 4.6315e-02, Loss_HJB = 9.0298e-04,  Loss_total = 1.3968e-01
+Iteration 1000: Loss_V = 1.2268e-02, Loss_V_x = 1.1221e-02, Loss_HJB = 8.4628e-03,  Loss_total = 3.1952e-02
+Iteration 2000: Loss_V = 1.2122e-02, Loss_V_x = 1.0002e-02, Loss_HJB = 6.7170e-03,  Loss_total = 2.8841e-02
+Iteration 3000: Loss_V = 1.1631e-02, Loss_V_x = 9.6214e-03, Loss_HJB = 6.8879e-03,  Loss_total = 2.8141e-02
+Iteration 4000: Loss_V = 1.0665e-02, Loss_V_x = 8.1269e-03, Loss_HJB = 4.5394e-03,  Loss_total = 2.3332e-02
+Iteration 5000: Loss_V = 9.6222e-03, Loss_V_x = 7.7805e-03, Loss_HJB = 4.4858e-03,  Loss_total = 2.1888e-02
+
+
+Computed V0: 1.788130
+Exploitability: 0.327158
+Step Time: 1901.9 sec
+
+
+--- Step 2 ---
+
+Training V1 solution by HJB
+Iteration 0: Loss = 1.0583e-01
+Iteration 1000: Loss = 3.9982e-04
+Iteration 2000: Loss = 1.0959e-04
+Iteration 3000: Loss = 2.1169e-04
+Iteration 4000: Loss = 1.3559e-04
+Iteration 5000: Loss = 1.5212e-04
+
+
+Generating data...
+Solver failed (1/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8712e-03
+Iteration 1000: Loss = 8.6271e-05
+
+
+Solver failed (2/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.3144e-03
+Iteration 1000: Loss = 9.8813e-05
+
+
+Solver failed (3/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.7741e-03
+Iteration 1000: Loss = 5.9957e-05
+
+
+Solver failed (4/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1734e-03
+Iteration 1000: Loss = 7.0886e-05
+
+
+Solver failed (5/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.2086e-04
+Iteration 1000: Loss = 7.0027e-05
+
+
+Solver failed (6/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.8992e-03
+Iteration 1000: Loss = 4.6643e-05
+
+
+Solver failed (7/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.8632e-03
+Iteration 1000: Loss = 5.4676e-05
+
+
+Solver failed (8/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3973e-03
+Iteration 1000: Loss = 8.8507e-05
+
+
+Solver failed (9/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1101e-03
+Iteration 1000: Loss = 8.2099e-05
+
+
+Solver failed (10/58): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0874e-02
+Iteration 1000: Loss = 6.6220e-05
+
+
+Solver failed (11/58): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.0946e-03
+Iteration 1000: Loss = 7.2985e-05
+
+
+Solver failed (12/58): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.2661e-03
+Iteration 1000: Loss = 3.2503e-05
+
+
+Solver failed (13/58): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4830e-03
+Iteration 1000: Loss = 9.0001e-05
+
+
+Solver failed (14/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.1351e-04
+Iteration 1000: Loss = 2.9211e-05
+
+
+Solver failed (15/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.3834e-04
+Iteration 1000: Loss = 4.6300e-05
+
+
+Solver failed (16/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.0820e-04
+Iteration 1000: Loss = 4.8823e-05
+
+
+Solver failed (17/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.9445e-04
+Iteration 1000: Loss = 9.8467e-05
+
+
+Solver failed (18/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.2050e-04
+Iteration 1000: Loss = 6.6544e-05
+
+
+Solver failed (19/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5430e-03
+Iteration 1000: Loss = 5.7174e-05
+
+
+Solver failed (20/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8234e-03
+Iteration 1000: Loss = 2.4506e-05
+
+
+Solver failed (21/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.7882e-04
+Iteration 1000: Loss = 5.7718e-05
+
+
+Solver failed (22/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.4549e-04
+Iteration 1000: Loss = 1.0248e-04
+
+
+Solver failed (23/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.8269e-04
+Iteration 1000: Loss = 2.8915e-05
+
+
+Solver failed (24/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.6856e-04
+Iteration 1000: Loss = 2.9675e-05
+
+
+Solver failed (25/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8740e-03
+Iteration 1000: Loss = 7.9890e-05
+
+
+Solver failed (26/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.8082e-04
+Iteration 1000: Loss = 1.0668e-04
+
+
+Solver failed (27/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.8144e-04
+Iteration 1000: Loss = 5.2598e-05
+
+
+Solver failed (28/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.0124e-04
+Iteration 1000: Loss = 7.8518e-05
+
+
+Solver failed (29/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0280e-03
+Iteration 1000: Loss = 4.9578e-05
+
+
+Solver failed (30/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1929e-03
+Iteration 1000: Loss = 5.0084e-05
+
+
+Solver failed (31/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4069e-03
+Iteration 1000: Loss = 3.4682e-05
+
+
+Solver failed (32/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.4896e-04
+Iteration 1000: Loss = 3.8551e-05
+
+
+Solver failed (33/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.6637e-04
+Iteration 1000: Loss = 7.2297e-05
+
+
+Solver failed (34/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.5826e-04
+Iteration 1000: Loss = 1.0039e-04
+
+
+Solver failed (35/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5028e-04
+Iteration 1000: Loss = 4.1516e-05
+
+
+Solver failed (36/53): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.5566e-04
+Iteration 1000: Loss = 1.2930e-04
+
+
+Solver failed (37/53): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5441e-03
+Iteration 1000: Loss = 7.4185e-05
+
+
+Solver failed (38/53): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.5766e-04
+Iteration 1000: Loss = 4.5427e-05
+
+
+Solver failed (39/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.7493e-04
+Iteration 1000: Loss = 4.1013e-05
+
+
+Solver failed (40/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.1454e-04
+Iteration 1000: Loss = 6.3550e-05
+
+
+Solver failed (41/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.8052e-03
+Iteration 1000: Loss = 3.8927e-05
+
+
+Solver failed (42/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.4425e-04
+Iteration 1000: Loss = 4.1510e-05
+
+
+Solver failed (43/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.2721e-04
+Iteration 1000: Loss = 5.5891e-05
+
+
+Solver failed (44/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5615e-04
+Iteration 1000: Loss = 4.4159e-05
+
+
+Solver failed (45/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.9438e-04
+Iteration 1000: Loss = 3.0700e-05
+
+
+Solver failed (46/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0061e-03
+Iteration 1000: Loss = 5.3385e-05
+
+
+Solver failed (47/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4365e-03
+Iteration 1000: Loss = 9.2285e-05
+
+
+Solver failed (48/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.6492e-04
+Iteration 1000: Loss = 1.1683e-04
+
+
+Solver failed (49/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.6368e-04
+Iteration 1000: Loss = 3.3501e-05
+
+
+Solver failed (50/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.8872e-04
+Iteration 1000: Loss = 3.7644e-05
+
+
+Solver failed (51/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4345e-03
+Iteration 1000: Loss = 6.0501e-05
+
+
+Maximum retries reached. Exiting.
+Generated 18146 data from 13 BVP solutions in 1725.5 sec 
+
+Training V1 solution of BVP
+Iteration 0: Loss_V = 2.0024e-02, Loss_V_x = 3.0182e-02, Loss_HJB = 6.2364e-04,  Loss_total = 5.0829e-02
+Iteration 1000: Loss_V = 4.0607e-05, Loss_V_x = 1.2045e-03, Loss_HJB = 2.6742e-04,  Loss_total = 1.5126e-03
+Iteration 2000: Loss_V = 2.5992e-05, Loss_V_x = 7.1002e-04, Loss_HJB = 1.4860e-04,  Loss_total = 8.8462e-04
+Iteration 3000: Loss_V = 2.1172e-05, Loss_V_x = 5.5093e-04, Loss_HJB = 1.6099e-04,  Loss_total = 7.3309e-04
+Iteration 4000: Loss_V = 1.9750e-05, Loss_V_x = 4.1950e-04, Loss_HJB = 1.2179e-04,  Loss_total = 5.6104e-04
+Iteration 5000: Loss_V = 2.0350e-05, Loss_V_x = 3.8666e-04, Loss_HJB = 1.3417e-04,  Loss_total = 5.4118e-04
+
+
+Generating data...
+Solver failed (1/64): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.9835e-03
+Iteration 1000: Loss = 7.8177e-05
+
+
+Solver failed (2/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2844e-03
+Iteration 1000: Loss = 6.4788e-05
+
+
+Solver failed (3/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8007e-03
+Iteration 1000: Loss = 7.2085e-05
+
+
+Solver failed (4/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5448e-03
+Iteration 1000: Loss = 4.7246e-05
+
+
+Solver failed (5/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.6759e-03
+Iteration 1000: Loss = 7.5543e-05
+
+
+Solver failed (6/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.4667e-03
+Iteration 1000: Loss = 1.2387e-04
+
+
+Solver failed (7/56): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0870e-03
+Iteration 1000: Loss = 2.5911e-05
+
+
+Solver failed (8/56): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.7232e-04
+Iteration 1000: Loss = 8.9907e-05
+
+
+Solver failed (9/53): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.7574e-04
+Iteration 1000: Loss = 2.7087e-05
+
+
+Solver failed (10/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.3269e-03
+Iteration 1000: Loss = 8.0552e-05
+
+
+Solver failed (11/46): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9711e-03
+Iteration 1000: Loss = 8.5482e-05
+
+
+Solver failed (12/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0216e-03
+Iteration 1000: Loss = 1.0663e-04
+
+
+Solver failed (13/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.6421e-04
+Iteration 1000: Loss = 1.4575e-04
+
+
+Solver failed (14/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.6762e-03
+Iteration 1000: Loss = 5.2214e-05
+
+
+Solver failed (15/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.9904e-04
+Iteration 1000: Loss = 5.2508e-05
+
+
+Solver failed (16/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.2744e-04
+Iteration 1000: Loss = 4.3449e-05
+
+
+Solver failed (17/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.7337e-04
+Iteration 1000: Loss = 5.4992e-05
+
+
+Solver failed (18/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.1255e-03
+Iteration 1000: Loss = 5.9763e-05
+
+
+Solver failed (19/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.4413e-04
+Iteration 1000: Loss = 1.0038e-04
+
+
+Solver failed (20/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8743e-03
+Iteration 1000: Loss = 4.7628e-05
+
+
+Solver failed (21/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.8117e-04
+Iteration 1000: Loss = 4.9802e-05
+
+
+Solver failed (22/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.7528e-03
+Iteration 1000: Loss = 4.1142e-05
+
+
+Solver failed (23/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4513e-02
+Iteration 1000: Loss = 3.6719e-05
+
+
+Solver failed (24/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.1620e-03
+Iteration 1000: Loss = 3.0408e-05
+
+
+Solver failed (25/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.0984e-04
+Iteration 1000: Loss = 8.8615e-05
+
+
+Solver failed (26/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.2599e-04
+Iteration 1000: Loss = 5.4910e-05
+
+
+Solver failed (27/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.4486e-04
+Iteration 1000: Loss = 1.0167e-04
+
+
+Solver failed (28/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.6686e-04
+Iteration 1000: Loss = 2.7976e-05
+
+
+Solver failed (29/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3300e-03
+Iteration 1000: Loss = 7.5954e-05
+
+
+Solver failed (30/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.4641e-04
+Iteration 1000: Loss = 2.6444e-05
+
+
+Solver failed (31/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.8290e-04
+Iteration 1000: Loss = 2.4519e-05
+
+
+Solver failed (32/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.6598e-04
+Iteration 1000: Loss = 3.0969e-05
+
+
+Solver failed (33/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.2401e-04
+Iteration 1000: Loss = 5.2414e-05
+
+
+Solver failed (34/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.6495e-04
+Iteration 1000: Loss = 7.7830e-05
+
+
+Solver failed (35/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2598e-03
+Iteration 1000: Loss = 9.2132e-05
+
+
+Solver failed (36/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.5742e-03
+Iteration 1000: Loss = 2.1358e-05
+
+
+Solver failed (37/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.1044e-04
+Iteration 1000: Loss = 2.8362e-05
+
+
+Solver failed (38/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.5330e-04
+Iteration 1000: Loss = 4.7871e-05
+
+
+Solver failed (39/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.4708e-04
+Iteration 1000: Loss = 2.7366e-05
+
+
+Solver failed (40/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5260e-03
+Iteration 1000: Loss = 2.6974e-05
+
+
+Solver failed (41/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2990e-03
+Iteration 1000: Loss = 3.3476e-05
+
+
+Solver failed (42/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1680e-02
+Iteration 1000: Loss = 5.5538e-05
+
+
+Solver failed (43/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.2244e-04
+Iteration 1000: Loss = 3.8873e-05
+
+
+Solver failed (44/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2318e-03
+Iteration 1000: Loss = 3.9136e-05
+
+
+Maximum retries reached. Exiting.
+Generated 16713 data from 20 BVP solutions in 1808.3 sec 
+
+Training V1 solution of BVP
+Iteration 0: Loss_V = 5.6075e-03, Loss_V_x = 1.3701e-02, Loss_HJB = 7.8787e-04,  Loss_total = 2.0096e-02
+Iteration 1000: Loss_V = 3.1875e-05, Loss_V_x = 6.0030e-04, Loss_HJB = 3.5502e-04,  Loss_total = 9.8720e-04
+Iteration 2000: Loss_V = 1.6043e-05, Loss_V_x = 4.0001e-04, Loss_HJB = 1.8967e-04,  Loss_total = 6.0572e-04
+Iteration 3000: Loss_V = 2.4197e-05, Loss_V_x = 3.4789e-04, Loss_HJB = 1.9078e-04,  Loss_total = 5.6287e-04
+Iteration 4000: Loss_V = 2.1895e-05, Loss_V_x = 3.5958e-04, Loss_HJB = 2.4233e-04,  Loss_total = 6.2380e-04
+Iteration 5000: Loss_V = 1.9746e-05, Loss_V_x = 3.1604e-04, Loss_HJB = 1.9075e-04,  Loss_total = 5.2654e-04
+
+
+Generated 2688 data from 128 IVP solutions in 31.7 sec 
+
+Iteration 0:  Loss_G = 1.5244e-02,  Loss_ODE = 1.2980e+00,  Loss_total = 1.5244e-02
+Iteration 1000:  Loss_G = 5.5574e-05,  Loss_ODE = 1.6285e+00,  Loss_total = 5.5574e-05
+Iteration 2000:  Loss_G = 2.6193e-05,  Loss_ODE = 1.6345e+00,  Loss_total = 2.6193e-05
+Iteration 3000:  Loss_G = 1.9438e-05,  Loss_ODE = 1.6386e+00,  Loss_total = 1.9438e-05
+
+
+Computed J: 2.010013
+Training V2 solution by HJB
+Iteration 0: Loss = 1.3322e-01
+Iteration 1000: Loss = 4.4941e-04
+Iteration 2000: Loss = 1.5659e-04
+Iteration 3000: Loss = 1.1432e-04
+Iteration 4000: Loss = 1.3207e-04
+Iteration 5000: Loss = 8.5201e-05
+
+
+Generating data...
+Solver failed (1/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.0763e-03
+Iteration 1000: Loss = 1.0093e-04
+
+
+Solver failed (2/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.2580e-04
+Iteration 1000: Loss = 7.2945e-05
+
+
+Solver failed (3/58): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.2101e-04
+Iteration 1000: Loss = 7.1133e-05
+
+
+Solver failed (4/56): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1686e-04
+Iteration 1000: Loss = 1.0896e-04
+
+
+Solver failed (5/56): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.9927e-04
+Iteration 1000: Loss = 4.3433e-05
+
+
+Solver failed (6/56): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1918e-03
+Iteration 1000: Loss = 6.2949e-05
+
+
+Solver failed (7/56): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4050e-03
+Iteration 1000: Loss = 9.4330e-05
+
+
+Solver failed (8/56): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1744e-04
+Iteration 1000: Loss = 8.0317e-05
+
+
+Solver failed (9/56): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4425e-03
+Iteration 1000: Loss = 4.5846e-05
+
+
+Solver failed (10/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.7985e-04
+Iteration 1000: Loss = 9.8645e-05
+
+
+Solver failed (11/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.8349e-04
+Iteration 1000: Loss = 3.4617e-05
+
+
+Solver failed (12/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6516e-03
+Iteration 1000: Loss = 4.2501e-05
+
+
+Solver failed (13/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.2414e-04
+Iteration 1000: Loss = 7.7148e-05
+
+
+Solver failed (14/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0708e-03
+Iteration 1000: Loss = 4.4570e-05
+
+
+Solver failed (15/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1007e-03
+Iteration 1000: Loss = 7.3595e-05
+
+
+Solver failed (16/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.7542e-04
+Iteration 1000: Loss = 3.8302e-05
+
+
+Solver failed (17/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3175e-03
+Iteration 1000: Loss = 2.2281e-05
+
+
+Solver failed (18/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.1560e-04
+Iteration 1000: Loss = 3.8301e-05
+
+
+Solver failed (19/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.3521e-04
+Iteration 1000: Loss = 4.9775e-05
+
+
+Solver failed (20/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8360e-03
+Iteration 1000: Loss = 5.5214e-05
+
+
+Solver failed (21/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.7381e-04
+Iteration 1000: Loss = 4.4661e-05
+
+
+Solver failed (22/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1169e-03
+Iteration 1000: Loss = 2.6258e-05
+
+
+Solver failed (23/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.7606e-04
+Iteration 1000: Loss = 3.5231e-05
+
+
+Solver failed (24/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.4097e-04
+Iteration 1000: Loss = 7.8241e-05
+
+
+Solver failed (25/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8347e-03
+Iteration 1000: Loss = 5.3751e-05
+
+
+Solver failed (26/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.5917e-04
+Iteration 1000: Loss = 1.4179e-04
+
+
+Solver failed (27/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.4498e-04
+Iteration 1000: Loss = 8.6272e-05
+
+
+Solver failed (28/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.4081e-04
+Iteration 1000: Loss = 3.6287e-05
+
+
+Solver failed (29/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.9442e-03
+Iteration 1000: Loss = 3.6337e-05
+
+
+Solver failed (30/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5512e-04
+Iteration 1000: Loss = 6.6885e-05
+
+
+Solver failed (31/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.8245e-04
+Iteration 1000: Loss = 4.7906e-05
+
+
+Solver failed (32/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.4422e-04
+Iteration 1000: Loss = 6.1532e-05
+
+
+Solver failed (33/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.6143e-04
+Iteration 1000: Loss = 3.0922e-05
+
+
+Solver failed (34/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.7727e-04
+Iteration 1000: Loss = 4.6294e-05
+
+
+Solver failed (35/42): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1690e-03
+Iteration 1000: Loss = 3.2512e-05
+
+
+Solver failed (36/36): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.0926e-04
+Iteration 1000: Loss = 2.8485e-05
+
+
+Maximum retries reached. Exiting.
+Generated 18352 data from 28 BVP solutions in 747.8 sec 
+
+Training V2 solution of BVP
+Iteration 0: Loss_V = 1.1729e-02, Loss_V_x = 1.9681e-02, Loss_HJB = 1.4979e-03,  Loss_total = 3.2908e-02
+Iteration 1000: Loss_V = 4.0203e-04, Loss_V_x = 1.2533e-03, Loss_HJB = 2.5821e-04,  Loss_total = 1.9136e-03
+Iteration 2000: Loss_V = 3.4968e-04, Loss_V_x = 1.0139e-03, Loss_HJB = 1.3003e-04,  Loss_total = 1.4936e-03
+Iteration 3000: Loss_V = 3.1992e-04, Loss_V_x = 8.1012e-04, Loss_HJB = 8.8921e-05,  Loss_total = 1.2190e-03
+Iteration 4000: Loss_V = 3.5231e-04, Loss_V_x = 6.7006e-04, Loss_HJB = 1.9271e-04,  Loss_total = 1.2151e-03
+Iteration 5000: Loss_V = 2.9842e-04, Loss_V_x = 5.9429e-04, Loss_HJB = 1.7683e-04,  Loss_total = 1.0695e-03
+
+
+Computed V0: 1.538047
+Exploitability: 0.471967
+Step Time: 4578.1 sec
+
+
+--- Step 3 ---
+
+Training V1 solution by HJB
+Iteration 0: Loss = 7.5003e-02
+Iteration 1000: Loss = 9.0352e-05
+Iteration 2000: Loss = 7.5733e-05
+Iteration 3000: Loss = 6.0608e-05
+Iteration 4000: Loss = 5.1938e-05
+Iteration 5000: Loss = 4.9934e-05
+
+
+Generating data...
+Solver failed (1/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.9895e-04
+Iteration 1000: Loss = 6.1761e-05
+
+
+Solver failed (2/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.5943e-04
+Iteration 1000: Loss = 6.4398e-05
+
+
+Solver failed (3/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.1442e-04
+Iteration 1000: Loss = 4.8396e-05
+
+
+Solver failed (4/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.4072e-04
+Iteration 1000: Loss = 2.9219e-05
+
+
+Solver failed (5/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.6212e-04
+Iteration 1000: Loss = 7.0836e-05
+
+
+Solver failed (6/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.9443e-04
+Iteration 1000: Loss = 3.0530e-05
+
+
+Solver failed (7/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.2289e-04
+Iteration 1000: Loss = 3.7774e-05
+
+
+Solver failed (8/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.5542e-04
+Iteration 1000: Loss = 8.4284e-05
+
+
+Solver failed (9/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.4171e-04
+Iteration 1000: Loss = 4.1668e-05
+
+
+Solver failed (10/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.3731e-04
+Iteration 1000: Loss = 7.3889e-05
+
+
+Solver failed (11/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.4024e-04
+Iteration 1000: Loss = 2.8140e-05
+
+
+Solver failed (12/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5136e-04
+Iteration 1000: Loss = 3.1824e-05
+
+
+Solver failed (13/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.4461e-04
+Iteration 1000: Loss = 7.0352e-05
+
+
+Solver failed (14/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.4801e-04
+Iteration 1000: Loss = 2.2899e-05
+
+
+Solver failed (15/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.9098e-04
+Iteration 1000: Loss = 4.0600e-05
+
+
+Solver failed (16/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1013e-04
+Iteration 1000: Loss = 8.6400e-05
+
+
+Solver failed (17/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5085e-03
+Iteration 1000: Loss = 5.1467e-05
+
+
+Solver failed (18/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.3036e-04
+Iteration 1000: Loss = 9.5083e-05
+
+
+Solver failed (19/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.6018e-04
+Iteration 1000: Loss = 5.3290e-05
+
+
+Solver failed (20/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1619e-04
+Iteration 1000: Loss = 5.8843e-05
+
+
+Solver failed (21/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.2570e-04
+Iteration 1000: Loss = 3.6419e-05
+
+
+Solver failed (22/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.1152e-03
+Iteration 1000: Loss = 5.4446e-05
+
+
+Solver failed (23/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4615e-03
+Iteration 1000: Loss = 5.1573e-05
+
+
+Solver failed (24/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.9229e-04
+Iteration 1000: Loss = 4.7937e-05
+
+
+Solver failed (25/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.7487e-04
+Iteration 1000: Loss = 2.1205e-05
+
+
+Solver failed (26/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.2286e-04
+Iteration 1000: Loss = 3.6917e-05
+
+
+Solver failed (27/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.7037e-04
+Iteration 1000: Loss = 6.1169e-05
+
+
+Solver failed (28/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.9635e-04
+Iteration 1000: Loss = 3.0859e-05
+
+
+Solver failed (29/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.5708e-04
+Iteration 1000: Loss = 3.7303e-05
+
+
+Solver failed (30/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.7002e-03
+Iteration 1000: Loss = 4.3143e-05
+
+
+Solver failed (31/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6813e-03
+Iteration 1000: Loss = 4.2622e-05
+
+
+Solver failed (32/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6485e-03
+Iteration 1000: Loss = 5.1921e-05
+
+
+Solver failed (33/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2611e-03
+Iteration 1000: Loss = 3.8508e-05
+
+
+Solver failed (34/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.3434e-04
+Iteration 1000: Loss = 5.2291e-05
+
+
+Solver failed (35/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.0301e-04
+Iteration 1000: Loss = 8.1748e-05
+
+
+Solver failed (36/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.8231e-04
+Iteration 1000: Loss = 4.2808e-05
+
+
+Solver failed (37/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9109e-04
+Iteration 1000: Loss = 3.3837e-05
+
+
+Solver failed (38/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1391e-03
+Iteration 1000: Loss = 4.1492e-05
+
+
+Solver failed (39/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.5282e-03
+Iteration 1000: Loss = 5.8061e-05
+
+
+Solver failed (40/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.8239e-03
+Iteration 1000: Loss = 4.5726e-05
+
+
+Solver failed (41/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.9211e-04
+Iteration 1000: Loss = 1.6510e-05
+
+
+Solver failed (42/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0386e-03
+Iteration 1000: Loss = 7.8519e-05
+
+
+Solver failed (43/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.4920e-04
+Iteration 1000: Loss = 2.4662e-05
+
+
+Solver failed (44/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.1739e-04
+Iteration 1000: Loss = 3.1278e-05
+
+
+Solver failed (45/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.9805e-03
+Iteration 1000: Loss = 9.3608e-05
+
+
+Solver failed (46/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.2017e-04
+Iteration 1000: Loss = 2.6301e-05
+
+
+Solver failed (47/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.2109e-04
+Iteration 1000: Loss = 5.7034e-05
+
+
+Solver failed (48/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3194e-03
+Iteration 1000: Loss = 2.4738e-05
+
+
+Solver failed (49/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5602e-04
+Iteration 1000: Loss = 2.8707e-05
+
+
+Solver failed (50/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.8323e-04
+Iteration 1000: Loss = 4.6774e-05
+
+
+Solver failed (51/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.8212e-04
+Iteration 1000: Loss = 2.6661e-05
+
+
+Solver failed (52/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.1709e-04
+Iteration 1000: Loss = 3.0296e-05
+
+
+Solver failed (53/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.4212e-04
+Iteration 1000: Loss = 2.4028e-05
+
+
+Solver failed (54/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.7892e-04
+Iteration 1000: Loss = 2.5541e-05
+
+
+Solver failed (55/58): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2577e-03
+Iteration 1000: Loss = 3.0949e-05
+
+
+Solver failed (56/58): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0246e-03
+Iteration 1000: Loss = 1.2776e-04
+
+
+Solver failed (57/58): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0733e-03
+Iteration 1000: Loss = 2.5798e-05
+
+
+Solver failed (58/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.7390e-04
+Iteration 1000: Loss = 4.7784e-05
+
+
+Maximum retries reached. Exiting.
+Generated 10723 data from 10 BVP solutions in 2853.9 sec 
+
+Training V1 solution of BVP
+Iteration 0: Loss_V = 7.4444e-03, Loss_V_x = 1.9293e-02, Loss_HJB = 5.6156e-04,  Loss_total = 2.7299e-02
+Iteration 1000: Loss_V = 1.1666e-05, Loss_V_x = 3.5379e-04, Loss_HJB = 2.1140e-04,  Loss_total = 5.7685e-04
+Iteration 2000: Loss_V = 1.3843e-05, Loss_V_x = 3.2210e-04, Loss_HJB = 2.4575e-04,  Loss_total = 5.8170e-04
+Iteration 3000: Loss_V = 1.1591e-05, Loss_V_x = 2.4670e-04, Loss_HJB = 1.7450e-04,  Loss_total = 4.3279e-04
+Iteration 4000: Loss_V = 1.1421e-05, Loss_V_x = 1.9577e-04, Loss_HJB = 1.2291e-04,  Loss_total = 3.3010e-04
+Iteration 5000: Loss_V = 8.4442e-06, Loss_V_x = 1.5259e-04, Loss_HJB = 5.0996e-05,  Loss_total = 2.1203e-04
+
+
+Generating data...
+Solver failed (1/64): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.9222e-03
+Iteration 1000: Loss = 5.8194e-05
+
+
+Solver failed (2/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.1673e-03
+Iteration 1000: Loss = 3.4770e-05
+
+
+Solver failed (3/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.8493e-04
+Iteration 1000: Loss = 5.4622e-05
+
+
+Solver failed (4/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.8898e-04
+Iteration 1000: Loss = 8.5110e-05
+
+
+Solver failed (5/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.4300e-04
+Iteration 1000: Loss = 3.6166e-05
+
+
+Solver failed (6/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.7497e-04
+Iteration 1000: Loss = 5.2299e-05
+
+
+Solver failed (7/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.9351e-04
+Iteration 1000: Loss = 7.3039e-05
+
+
+Solver failed (8/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8827e-03
+Iteration 1000: Loss = 5.9945e-05
+
+
+Solver failed (9/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0647e-02
+Iteration 1000: Loss = 4.4708e-05
+
+
+Solver failed (10/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4273e-03
+Iteration 1000: Loss = 4.9971e-05
+
+
+Solver failed (11/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0713e-03
+Iteration 1000: Loss = 3.4350e-05
+
+
+Solver failed (12/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.4266e-04
+Iteration 1000: Loss = 3.7499e-05
+
+
+Solver failed (13/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.7975e-03
+Iteration 1000: Loss = 5.7745e-05
+
+
+Solver failed (14/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.3917e-03
+Iteration 1000: Loss = 1.7575e-05
+
+
+Solver failed (15/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.8345e-03
+Iteration 1000: Loss = 3.7891e-05
+
+
+Solver failed (16/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.3791e-03
+Iteration 1000: Loss = 5.1999e-05
+
+
+Solver failed (17/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1763e-03
+Iteration 1000: Loss = 3.7758e-05
+
+
+Solver failed (18/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.4018e-04
+Iteration 1000: Loss = 3.7829e-05
+
+
+Solver failed (19/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.6776e-04
+Iteration 1000: Loss = 4.3237e-05
+
+
+Solver failed (20/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.5735e-04
+Iteration 1000: Loss = 4.5598e-05
+
+
+Solver failed (21/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.5801e-04
+Iteration 1000: Loss = 3.5235e-05
+
+
+Solver failed (22/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9552e-04
+Iteration 1000: Loss = 5.0035e-05
+
+
+Solver failed (23/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.9370e-04
+Iteration 1000: Loss = 4.7474e-05
+
+
+Solver failed (24/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2956e-03
+Iteration 1000: Loss = 3.8308e-05
+
+
+Solver failed (25/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5853e-04
+Iteration 1000: Loss = 2.6207e-05
+
+
+Solver failed (26/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8810e-03
+Iteration 1000: Loss = 3.3709e-05
+
+
+Solver failed (27/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.5493e-04
+Iteration 1000: Loss = 3.3130e-05
+
+
+Solver failed (28/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5272e-04
+Iteration 1000: Loss = 3.0210e-05
+
+
+Solver failed (29/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.4602e-04
+Iteration 1000: Loss = 2.3081e-05
+
+
+Solver failed (30/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.8078e-04
+Iteration 1000: Loss = 2.2626e-05
+
+
+Solver failed (31/56): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.6828e-04
+Iteration 1000: Loss = 4.6568e-05
+
+
+Solver failed (32/56): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1741e-03
+Iteration 1000: Loss = 2.0077e-05
+
+
+Solver failed (33/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.3256e-04
+Iteration 1000: Loss = 1.4958e-05
+
+
+Solver failed (34/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.6582e-04
+Iteration 1000: Loss = 2.0798e-05
+
+
+Solver failed (35/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0535e-02
+Iteration 1000: Loss = 5.3239e-05
+
+
+Solver failed (36/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.6159e-04
+Iteration 1000: Loss = 1.1667e-05
+
+
+Solver failed (37/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.5816e-04
+Iteration 1000: Loss = 3.3857e-05
+
+
+Solver failed (38/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.4493e-04
+Iteration 1000: Loss = 3.7577e-05
+
+
+Solver failed (39/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.4843e-04
+Iteration 1000: Loss = 1.0120e-04
+
+
+Solver failed (40/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.6522e-04
+Iteration 1000: Loss = 2.6194e-05
+
+
+Solver failed (41/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.3333e-04
+Iteration 1000: Loss = 7.3918e-05
+
+
+Solver failed (42/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.8950e-04
+Iteration 1000: Loss = 6.4637e-05
+
+
+Solver failed (43/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.1100e-04
+Iteration 1000: Loss = 3.2864e-05
+
+
+Solver failed (44/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.0832e-04
+Iteration 1000: Loss = 2.0094e-05
+
+
+Solver failed (45/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.8299e-03
+Iteration 1000: Loss = 2.6253e-05
+
+
+Solver failed (46/49): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.2948e-04
+Iteration 1000: Loss = 2.7774e-05
+
+
+Solver failed (47/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.7179e-04
+Iteration 1000: Loss = 5.0231e-05
+
+
+Solver failed (48/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.5603e-04
+Iteration 1000: Loss = 1.2509e-04
+
+
+Maximum retries reached. Exiting.
+Generated 18937 data from 16 BVP solutions in 2787.9 sec 
+
+Training V1 solution of BVP
+Iteration 0: Loss_V = 2.8895e-03, Loss_V_x = 1.2250e-02, Loss_HJB = 4.0537e-04,  Loss_total = 1.5545e-02
+Iteration 1000: Loss_V = 5.9365e-05, Loss_V_x = 5.0440e-04, Loss_HJB = 1.8535e-04,  Loss_total = 7.4911e-04
+Iteration 2000: Loss_V = 5.0144e-05, Loss_V_x = 3.7627e-04, Loss_HJB = 1.9635e-04,  Loss_total = 6.2276e-04
+Iteration 3000: Loss_V = 3.3848e-05, Loss_V_x = 2.9113e-04, Loss_HJB = 1.2519e-04,  Loss_total = 4.5017e-04
+Iteration 4000: Loss_V = 3.7253e-05, Loss_V_x = 2.7493e-04, Loss_HJB = 1.7863e-04,  Loss_total = 4.9082e-04
+Iteration 5000: Loss_V = 5.2934e-05, Loss_V_x = 2.3992e-04, Loss_HJB = 3.6579e-04,  Loss_total = 6.5864e-04
+
+
+Generated 2688 data from 128 IVP solutions in 31.7 sec 
+
+Iteration 0:  Loss_G = 1.8249e-02,  Loss_ODE = 1.6802e+00,  Loss_total = 1.8249e-02
+Iteration 1000:  Loss_G = 5.4620e-05,  Loss_ODE = 1.2392e+00,  Loss_total = 5.4620e-05
+Iteration 2000:  Loss_G = 3.1220e-05,  Loss_ODE = 1.2376e+00,  Loss_total = 3.1220e-05
+Iteration 3000:  Loss_G = 1.6456e-05,  Loss_ODE = 1.2327e+00,  Loss_total = 1.6456e-05
+
+
+Computed J: 1.959638
+Training V2 solution by HJB
+Iteration 0: Loss = 7.1785e-02
+Iteration 1000: Loss = 1.5799e-04
+Iteration 2000: Loss = 1.2838e-04
+Iteration 3000: Loss = 4.8303e-05
+Iteration 4000: Loss = 1.6540e-04
+Iteration 5000: Loss = 2.0634e-05
+
+
+Generating data...
+Solver failed (1/53): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.3718e-03
+Iteration 1000: Loss = 6.3145e-05
+
+
+Solver failed (2/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.4741e-04
+Iteration 1000: Loss = 1.6314e-04
+
+
+Solver failed (3/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.1499e-04
+Iteration 1000: Loss = 5.4297e-05
+
+
+Solver failed (4/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.2242e-03
+Iteration 1000: Loss = 5.2355e-05
+
+
+Solver failed (5/30): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.0300e-03
+Iteration 1000: Loss = 2.3572e-05
+
+
+Solver failed (6/30): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.2420e-04
+Iteration 1000: Loss = 5.8052e-05
+
+
+Solver failed (7/30): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.9572e-03
+Iteration 1000: Loss = 5.2495e-05
+
+
+Solver failed (8/30): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0931e-02
+Iteration 1000: Loss = 4.3734e-04
+
+
+Solver failed (9/30): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.7960e-04
+Iteration 1000: Loss = 5.5224e-05
+
+
+Solver failed (10/30): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9685e-04
+Iteration 1000: Loss = 6.1484e-05
+
+
+Solver failed (11/28): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.5355e-04
+Iteration 1000: Loss = 5.1290e-05
+
+
+Solver failed (12/28): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.6476e-04
+Iteration 1000: Loss = 5.6466e-05
+
+
+Solver failed (13/28): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.6391e-03
+Iteration 1000: Loss = 6.3978e-05
+
+
+Solver failed (14/28): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.5004e-04
+Iteration 1000: Loss = 5.8999e-05
+
+
+Solver failed (15/28): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.7920e-04
+Iteration 1000: Loss = 3.3320e-05
+
+
+Solver failed (16/28): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.3929e-04
+Iteration 1000: Loss = 3.3247e-05
+
+
+Solver failed (17/14): The maximum number of mesh nodes is exceeded.
+Maximum retries reached. Exiting.
+Generated 24607 data from 50 BVP solutions in 552.0 sec 
+
+Training V2 solution of BVP
+Iteration 0: Loss_V = 1.2834e-02, Loss_V_x = 1.5279e-02, Loss_HJB = 3.3215e-04,  Loss_total = 2.8445e-02
+Iteration 1000: Loss_V = 1.3564e-03, Loss_V_x = 2.6605e-03, Loss_HJB = 4.4870e-04,  Loss_total = 4.4655e-03
+Iteration 2000: Loss_V = 1.1522e-03, Loss_V_x = 2.1979e-03, Loss_HJB = 2.8196e-04,  Loss_total = 3.6320e-03
+Iteration 3000: Loss_V = 1.0308e-03, Loss_V_x = 1.8601e-03, Loss_HJB = 2.1038e-04,  Loss_total = 3.1012e-03
+Iteration 4000: Loss_V = 1.0237e-03, Loss_V_x = 1.6268e-03, Loss_HJB = 2.1461e-04,  Loss_total = 2.8651e-03
+Iteration 5000: Loss_V = 1.0154e-03, Loss_V_x = 1.5958e-03, Loss_HJB = 1.6445e-04,  Loss_total = 2.7756e-03
+
+
+Computed V0: 1.568912
+Exploitability: 0.390726
+Step Time: 6527.7 sec
+
+
+--- Step 4 ---
+
+Training V1 solution by HJB
+Iteration 0: Loss = 4.4588e-02
+Iteration 1000: Loss = 8.3733e-05
+Iteration 2000: Loss = 9.2809e-05
+Iteration 3000: Loss = 5.1002e-05
+Iteration 4000: Loss = 5.4184e-05
+Iteration 5000: Loss = 3.1326e-05
+
+
+Generating data...
+Solver failed (1/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4061e-03
+Iteration 1000: Loss = 2.6725e-05
+
+
+Solver failed (2/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0521e-02
+Iteration 1000: Loss = 8.3763e-05
+
+
+Solver failed (3/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.5146e-03
+Iteration 1000: Loss = 8.7127e-05
+
+
+Solver failed (4/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.9088e-04
+Iteration 1000: Loss = 6.2778e-05
+
+
+Solver failed (5/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.2583e-03
+Iteration 1000: Loss = 6.7457e-05
+
+
+Solver failed (6/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.3836e-04
+Iteration 1000: Loss = 3.0007e-05
+
+
+Solver failed (7/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6117e-03
+Iteration 1000: Loss = 3.5567e-05
+
+
+Solver failed (8/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.8980e-04
+Iteration 1000: Loss = 2.5114e-05
+
+
+Solver failed (9/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.4913e-04
+Iteration 1000: Loss = 3.4783e-05
+
+
+Solver failed (10/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5891e-04
+Iteration 1000: Loss = 2.6607e-05
+
+
+Solver failed (11/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.6374e-04
+Iteration 1000: Loss = 4.5235e-05
+
+
+Solver failed (12/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5725e-04
+Iteration 1000: Loss = 3.7129e-05
+
+
+Solver failed (13/58): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4011e-03
+Iteration 1000: Loss = 2.1111e-05
+
+
+Solver failed (14/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.3463e-04
+Iteration 1000: Loss = 2.2020e-05
+
+
+Solver failed (15/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.0477e-03
+Iteration 1000: Loss = 6.0425e-05
+
+
+Solver failed (16/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.5926e-04
+Iteration 1000: Loss = 3.1033e-05
+
+
+Solver failed (17/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.7429e-04
+Iteration 1000: Loss = 6.0558e-05
+
+
+Solver failed (18/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.2622e-03
+Iteration 1000: Loss = 3.8487e-05
+
+
+Solver failed (19/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.8934e-04
+Iteration 1000: Loss = 2.0024e-05
+
+
+Solver failed (20/53): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.5976e-04
+Iteration 1000: Loss = 9.3724e-05
+
+
+Solver failed (21/53): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.2110e-03
+Iteration 1000: Loss = 1.9462e-05
+
+
+Solver failed (22/53): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.3005e-04
+Iteration 1000: Loss = 3.2345e-05
+
+
+Solver failed (23/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.9840e-03
+Iteration 1000: Loss = 2.6048e-05
+
+
+Solver failed (24/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0016e-03
+Iteration 1000: Loss = 1.8345e-05
+
+
+Solver failed (25/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3599e-03
+Iteration 1000: Loss = 1.9185e-05
+
+
+Solver failed (26/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4729e-03
+Iteration 1000: Loss = 3.5024e-05
+
+
+Solver failed (27/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5035e-03
+Iteration 1000: Loss = 3.9013e-05
+
+
+Solver failed (28/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.9386e-04
+Iteration 1000: Loss = 2.4738e-05
+
+
+Solver failed (29/49): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.3566e-03
+Iteration 1000: Loss = 6.3758e-05
+
+
+Solver failed (30/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2233e-03
+Iteration 1000: Loss = 3.1675e-05
+
+
+Solver failed (31/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5588e-03
+Iteration 1000: Loss = 1.6536e-05
+
+
+Solver failed (32/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.0418e-04
+Iteration 1000: Loss = 5.1217e-05
+
+
+Solver failed (33/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6238e-03
+Iteration 1000: Loss = 3.8818e-05
+
+
+Solver failed (34/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.8874e-04
+Iteration 1000: Loss = 6.1512e-05
+
+
+Solver failed (35/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5692e-04
+Iteration 1000: Loss = 2.3414e-05
+
+
+Solver failed (36/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9201e-04
+Iteration 1000: Loss = 1.3575e-04
+
+
+Solver failed (37/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.1058e-04
+Iteration 1000: Loss = 6.4536e-05
+
+
+Solver failed (38/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.0883e-04
+Iteration 1000: Loss = 2.5528e-05
+
+
+Solver failed (39/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.7395e-04
+Iteration 1000: Loss = 2.9021e-05
+
+
+Solver failed (40/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3486e-03
+Iteration 1000: Loss = 1.9003e-04
+
+
+Solver failed (41/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.7619e-03
+Iteration 1000: Loss = 4.9427e-05
+
+
+Solver failed (42/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5299e-03
+Iteration 1000: Loss = 1.6249e-04
+
+
+Solver failed (43/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5532e-03
+Iteration 1000: Loss = 4.9913e-05
+
+
+Solver failed (44/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.8021e-04
+Iteration 1000: Loss = 2.2450e-05
+
+
+Maximum retries reached. Exiting.
+Generated 18313 data from 20 BVP solutions in 2601.3 sec 
+
+Training V1 solution of BVP
+Iteration 0: Loss_V = 2.3342e-02, Loss_V_x = 2.4228e-02, Loss_HJB = 1.3166e-03,  Loss_total = 4.8887e-02
+Iteration 1000: Loss_V = 1.2175e-04, Loss_V_x = 9.8836e-04, Loss_HJB = 2.4384e-04,  Loss_total = 1.3540e-03
+Iteration 2000: Loss_V = 1.0567e-04, Loss_V_x = 6.8327e-04, Loss_HJB = 1.6698e-04,  Loss_total = 9.5591e-04
+Iteration 3000: Loss_V = 9.6140e-05, Loss_V_x = 5.0068e-04, Loss_HJB = 1.6310e-04,  Loss_total = 7.5992e-04
+Iteration 4000: Loss_V = 1.2628e-04, Loss_V_x = 5.3201e-04, Loss_HJB = 4.6809e-04,  Loss_total = 1.1264e-03
+Iteration 5000: Loss_V = 9.7087e-05, Loss_V_x = 4.7229e-04, Loss_HJB = 2.1013e-04,  Loss_total = 7.7951e-04
+
+
+Generated 2688 data from 128 IVP solutions in 32.9 sec 
+
+Iteration 0:  Loss_G = 1.4911e-02,  Loss_ODE = 1.2497e+00,  Loss_total = 1.4911e-02
+Iteration 1000:  Loss_G = 6.2015e-05,  Loss_ODE = 1.5271e+00,  Loss_total = 6.2015e-05
+Iteration 2000:  Loss_G = 2.6852e-05,  Loss_ODE = 1.5326e+00,  Loss_total = 2.6852e-05
+Iteration 3000:  Loss_G = 1.7513e-05,  Loss_ODE = 1.5324e+00,  Loss_total = 1.7513e-05
+
+
+Computed J: 2.001270
+Training V2 solution by HJB
+Iteration 0: Loss = 2.4809e-02
+Iteration 1000: Loss = 7.6933e-05
+Iteration 2000: Loss = 6.7021e-05
+Iteration 3000: Loss = 7.5292e-05
+Iteration 4000: Loss = 4.0163e-05
+Iteration 5000: Loss = 1.9538e-05
+
+
+Generating data...
+Solver failed (1/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.9575e-03
+Iteration 1000: Loss = 2.6364e-05
+
+
+Solver failed (2/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.2901e-04
+Iteration 1000: Loss = 5.5693e-05
+
+
+Solver failed (3/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2732e-03
+Iteration 1000: Loss = 2.9686e-05
+
+
+Solver failed (4/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9207e-04
+Iteration 1000: Loss = 3.8781e-05
+
+
+Solver failed (5/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5925e-03
+Iteration 1000: Loss = 6.3902e-05
+
+
+Solver failed (6/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.6776e-04
+Iteration 1000: Loss = 4.4570e-05
+
+
+Solver failed (7/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.1986e-04
+Iteration 1000: Loss = 1.2633e-05
+
+
+Solver failed (8/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5721e-04
+Iteration 1000: Loss = 8.0421e-05
+
+
+Solver failed (9/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.2547e-04
+Iteration 1000: Loss = 3.3936e-05
+
+
+Solver failed (10/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.0348e-04
+Iteration 1000: Loss = 7.3205e-05
+
+
+Solver failed (11/46): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.2463e-04
+Iteration 1000: Loss = 3.8254e-05
+
+
+Solver failed (12/45): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.3329e-04
+Iteration 1000: Loss = 8.3685e-05
+
+
+Solver failed (13/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.6012e-04
+Iteration 1000: Loss = 4.5669e-05
+
+
+Solver failed (14/43): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.1935e-03
+Iteration 1000: Loss = 2.4844e-05
+
+
+Solver failed (15/40): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1961e-03
+Iteration 1000: Loss = 5.1396e-05
+
+
+Solver failed (16/40): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.8763e-04
+Iteration 1000: Loss = 5.6371e-05
+
+
+Solver failed (17/40): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2705e-03
+Iteration 1000: Loss = 2.2124e-05
+
+
+Solver failed (18/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.5670e-04
+Iteration 1000: Loss = 5.0724e-05
+
+
+Solver failed (19/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1989e-04
+Iteration 1000: Loss = 1.7280e-05
+
+
+Solver failed (20/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.9003e-04
+Iteration 1000: Loss = 2.7799e-05
+
+
+Solver failed (21/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.4883e-04
+Iteration 1000: Loss = 3.4939e-05
+
+
+Solver failed (22/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.1383e-04
+Iteration 1000: Loss = 1.4071e-05
+
+
+Solver failed (23/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.7296e-04
+Iteration 1000: Loss = 1.5130e-05
+
+
+Solver failed (24/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0071e-03
+Iteration 1000: Loss = 1.8784e-05
+
+
+Solver failed (25/31): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.9272e-04
+Iteration 1000: Loss = 2.4490e-05
+
+
+Solver failed (26/30): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.0870e-04
+Iteration 1000: Loss = 3.5316e-05
+
+
+Solver failed (27/29): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.2190e-04
+Iteration 1000: Loss = 1.5698e-05
+
+
+Solver failed (28/27): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.1792e-04
+Iteration 1000: Loss = 2.2514e-05
+
+
+Maximum retries reached. Exiting.
+Generated 35543 data from 37 BVP solutions in 672.8 sec 
+
+Training V2 solution of BVP
+Iteration 0: Loss_V = 8.0195e-03, Loss_V_x = 1.7055e-02, Loss_HJB = 4.7382e-03,  Loss_total = 2.9813e-02
+Iteration 1000: Loss_V = 6.5155e-05, Loss_V_x = 5.2209e-04, Loss_HJB = 1.9255e-04,  Loss_total = 7.7979e-04
+Iteration 2000: Loss_V = 6.6258e-05, Loss_V_x = 4.3141e-04, Loss_HJB = 2.8344e-04,  Loss_total = 7.8110e-04
+Iteration 3000: Loss_V = 6.1299e-05, Loss_V_x = 3.5460e-04, Loss_HJB = 2.0969e-04,  Loss_total = 6.2560e-04
+Iteration 4000: Loss_V = 4.3309e-05, Loss_V_x = 2.8089e-04, Loss_HJB = 1.3655e-04,  Loss_total = 4.6075e-04
+Iteration 5000: Loss_V = 3.5857e-05, Loss_V_x = 2.4395e-04, Loss_HJB = 1.3474e-04,  Loss_total = 4.1455e-04
+
+
+Computed V0: 1.664699
+Exploitability: 0.336571
+Step Time: 3567.9 sec
+
+
+--- Step 5 ---
+
+Training V1 solution by HJB
+Iteration 0: Loss = 1.7738e-02
+Iteration 1000: Loss = 1.3027e-04
+Iteration 2000: Loss = 3.6516e-05
+Iteration 3000: Loss = 2.5317e-05
+Iteration 4000: Loss = 3.9588e-05
+Iteration 5000: Loss = 1.8392e-04
+
+
+Generating data...
+Solver failed (1/64): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0838e-03
+Iteration 1000: Loss = 3.7820e-05
+
+
+Solver failed (2/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.8864e-04
+Iteration 1000: Loss = 2.8814e-05
+
+
+Solver failed (3/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.7701e-04
+Iteration 1000: Loss = 5.3222e-05
+
+
+Solver failed (4/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.2697e-04
+Iteration 1000: Loss = 6.4611e-05
+
+
+Solver failed (5/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.9438e-04
+Iteration 1000: Loss = 3.7631e-05
+
+
+Solver failed (6/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.9768e-04
+Iteration 1000: Loss = 4.7929e-05
+
+
+Solver failed (7/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.3650e-04
+Iteration 1000: Loss = 4.1000e-05
+
+
+Solver failed (8/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.6178e-04
+Iteration 1000: Loss = 5.4540e-05
+
+
+Solver failed (9/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.1859e-04
+Iteration 1000: Loss = 5.7559e-05
+
+
+Solver failed (10/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.6816e-04
+Iteration 1000: Loss = 6.2357e-05
+
+
+Solver failed (11/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.4724e-04
+Iteration 1000: Loss = 2.3136e-05
+
+
+Solver failed (12/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.9881e-04
+Iteration 1000: Loss = 2.1515e-05
+
+
+Solver failed (13/46): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.9604e-03
+Iteration 1000: Loss = 4.5876e-05
+
+
+Solver failed (14/42): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6383e-03
+Iteration 1000: Loss = 2.0845e-05
+
+
+Solver failed (15/38): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.2186e-04
+Iteration 1000: Loss = 1.7829e-05
+
+
+Solver failed (16/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9324e-04
+Iteration 1000: Loss = 4.2503e-05
+
+
+Solver failed (17/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.2423e-04
+Iteration 1000: Loss = 4.1540e-05
+
+
+Solver failed (18/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.3537e-04
+Iteration 1000: Loss = 8.4022e-05
+
+
+Solver failed (19/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.7911e-03
+Iteration 1000: Loss = 2.6561e-05
+
+
+Solver failed (20/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1011e-03
+Iteration 1000: Loss = 2.8467e-05
+
+
+Solver failed (21/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.7320e-03
+Iteration 1000: Loss = 6.3658e-05
+
+
+Solver failed (22/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6350e-03
+Iteration 1000: Loss = 5.6396e-05
+
+
+Solver failed (23/33): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.7168e-03
+Iteration 1000: Loss = 5.6776e-05
+
+
+Solver failed (24/30): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5609e-04
+Iteration 1000: Loss = 2.3229e-05
+
+
+Solver failed (25/28): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.9718e-04
+Iteration 1000: Loss = 6.3127e-05
+
+
+Solver failed (26/28): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.5978e-04
+Iteration 1000: Loss = 3.3125e-05
+
+
+Solver failed (27/27): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.7628e-04
+Iteration 1000: Loss = 3.9323e-05
+
+
+Maximum retries reached. Exiting.
+Generated 28668 data from 37 BVP solutions in 1989.7 sec 
+
+Training V1 solution of BVP
+Iteration 0: Loss_V = 1.3971e-02, Loss_V_x = 2.4075e-02, Loss_HJB = 3.3708e-04,  Loss_total = 3.8383e-02
+Iteration 1000: Loss_V = 4.4362e-05, Loss_V_x = 4.5819e-04, Loss_HJB = 2.7811e-04,  Loss_total = 7.8066e-04
+Iteration 2000: Loss_V = 2.7463e-05, Loss_V_x = 4.1724e-04, Loss_HJB = 1.5942e-04,  Loss_total = 6.0413e-04
+Iteration 3000: Loss_V = 5.1386e-05, Loss_V_x = 3.1069e-04, Loss_HJB = 1.7157e-04,  Loss_total = 5.3365e-04
+Iteration 4000: Loss_V = 4.0060e-05, Loss_V_x = 2.8937e-04, Loss_HJB = 1.3886e-04,  Loss_total = 4.6830e-04
+Iteration 5000: Loss_V = 2.5011e-05, Loss_V_x = 2.4719e-04, Loss_HJB = 1.0196e-04,  Loss_total = 3.7416e-04
+
+
+Generated 2688 data from 128 IVP solutions in 34.5 sec 
+
+Iteration 0:  Loss_G = 5.1810e-03,  Loss_ODE = 1.4943e+00,  Loss_total = 5.1810e-03
+Iteration 1000:  Loss_G = 3.7180e-05,  Loss_ODE = 1.4113e+00,  Loss_total = 3.7180e-05
+Iteration 2000:  Loss_G = 5.8592e-05,  Loss_ODE = 1.4178e+00,  Loss_total = 5.8592e-05
+Iteration 3000:  Loss_G = 2.1782e-05,  Loss_ODE = 1.4170e+00,  Loss_total = 2.1782e-05
+
+
+Computed J: 1.828000
+Training V2 solution by HJB
+Iteration 0: Loss = 1.4668e-02
+Iteration 1000: Loss = 8.5154e-05
+Iteration 2000: Loss = 8.7362e-05
+Iteration 3000: Loss = 2.6549e-05
+Iteration 4000: Loss = 5.9565e-05
+Iteration 5000: Loss = 3.6175e-05
+
+
+Generating data...
+Solver failed (1/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.4631e-04
+Iteration 1000: Loss = 8.8655e-05
+
+
+Solver failed (2/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.9577e-04
+Iteration 1000: Loss = 5.5151e-05
+
+
+Solver failed (3/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6907e-03
+Iteration 1000: Loss = 4.1252e-05
+
+
+Solver failed (4/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6643e-03
+Iteration 1000: Loss = 3.2730e-05
+
+
+Solver failed (5/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.8174e-04
+Iteration 1000: Loss = 2.9436e-05
+
+
+Solver failed (6/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9927e-04
+Iteration 1000: Loss = 3.7794e-05
+
+
+Solver failed (7/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2673e-03
+Iteration 1000: Loss = 3.7536e-05
+
+
+Solver failed (8/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.7716e-04
+Iteration 1000: Loss = 3.4348e-05
+
+
+Solver failed (9/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.3141e-04
+Iteration 1000: Loss = 5.6646e-05
+
+
+Solver failed (10/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.9875e-04
+Iteration 1000: Loss = 2.2376e-05
+
+
+Solver failed (11/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.7735e-04
+Iteration 1000: Loss = 6.3804e-05
+
+
+Solver failed (12/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.8831e-03
+Iteration 1000: Loss = 5.4755e-05
+
+
+Solver failed (13/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2189e-03
+Iteration 1000: Loss = 2.3490e-05
+
+
+Solver failed (14/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.0843e-04
+Iteration 1000: Loss = 2.9380e-05
+
+
+Solver failed (15/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0299e-03
+Iteration 1000: Loss = 2.4613e-05
+
+
+Solver failed (16/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.3750e-03
+Iteration 1000: Loss = 1.8667e-05
+
+
+Solver failed (17/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.3039e-03
+Iteration 1000: Loss = 1.9071e-05
+
+
+Solver failed (18/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.1622e-04
+Iteration 1000: Loss = 1.5965e-04
+
+
+Solver failed (19/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.9356e-04
+Iteration 1000: Loss = 2.1163e-05
+
+
+Solver failed (20/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.0057e-04
+Iteration 1000: Loss = 1.5193e-05
+
+
+Solver failed (21/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.9425e-04
+Iteration 1000: Loss = 1.3286e-05
+
+
+Solver failed (22/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.6940e-04
+Iteration 1000: Loss = 2.2368e-05
+
+
+Solver failed (23/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.6691e-04
+Iteration 1000: Loss = 4.6476e-05
+
+
+Solver failed (24/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.1536e-04
+Iteration 1000: Loss = 4.8751e-05
+
+
+Solver failed (25/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1865e-04
+Iteration 1000: Loss = 3.0964e-05
+
+
+Solver failed (26/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4760e-03
+Iteration 1000: Loss = 2.9560e-05
+
+
+Solver failed (27/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.7269e-03
+Iteration 1000: Loss = 2.4588e-05
+
+
+Solver failed (28/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.0157e-04
+Iteration 1000: Loss = 3.1092e-05
+
+
+Solver failed (29/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.1023e-04
+Iteration 1000: Loss = 5.0938e-05
+
+
+Solver failed (30/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.8981e-04
+Iteration 1000: Loss = 5.5970e-05
+
+
+Solver failed (31/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2578e-03
+Iteration 1000: Loss = 1.5183e-05
+
+
+Solver failed (32/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.0100e-04
+Iteration 1000: Loss = 3.5584e-05
+
+
+Solver failed (33/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4628e-03
+Iteration 1000: Loss = 1.3625e-05
+
+
+Solver failed (34/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.9719e-04
+Iteration 1000: Loss = 4.9669e-05
+
+
+Solver failed (35/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.9878e-04
+Iteration 1000: Loss = 2.6279e-05
+
+
+Solver failed (36/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.9892e-03
+Iteration 1000: Loss = 3.1662e-05
+
+
+Solver failed (37/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.6265e-03
+Iteration 1000: Loss = 1.2142e-05
+
+
+Solver failed (38/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.2425e-04
+Iteration 1000: Loss = 1.0109e-04
+
+
+Solver failed (39/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.5573e-04
+Iteration 1000: Loss = 2.3479e-05
+
+
+Solver failed (40/53): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.4197e-04
+Iteration 1000: Loss = 3.2157e-05
+
+
+Solver failed (41/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1522e-03
+Iteration 1000: Loss = 2.9356e-05
+
+
+Solver failed (42/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.2968e-04
+Iteration 1000: Loss = 4.9149e-05
+
+
+Solver failed (43/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5717e-04
+Iteration 1000: Loss = 6.6558e-05
+
+
+Solver failed (44/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.6552e-04
+Iteration 1000: Loss = 2.5447e-05
+
+
+Solver failed (45/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5151e-03
+Iteration 1000: Loss = 4.3001e-05
+
+
+Solver failed (46/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.0069e-03
+Iteration 1000: Loss = 2.1292e-05
+
+
+Solver failed (47/45): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.9659e-04
+Iteration 1000: Loss = 2.3715e-05
+
+
+Maximum retries reached. Exiting.
+Generated 16262 data from 19 BVP solutions in 1230.3 sec 
+
+Training V2 solution of BVP
+Iteration 0: Loss_V = 5.3057e-03, Loss_V_x = 1.5117e-02, Loss_HJB = 6.9633e-04,  Loss_total = 2.1119e-02
+Iteration 1000: Loss_V = 1.0188e-05, Loss_V_x = 1.8304e-04, Loss_HJB = 1.0375e-04,  Loss_total = 2.9698e-04
+Iteration 2000: Loss_V = 7.9564e-06, Loss_V_x = 1.5501e-04, Loss_HJB = 9.4874e-05,  Loss_total = 2.5784e-04
+Iteration 3000: Loss_V = 1.2266e-05, Loss_V_x = 1.4444e-04, Loss_HJB = 1.8774e-04,  Loss_total = 3.4444e-04
+Iteration 4000: Loss_V = 1.1346e-05, Loss_V_x = 1.2383e-04, Loss_HJB = 7.3775e-05,  Loss_total = 2.0896e-04
+Iteration 5000: Loss_V = 7.1269e-06, Loss_V_x = 9.6954e-05, Loss_HJB = 3.2243e-05,  Loss_total = 1.3632e-04
+
+
+Generating data...
+Solver failed (1/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.6595e-04
+Iteration 1000: Loss = 2.1641e-05
+
+
+Solver failed (2/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.0780e-04
+Iteration 1000: Loss = 3.1623e-05
+
+
+Solver failed (3/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.3363e-04
+Iteration 1000: Loss = 3.5890e-05
+
+
+Solver failed (4/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.1979e-04
+Iteration 1000: Loss = 4.9640e-05
+
+
+Solver failed (5/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1391e-03
+Iteration 1000: Loss = 1.0600e-04
+
+
+Solver failed (6/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.4119e-04
+Iteration 1000: Loss = 2.9332e-05
+
+
+Solver failed (7/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5943e-04
+Iteration 1000: Loss = 2.3526e-05
+
+
+Solver failed (8/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.6200e-04
+Iteration 1000: Loss = 2.7000e-05
+
+
+Solver failed (9/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.0431e-04
+Iteration 1000: Loss = 4.9136e-05
+
+
+Solver failed (10/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2114e-03
+Iteration 1000: Loss = 4.6833e-05
+
+
+Solver failed (11/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1943e-04
+Iteration 1000: Loss = 1.8679e-05
+
+
+Solver failed (12/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.1608e-04
+Iteration 1000: Loss = 1.5370e-05
+
+
+Solver failed (13/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.1349e-04
+Iteration 1000: Loss = 2.0651e-05
+
+
+Solver failed (14/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.7380e-04
+Iteration 1000: Loss = 3.7580e-05
+
+
+Solver failed (15/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.6665e-04
+Iteration 1000: Loss = 1.6193e-05
+
+
+Solver failed (16/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.9874e-04
+Iteration 1000: Loss = 5.6662e-05
+
+
+Solver failed (17/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.4534e-04
+Iteration 1000: Loss = 3.3698e-05
+
+
+Solver failed (18/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2249e-03
+Iteration 1000: Loss = 8.8854e-05
+
+
+Solver failed (19/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.1479e-04
+Iteration 1000: Loss = 5.3429e-05
+
+
+Solver failed (20/56): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.4187e-04
+Iteration 1000: Loss = 5.7384e-05
+
+
+Solver failed (21/49): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.2001e-04
+Iteration 1000: Loss = 2.5680e-05
+
+
+Solver failed (22/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.7410e-04
+Iteration 1000: Loss = 1.6726e-05
+
+
+Solver failed (23/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.3024e-04
+Iteration 1000: Loss = 3.1117e-05
+
+
+Solver failed (24/43): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.9712e-04
+Iteration 1000: Loss = 2.8892e-05
+
+
+Solver failed (25/42): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.7620e-04
+Iteration 1000: Loss = 3.6099e-05
+
+
+Solver failed (26/36): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.8545e-04
+Iteration 1000: Loss = 4.8682e-05
+
+
+Solver failed (27/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0083e-03
+Iteration 1000: Loss = 2.1932e-05
+
+
+Solver failed (28/32): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.6463e-04
+Iteration 1000: Loss = 1.9917e-05
+
+
+Solver failed (29/30): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.0156e-04
+Iteration 1000: Loss = 2.7487e-05
+
+
+Solver failed (30/30): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.1097e-04
+Iteration 1000: Loss = 1.9091e-05
+
+
+Maximum retries reached. Exiting.
+Generated 32400 data from 34 BVP solutions in 847.6 sec 
+
+Training V2 solution of BVP
+Iteration 0: Loss_V = 7.0730e-03, Loss_V_x = 1.4943e-02, Loss_HJB = 6.1890e-03,  Loss_total = 2.8205e-02
+Iteration 1000: Loss_V = 7.3006e-06, Loss_V_x = 2.2284e-04, Loss_HJB = 1.0693e-04,  Loss_total = 3.3707e-04
+Iteration 2000: Loss_V = 5.4344e-06, Loss_V_x = 1.7154e-04, Loss_HJB = 1.2291e-04,  Loss_total = 2.9989e-04
+Iteration 3000: Loss_V = 6.4434e-06, Loss_V_x = 1.8707e-04, Loss_HJB = 9.4875e-05,  Loss_total = 2.8839e-04
+Iteration 4000: Loss_V = 3.4529e-06, Loss_V_x = 1.2883e-04, Loss_HJB = 4.5198e-05,  Loss_total = 1.7748e-04
+Iteration 5000: Loss_V = 3.2975e-06, Loss_V_x = 1.2170e-04, Loss_HJB = 5.2176e-05,  Loss_total = 1.7717e-04
+
+
+Computed V0: 1.659870
+Exploitability: 0.168130
+Step Time: 4438.1 sec
+
+
+--- Step 6 ---
+
+Training V1 solution by HJB
+Iteration 0: Loss = 1.1089e-02
+Iteration 1000: Loss = 6.2657e-05
+Iteration 2000: Loss = 4.4623e-05
+Iteration 3000: Loss = 5.9376e-05
+Iteration 4000: Loss = 4.1257e-05
+Iteration 5000: Loss = 4.8725e-05
+
+
+Generating data...
+Solver failed (1/64): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.8446e-04
+Iteration 1000: Loss = 4.6608e-05
+
+
+Solver failed (2/64): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.5955e-04
+Iteration 1000: Loss = 1.7313e-05
+
+
+Solver failed (3/64): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9026e-04
+Iteration 1000: Loss = 2.5466e-05
+
+
+Solver failed (4/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9467e-04
+Iteration 1000: Loss = 3.1824e-05
+
+
+Solver failed (5/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.3532e-04
+Iteration 1000: Loss = 2.3979e-05
+
+
+Solver failed (6/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.6755e-04
+Iteration 1000: Loss = 2.4912e-05
+
+
+Solver failed (7/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.7083e-04
+Iteration 1000: Loss = 2.0768e-05
+
+
+Solver failed (8/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5865e-03
+Iteration 1000: Loss = 2.5276e-05
+
+
+Solver failed (9/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5821e-04
+Iteration 1000: Loss = 4.0545e-04
+
+
+Solver failed (10/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5305e-03
+Iteration 1000: Loss = 1.5210e-05
+
+
+Solver failed (11/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.8893e-04
+Iteration 1000: Loss = 2.1027e-05
+
+
+Solver failed (12/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.7312e-04
+Iteration 1000: Loss = 1.9133e-05
+
+
+Solver failed (13/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5618e-04
+Iteration 1000: Loss = 2.2119e-05
+
+
+Solver failed (14/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.9286e-04
+Iteration 1000: Loss = 8.4484e-06
+
+
+Solver failed (15/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.9294e-04
+Iteration 1000: Loss = 2.4895e-05
+
+
+Solver failed (16/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5882e-04
+Iteration 1000: Loss = 3.3708e-05
+
+
+Solver failed (17/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.5547e-04
+Iteration 1000: Loss = 3.7824e-05
+
+
+Solver failed (18/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.1988e-04
+Iteration 1000: Loss = 1.1790e-05
+
+
+Solver failed (19/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.2610e-04
+Iteration 1000: Loss = 1.1376e-05
+
+
+Solver failed (20/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.9225e-04
+Iteration 1000: Loss = 2.4514e-05
+
+
+Solver failed (21/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.0310e-04
+Iteration 1000: Loss = 2.6750e-05
+
+
+Solver failed (22/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.3696e-04
+Iteration 1000: Loss = 1.8914e-05
+
+
+Solver failed (23/49): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.9959e-04
+Iteration 1000: Loss = 5.0971e-05
+
+
+Solver failed (24/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5117e-04
+Iteration 1000: Loss = 3.5768e-05
+
+
+Solver failed (25/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.4927e-04
+Iteration 1000: Loss = 2.0983e-05
+
+
+Solver failed (26/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.0506e-04
+Iteration 1000: Loss = 4.8842e-05
+
+
+Solver failed (27/45): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.4697e-04
+Iteration 1000: Loss = 1.8645e-05
+
+
+Solver failed (28/45): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.0239e-04
+Iteration 1000: Loss = 2.9053e-05
+
+
+Solver failed (29/45): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.8443e-04
+Iteration 1000: Loss = 3.6042e-05
+
+
+Solver failed (30/45): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.6121e-04
+Iteration 1000: Loss = 1.9301e-05
+
+
+Solver failed (31/45): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.0063e-04
+Iteration 1000: Loss = 1.5168e-05
+
+
+Solver failed (32/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5372e-04
+Iteration 1000: Loss = 2.4171e-05
+
+
+Solver failed (33/38): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.7757e-04
+Iteration 1000: Loss = 2.7405e-05
+
+
+Solver failed (34/38): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.3918e-04
+Iteration 1000: Loss = 5.4857e-05
+
+
+Solver failed (35/38): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.4475e-04
+Iteration 1000: Loss = 6.3639e-06
+
+
+Solver failed (36/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.5031e-03
+Iteration 1000: Loss = 1.9289e-05
+
+
+Solver failed (37/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5954e-04
+Iteration 1000: Loss = 1.6436e-05
+
+
+Maximum retries reached. Exiting.
+Generated 32787 data from 27 BVP solutions in 3392.8 sec 
+
+Training V1 solution of BVP
+Iteration 0: Loss_V = 1.4144e-02, Loss_V_x = 1.7710e-02, Loss_HJB = 2.3493e-03,  Loss_total = 3.4204e-02
+Iteration 1000: Loss_V = 2.2421e-05, Loss_V_x = 3.4761e-04, Loss_HJB = 1.6828e-04,  Loss_total = 5.3831e-04
+Iteration 2000: Loss_V = 1.3802e-05, Loss_V_x = 2.4871e-04, Loss_HJB = 1.3943e-04,  Loss_total = 4.0195e-04
+Iteration 3000: Loss_V = 2.1031e-05, Loss_V_x = 2.9778e-04, Loss_HJB = 1.7556e-04,  Loss_total = 4.9437e-04
+Iteration 4000: Loss_V = 2.1031e-05, Loss_V_x = 2.6340e-04, Loss_HJB = 1.1721e-04,  Loss_total = 4.0164e-04
+Iteration 5000: Loss_V = 2.3851e-05, Loss_V_x = 2.1547e-04, Loss_HJB = 2.9343e-04,  Loss_total = 5.3275e-04
+
+
+Generated 2688 data from 128 IVP solutions in 31.9 sec 
+
+Iteration 0:  Loss_G = 5.0365e-03,  Loss_ODE = 1.4390e+00,  Loss_total = 5.0365e-03
+Iteration 1000:  Loss_G = 3.2981e-05,  Loss_ODE = 1.3486e+00,  Loss_total = 3.2981e-05
+Iteration 2000:  Loss_G = 2.3374e-05,  Loss_ODE = 1.3531e+00,  Loss_total = 2.3374e-05
+Iteration 3000:  Loss_G = 1.3158e-05,  Loss_ODE = 1.3536e+00,  Loss_total = 1.3158e-05
+
+
+Computed J: 1.817169
+Training V2 solution by HJB
+Iteration 0: Loss = 1.0226e-02
+Iteration 1000: Loss = 3.3756e-05
+Iteration 2000: Loss = 2.7867e-05
+Iteration 3000: Loss = 3.7568e-05
+Iteration 4000: Loss = 2.3176e-05
+Iteration 5000: Loss = 1.8024e-05
+
+
+Generating data...
+Solver failed (1/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5663e-04
+Iteration 1000: Loss = 1.9863e-05
+
+
+Solver failed (2/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.1421e-04
+Iteration 1000: Loss = 2.2636e-05
+
+
+Solver failed (3/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1023e-04
+Iteration 1000: Loss = 1.5440e-05
+
+
+Solver failed (4/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9504e-04
+Iteration 1000: Loss = 5.3499e-05
+
+
+Solver failed (5/60): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.6370e-04
+Iteration 1000: Loss = 2.8195e-05
+
+
+Solver failed (6/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.3631e-04
+Iteration 1000: Loss = 6.2272e-05
+
+
+Solver failed (7/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.0608e-04
+Iteration 1000: Loss = 1.5437e-05
+
+
+Solver failed (8/59): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4411e-03
+Iteration 1000: Loss = 7.2402e-06
+
+
+Solver failed (9/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5535e-04
+Iteration 1000: Loss = 1.3469e-05
+
+
+Solver failed (10/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.8839e-04
+Iteration 1000: Loss = 1.6820e-05
+
+
+Solver failed (11/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.6196e-04
+Iteration 1000: Loss = 1.1102e-05
+
+
+Solver failed (12/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.6948e-04
+Iteration 1000: Loss = 2.5256e-05
+
+
+Solver failed (13/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.2456e-04
+Iteration 1000: Loss = 1.1764e-05
+
+
+Solver failed (14/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5013e-04
+Iteration 1000: Loss = 6.1913e-05
+
+
+Solver failed (15/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5551e-04
+Iteration 1000: Loss = 2.3641e-05
+
+
+Solver failed (16/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.2846e-04
+Iteration 1000: Loss = 1.9650e-05
+
+
+Solver failed (17/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1189e-04
+Iteration 1000: Loss = 1.0110e-05
+
+
+Solver failed (18/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1767e-03
+Iteration 1000: Loss = 2.1448e-05
+
+
+Solver failed (19/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.1942e-04
+Iteration 1000: Loss = 2.4362e-05
+
+
+Solver failed (20/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.8121e-04
+Iteration 1000: Loss = 4.1797e-06
+
+
+Solver failed (21/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.5515e-04
+Iteration 1000: Loss = 1.9015e-05
+
+
+Solver failed (22/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.0099e-04
+Iteration 1000: Loss = 7.3167e-05
+
+
+Solver failed (23/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1915e-03
+Iteration 1000: Loss = 2.8288e-05
+
+
+Solver failed (24/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4862e-03
+Iteration 1000: Loss = 3.9530e-05
+
+
+Solver failed (25/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.1904e-03
+Iteration 1000: Loss = 1.3593e-05
+
+
+Solver failed (26/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.1829e-04
+Iteration 1000: Loss = 1.5037e-05
+
+
+Solver failed (27/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3351e-03
+Iteration 1000: Loss = 4.0670e-05
+
+
+Solver failed (28/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.2768e-04
+Iteration 1000: Loss = 3.4505e-05
+
+
+Solver failed (29/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.4768e-04
+Iteration 1000: Loss = 4.5593e-05
+
+
+Solver failed (30/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.4734e-04
+Iteration 1000: Loss = 1.7940e-05
+
+
+Solver failed (31/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.4070e-04
+Iteration 1000: Loss = 1.9508e-05
+
+
+Solver failed (32/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.1346e-04
+Iteration 1000: Loss = 2.3866e-05
+
+
+Solver failed (33/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.8624e-04
+Iteration 1000: Loss = 2.7399e-05
+
+
+Solver failed (34/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.0116e-04
+Iteration 1000: Loss = 2.1778e-05
+
+
+Solver failed (35/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.5062e-03
+Iteration 1000: Loss = 1.3917e-05
+
+
+Solver failed (36/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.2879e-04
+Iteration 1000: Loss = 2.2338e-05
+
+
+Solver failed (37/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.9526e-04
+Iteration 1000: Loss = 3.7534e-05
+
+
+Solver failed (38/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.0926e-04
+Iteration 1000: Loss = 2.8848e-05
+
+
+Solver failed (39/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5747e-04
+Iteration 1000: Loss = 3.2873e-05
+
+
+Solver failed (40/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.2231e-04
+Iteration 1000: Loss = 2.2846e-05
+
+
+Solver failed (41/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.2208e-04
+Iteration 1000: Loss = 2.6065e-05
+
+
+Solver failed (42/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.4651e-04
+Iteration 1000: Loss = 1.4809e-05
+
+
+Solver failed (43/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.1258e-04
+Iteration 1000: Loss = 4.0197e-05
+
+
+Solver failed (44/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.4474e-04
+Iteration 1000: Loss = 2.3102e-05
+
+
+Solver failed (45/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.4082e-04
+Iteration 1000: Loss = 1.6872e-05
+
+
+Solver failed (46/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1116e-03
+Iteration 1000: Loss = 9.6618e-06
+
+
+Solver failed (47/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.2904e-04
+Iteration 1000: Loss = 1.3514e-04
+
+
+Solver failed (48/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3632e-03
+Iteration 1000: Loss = 2.0826e-05
+
+
+Maximum retries reached. Exiting.
+Generated 25215 data from 17 BVP solutions in 1213.5 sec 
+
+Training V2 solution of BVP
+Iteration 0: Loss_V = 1.5416e-02, Loss_V_x = 2.0452e-02, Loss_HJB = 3.0300e-04,  Loss_total = 3.6172e-02
+Iteration 1000: Loss_V = 1.5963e-05, Loss_V_x = 2.1343e-04, Loss_HJB = 1.0138e-04,  Loss_total = 3.3078e-04
+Iteration 2000: Loss_V = 7.4753e-06, Loss_V_x = 1.3090e-04, Loss_HJB = 3.6423e-05,  Loss_total = 1.7480e-04
+Iteration 3000: Loss_V = 9.2711e-06, Loss_V_x = 1.2581e-04, Loss_HJB = 6.3609e-05,  Loss_total = 1.9869e-04
+Iteration 4000: Loss_V = 7.6698e-06, Loss_V_x = 1.0664e-04, Loss_HJB = 4.6032e-05,  Loss_total = 1.6034e-04
+Iteration 5000: Loss_V = 4.8792e-06, Loss_V_x = 9.3094e-05, Loss_HJB = 5.3840e-05,  Loss_total = 1.5181e-04
+
+
+Generating data...
+Solver failed (1/64): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.4437e-03
+Iteration 1000: Loss = 1.4055e-05
+
+
+Solver failed (2/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.2194e-04
+Iteration 1000: Loss = 4.8179e-05
+
+
+Solver failed (3/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1893e-04
+Iteration 1000: Loss = 5.0016e-05
+
+
+Solver failed (4/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.1834e-04
+Iteration 1000: Loss = 2.5856e-05
+
+
+Solver failed (5/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.7516e-04
+Iteration 1000: Loss = 2.8054e-05
+
+
+Solver failed (6/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.9400e-04
+Iteration 1000: Loss = 1.1918e-05
+
+
+Solver failed (7/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.9921e-04
+Iteration 1000: Loss = 8.3510e-06
+
+
+Solver failed (8/45): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.9759e-04
+Iteration 1000: Loss = 6.6809e-05
+
+
+Solver failed (9/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9143e-04
+Iteration 1000: Loss = 2.3353e-05
+
+
+Solver failed (10/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.5126e-04
+Iteration 1000: Loss = 8.8124e-05
+
+
+Solver failed (11/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5302e-04
+Iteration 1000: Loss = 5.4198e-05
+
+
+Solver failed (12/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.5738e-04
+Iteration 1000: Loss = 2.9405e-05
+
+
+Solver failed (13/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1888e-04
+Iteration 1000: Loss = 1.0868e-05
+
+
+Solver failed (14/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.1221e-04
+Iteration 1000: Loss = 3.4482e-05
+
+
+Solver failed (15/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9824e-04
+Iteration 1000: Loss = 1.8706e-05
+
+
+Solver failed (16/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1983e-04
+Iteration 1000: Loss = 5.5450e-05
+
+
+Solver failed (17/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.9470e-04
+Iteration 1000: Loss = 2.3966e-05
+
+
+Solver failed (18/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.1864e-04
+Iteration 1000: Loss = 4.4860e-05
+
+
+Solver failed (19/38): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.2723e-04
+Iteration 1000: Loss = 2.4241e-05
+
+
+Solver failed (20/38): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.7523e-04
+Iteration 1000: Loss = 1.5461e-05
+
+
+Solver failed (21/32): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.1148e-04
+Iteration 1000: Loss = 2.4762e-05
+
+
+Solver failed (22/32): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.9534e-04
+Iteration 1000: Loss = 2.6571e-05
+
+
+Solver failed (23/32): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5422e-04
+Iteration 1000: Loss = 3.4238e-05
+
+
+Solver failed (24/31): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.4008e-04
+Iteration 1000: Loss = 3.3896e-05
+
+
+Solver failed (25/29): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.4087e-04
+Iteration 1000: Loss = 1.0655e-04
+
+
+Solver failed (26/29): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.4334e-04
+Iteration 1000: Loss = 2.6515e-05
+
+
+Solver failed (27/29): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.2088e-04
+Iteration 1000: Loss = 2.2952e-05
+
+
+Solver failed (28/29): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.2593e-04
+Iteration 1000: Loss = 2.6280e-05
+
+
+Solver failed (29/29): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.0932e-04
+Iteration 1000: Loss = 1.6834e-05
+
+
+Maximum retries reached. Exiting.
+Generated 19998 data from 35 BVP solutions in 822.0 sec 
+
+Training V2 solution of BVP
+Iteration 0: Loss_V = 5.1331e-03, Loss_V_x = 1.4453e-02, Loss_HJB = 3.4970e-04,  Loss_total = 1.9935e-02
+Iteration 1000: Loss_V = 3.3413e-06, Loss_V_x = 1.2542e-04, Loss_HJB = 4.3463e-05,  Loss_total = 1.7222e-04
+Iteration 2000: Loss_V = 1.8030e-06, Loss_V_x = 1.0311e-04, Loss_HJB = 4.2548e-05,  Loss_total = 1.4746e-04
+Iteration 3000: Loss_V = 1.8011e-06, Loss_V_x = 8.7344e-05, Loss_HJB = 3.1874e-05,  Loss_total = 1.2102e-04
+Iteration 4000: Loss_V = 2.7420e-06, Loss_V_x = 7.7547e-05, Loss_HJB = 3.4132e-05,  Loss_total = 1.1442e-04
+Iteration 5000: Loss_V = 1.5308e-06, Loss_V_x = 8.1903e-05, Loss_HJB = 4.4301e-05,  Loss_total = 1.2773e-04
+
+
+Computed V0: 1.670973
+Exploitability: 0.146196
+Step Time: 5822.1 sec
+
+
+--- Step 7 ---
+
+Training V1 solution by HJB
+Iteration 0: Loss = 7.7663e-03
+Iteration 1000: Loss = 9.8168e-05
+Iteration 2000: Loss = 2.3217e-05
+Iteration 3000: Loss = 2.8671e-05
+Iteration 4000: Loss = 1.9885e-05
+Iteration 5000: Loss = 1.6406e-05
+
+
+Generating data...
+Solver failed (1/64): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.0164e-04
+Iteration 1000: Loss = 2.7074e-05
+
+
+Solver failed (2/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.9034e-04
+Iteration 1000: Loss = 3.4978e-05
+
+
+Solver failed (3/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.0955e-04
+Iteration 1000: Loss = 1.9446e-05
+
+
+Solver failed (4/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.4544e-04
+Iteration 1000: Loss = 5.3247e-05
+
+
+Solver failed (5/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5816e-04
+Iteration 1000: Loss = 3.6589e-05
+
+
+Solver failed (6/61): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5254e-04
+Iteration 1000: Loss = 2.5977e-05
+
+
+Solver failed (7/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.6974e-04
+Iteration 1000: Loss = 2.8105e-05
+
+
+Solver failed (8/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.9413e-04
+Iteration 1000: Loss = 1.6832e-05
+
+
+Solver failed (9/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.1830e-04
+Iteration 1000: Loss = 3.3914e-05
+
+
+Solver failed (10/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.9978e-04
+Iteration 1000: Loss = 2.0824e-05
+
+
+Solver failed (11/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.0567e-03
+Iteration 1000: Loss = 1.4491e-05
+
+
+Solver failed (12/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.6441e-04
+Iteration 1000: Loss = 5.8423e-05
+
+
+Solver failed (13/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.3364e-04
+Iteration 1000: Loss = 5.5437e-05
+
+
+Solver failed (14/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.9240e-04
+Iteration 1000: Loss = 2.0305e-05
+
+
+Solver failed (15/54): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.6916e-04
+Iteration 1000: Loss = 2.2630e-05
+
+
+Solver failed (16/53): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.7273e-04
+Iteration 1000: Loss = 1.9511e-05
+
+
+Solver failed (17/53): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.3249e-04
+Iteration 1000: Loss = 3.5608e-05
+
+
+Solver failed (18/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9596e-04
+Iteration 1000: Loss = 1.9780e-05
+
+
+Solver failed (19/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.3210e-04
+Iteration 1000: Loss = 2.1039e-05
+
+
+Solver failed (20/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1060e-03
+Iteration 1000: Loss = 7.9772e-06
+
+
+Solver failed (21/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.5695e-04
+Iteration 1000: Loss = 1.7141e-05
+
+
+Solver failed (22/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.8879e-04
+Iteration 1000: Loss = 1.4424e-05
+
+
+Solver failed (23/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.1126e-03
+Iteration 1000: Loss = 1.4861e-05
+
+
+Solver failed (24/44): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.6880e-04
+Iteration 1000: Loss = 6.4678e-05
+
+
+Solver failed (25/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.1247e-04
+Iteration 1000: Loss = 1.9707e-05
+
+
+Solver failed (26/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.7779e-04
+Iteration 1000: Loss = 2.3526e-05
+
+
+Solver failed (27/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.8281e-03
+Iteration 1000: Loss = 2.4347e-05
+
+
+Solver failed (28/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.9356e-04
+Iteration 1000: Loss = 6.9787e-06
+
+
+Solver failed (29/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.9306e-04
+Iteration 1000: Loss = 1.8338e-05
+
+
+Solver failed (30/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.6871e-04
+Iteration 1000: Loss = 1.7620e-05
+
+
+Solver failed (31/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.8202e-04
+Iteration 1000: Loss = 8.4379e-06
+
+
+Solver failed (32/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.3906e-04
+Iteration 1000: Loss = 3.3079e-05
+
+
+Solver failed (33/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.2246e-04
+Iteration 1000: Loss = 1.2853e-05
+
+
+Solver failed (34/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5952e-04
+Iteration 1000: Loss = 3.4066e-05
+
+
+Solver failed (35/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.4579e-04
+Iteration 1000: Loss = 8.1382e-05
+
+
+Solver failed (36/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.3126e-04
+Iteration 1000: Loss = 1.8712e-05
+
+
+Solver failed (37/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.4028e-04
+Iteration 1000: Loss = 1.1231e-05
+
+
+Solver failed (38/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.0470e-04
+Iteration 1000: Loss = 3.1415e-05
+
+
+Solver failed (39/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.7365e-04
+Iteration 1000: Loss = 1.2585e-04
+
+
+Solver failed (40/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.9206e-04
+Iteration 1000: Loss = 2.4237e-05
+
+
+Solver failed (41/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.5547e-04
+Iteration 1000: Loss = 4.8924e-05
+
+
+Maximum retries reached. Exiting.
+Generated 32842 data from 23 BVP solutions in 4105.8 sec 
+
+Training V1 solution of BVP
+Iteration 0: Loss_V = 2.8643e-03, Loss_V_x = 1.4613e-02, Loss_HJB = 6.6115e-04,  Loss_total = 1.8138e-02
+Iteration 1000: Loss_V = 1.6746e-05, Loss_V_x = 3.0041e-04, Loss_HJB = 1.3199e-04,  Loss_total = 4.4914e-04
+Iteration 2000: Loss_V = 1.5614e-05, Loss_V_x = 2.4203e-04, Loss_HJB = 8.4994e-05,  Loss_total = 3.4263e-04
+Iteration 3000: Loss_V = 1.9820e-05, Loss_V_x = 2.5642e-04, Loss_HJB = 1.5264e-04,  Loss_total = 4.2888e-04
+Iteration 4000: Loss_V = 1.6354e-05, Loss_V_x = 2.1790e-04, Loss_HJB = 1.1838e-04,  Loss_total = 3.5263e-04
+Iteration 5000: Loss_V = 1.4149e-05, Loss_V_x = 1.9207e-04, Loss_HJB = 9.7023e-05,  Loss_total = 3.0324e-04
+
+
+Generated 2688 data from 128 IVP solutions in 33.3 sec 
+
+Iteration 0:  Loss_G = 3.2795e-03,  Loss_ODE = 1.3368e+00,  Loss_total = 3.2795e-03
+Iteration 1000:  Loss_G = 2.5934e-05,  Loss_ODE = 1.4159e+00,  Loss_total = 2.5934e-05
+Iteration 2000:  Loss_G = 8.7283e-06,  Loss_ODE = 1.4175e+00,  Loss_total = 8.7283e-06
+Iteration 3000:  Loss_G = 1.6287e-05,  Loss_ODE = 1.4208e+00,  Loss_total = 1.6287e-05
+
+
+Computed J: 1.800331
+Training V2 solution by HJB
+Iteration 0: Loss = 6.0177e-03
+Iteration 1000: Loss = 3.2617e-05
+Iteration 2000: Loss = 4.1852e-05
+Iteration 3000: Loss = 2.5011e-05
+Iteration 4000: Loss = 1.3005e-05
+Iteration 5000: Loss = 3.2229e-05
+
+
+Generating data...
+Solver failed (1/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.6179e-03
+Iteration 1000: Loss = 3.7420e-05
+
+
+Solver failed (2/63): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.3249e-04
+Iteration 1000: Loss = 1.5881e-05
+
+
+Solver failed (3/62): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.6458e-04
+Iteration 1000: Loss = 3.4726e-05
+
+
+Solver failed (4/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.7115e-04
+Iteration 1000: Loss = 3.3289e-05
+
+
+Solver failed (5/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.2015e-03
+Iteration 1000: Loss = 3.1774e-05
+
+
+Solver failed (6/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.7844e-04
+Iteration 1000: Loss = 3.0689e-05
+
+
+Solver failed (7/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.0859e-04
+Iteration 1000: Loss = 9.9768e-06
+
+
+Solver failed (8/57): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.6618e-04
+Iteration 1000: Loss = 1.6774e-05
+
+
+Solver failed (9/55): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.8517e-04
+Iteration 1000: Loss = 1.7217e-05
+
+
+Solver failed (10/52): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9479e-04
+Iteration 1000: Loss = 1.3949e-05
+
+
+Solver failed (11/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.2695e-04
+Iteration 1000: Loss = 1.8789e-05
+
+
+Solver failed (12/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.3731e-04
+Iteration 1000: Loss = 2.3357e-05
+
+
+Solver failed (13/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.0617e-03
+Iteration 1000: Loss = 2.9959e-05
+
+
+Solver failed (14/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.0168e-04
+Iteration 1000: Loss = 1.6221e-05
+
+
+Solver failed (15/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.7904e-04
+Iteration 1000: Loss = 2.6657e-05
+
+
+Solver failed (16/51): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5996e-04
+Iteration 1000: Loss = 2.6529e-05
+
+
+Solver failed (17/50): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.2567e-04
+Iteration 1000: Loss = 2.0524e-05
+
+
+Solver failed (18/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.6753e-04
+Iteration 1000: Loss = 1.5612e-05
+
+
+Solver failed (19/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 9.1388e-04
+Iteration 1000: Loss = 3.0796e-05
+
+
+Solver failed (20/48): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 5.9264e-04
+Iteration 1000: Loss = 1.6483e-05
+
+
+Solver failed (21/47): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.5636e-04
+Iteration 1000: Loss = 2.0088e-05
+
+
+Solver failed (22/46): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.1640e-04
+Iteration 1000: Loss = 1.6461e-05
+
+
+Solver failed (23/46): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.2453e-04
+Iteration 1000: Loss = 2.5583e-05
+
+
+Solver failed (24/45): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.7793e-04
+Iteration 1000: Loss = 4.2551e-05
+
+
+Solver failed (25/41): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.0632e-04
+Iteration 1000: Loss = 1.6408e-05
+
+
+Solver failed (26/39): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1791e-03
+Iteration 1000: Loss = 4.9201e-05
+
+
+Solver failed (27/38): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.4944e-03
+Iteration 1000: Loss = 5.4633e-05
+
+
+Solver failed (28/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 2.3800e-04
+Iteration 1000: Loss = 1.6347e-05
+
+
+Solver failed (29/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 4.9880e-04
+Iteration 1000: Loss = 1.8564e-05
+
+
+Solver failed (30/37): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.9033e-04
+Iteration 1000: Loss = 1.6689e-05
+
+
+Solver failed (31/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 1.1224e-03
+Iteration 1000: Loss = 9.9873e-06
+
+
+Solver failed (32/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 7.4832e-04
+Iteration 1000: Loss = 2.2032e-05
+
+
+Solver failed (33/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 6.5886e-04
+Iteration 1000: Loss = 1.5295e-05
+
+
+Solver failed (34/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 3.6255e-04
+Iteration 1000: Loss = 2.1489e-05
+
+
+Solver failed (35/35): The maximum number of mesh nodes is exceeded.
+Iteration 0: Loss = 8.9105e-04
+Iteration 1000: Loss = 2.7994e-05
+
+
+Maximum retries reached. Exiting.
+Generated 36292 data from 29 BVP solutions in 879.3 sec 
+
+Training V2 solution of BVP
+Iteration 0: Loss_V = 7.3801e-03, Loss_V_x = 1.7090e-02, Loss_HJB = 3.1673e-04,  Loss_total = 2.4787e-02
+Iteration 1000: Loss_V = 2.5900e-05, Loss_V_x = 3.0107e-04, Loss_HJB = 1.6653e-04,  Loss_total = 4.9350e-04
+Iteration 2000: Loss_V = 1.8320e-05, Loss_V_x = 2.3301e-04, Loss_HJB = 7.8525e-05,  Loss_total = 3.2985e-04
+Iteration 3000: Loss_V = 1.2927e-05, Loss_V_x = 1.9923e-04, Loss_HJB = 6.0545e-05,  Loss_total = 2.7270e-04
+Iteration 4000: Loss_V = 1.4889e-05, Loss_V_x = 1.6756e-04, Loss_HJB = 5.7573e-05,  Loss_total = 2.4002e-04
+Iteration 5000: Loss_V = 1.5821e-05, Loss_V_x = 1.5343e-04, Loss_HJB = 5.8459e-05,  Loss_total = 2.2771e-04
+
+
+Computed V0: 1.727147
+Exploitability: 0.073184
+Step Time: 5360.8 sec

@@ -8,7 +8,7 @@ class Analytic(object):
     """
     def __init__(self, G_NN_list, Round, n, x0_initial, device, VV):
         
-        self.dim = 1
+        self.dim = 10
         self.TT = 1
         self.X0_ub = 2
         self.ODE_solver = 'RK23'
@@ -18,14 +18,16 @@ class Analytic(object):
         self.X0_lb = - self.X0_ub
         self.device = device
         self.x0_initial = x0_initial
-        self.mean_0 = torch.mean(self.x0_initial) *0 + 1
+        self.mean_0 = torch.mean(self.x0_initial) * 0 + 1
         self.G_NN_list = G_NN_list
         self.Round = Round
         self.n = n
         self.sigma = np.sqrt(0.105)
         self.mu = 0.1
         self.VV = VV
-       
+        
+        # Pré-calcul pour optimisation
+        self.N_particles = x0_initial.shape[0]
 
     def sample_x0(self, num_samples):
         """
@@ -47,60 +49,40 @@ class Analytic(object):
             return samples
         
     def update_mean(self, t, x):
+        """
+        Calcule la moyenne du champ moyen de façon optimisée.
         
-        Means = []
-        t_expanded = t.repeat_interleave(self.x0_initial.shape[0]).view(-1,1)
-        x0_expanded = self.x0_initial.repeat(t.shape[0],1)
+        Optimisations appliquées:
+        - view() au lieu de reshape() (pas de copie mémoire)
+        - Suppression de la liste intermédiaire Means
+        - Accumulation directe de la moyenne
+        """
+        n_times = t.shape[0]
+        
+        # Expansion des tenseurs (une seule fois)
+        t_expanded = t.repeat_interleave(self.N_particles).view(-1, 1)
+        x0_expanded = self.x0_initial.repeat(n_times, 1)
         
         if self.VV == 1:
-            if self.Round == 0:
-                Means.append(self.mean_0)
-                if self.n == 0:
-                    return Means[self.n]
-                else:
-                    for i in range(1, self.n + 1):
-                        with torch.no_grad(): 
-                            mean_new = torch.mean(
-                                self.G_NN_list[i-1](t_expanded, x0_expanded).reshape(t.shape[0], self.x0_initial.shape[0]),
-                                dim=1
-                            )
+            with torch.no_grad():
+                # Premier générateur
+                X_t = self.G_NN_list[0](t_expanded, x0_expanded)
+                mean_accum = X_t.view(n_times, self.N_particles, self.dim).mean(dim=1)
 
-                        Means.append((1 / (i + 1)) * mean_new + (i / (i + 1)) * Means[i-1])
-
-                    return Means[self.n]
-                
-            else:
-                with torch.no_grad(): 
-                        mean_new = torch.mean(
-                                self.G_NN_list[0](t_expanded, x0_expanded).reshape(t.shape[0], self.x0_initial.shape[0]),
-                                dim=1
-                            )
-                        Means.append(mean_new)
-                if self.n == 0: 
-                    return Means[self.n]
-                else:
-                    for i in range(1, self.n + 1):
-                        with torch.no_grad(): 
-                            mean_new = torch.mean(
-                                self.G_NN_list[i](t_expanded, x0_expanded).reshape(t.shape[0], self.x0_initial.shape[0]),
-                                dim=1
-                            )
-
-
-                        Means.append((1 / (i + 1)) * mean_new + (i / (i + 1)) * Means[i-1])
-
-                    return Means[self.n]
-        else:
-            with torch.no_grad(): 
-                        mean_new = torch.mean(
-                            self.G_NN_list[-1](t_expanded, x0_expanded).reshape(t.shape[0], self.x0_initial.shape[0]),
-                            dim=1
-                        )
-            return mean_new
+                # Itérations Fictitious Play (si n > 0)
+                for i in range(1, self.n + 1):
+                    X_t = self.G_NN_list[i](t_expanded, x0_expanded)
+                    mean_new = X_t.view(n_times, self.N_particles, self.dim).mean(dim=1)
                     
-            
-        
-
+                    # Formule: mean = (1/(i+1)) * new + (i/(i+1)) * old
+                    alpha = 1.0 / (i + 1)
+                    mean_accum = alpha * mean_new + (1.0 - alpha) * mean_accum
+                
+                return mean_accum
+        else:
+            with torch.no_grad():
+                X_t = self.G_NN_list[-1](t_expanded, x0_expanded)
+                return X_t.view(n_times, self.N_particles, self.dim).mean(dim=1)
 
     def _sqeuc(self, x):
         return torch.sum(x * x, dim=1, keepdim=True)
@@ -112,23 +94,21 @@ class Analytic(object):
         
         up_mean = self.update_mean(t, x)
         
-        return 0.5 * (x-up_mean.view(-1,1))**2
+        return 0.5 * self._sqeuc((x-up_mean))
         
-
 
     def d_F(self, t, x):
         
         up_mean = self.update_mean(t, x)
         
-        return x-up_mean.view(-1,1)
+        return x - up_mean
     
     
-
     def ham(self, tt, xx, pp):
         
         """ The Hamiltonian."""
 
-        out = -0.5 * self._sqeuc(pp) + self.F( tt, xx)
+        out = -0.5 * self._sqeuc(pp) + self.F(tt, xx)
 
         return out
     
@@ -136,7 +116,7 @@ class Analytic(object):
         
         '''Control as a function of the costate.'''
         Ax = X_aug[self.dim:2*self.dim]        
-        U =  -Ax
+        U = -Ax
         return U
     
     def make_bc(self, X0_in):
@@ -156,7 +136,7 @@ class Analytic(object):
         
         '''Evaluation of the dynamics at a single time instance for closed-loop ODE integration.'''
         
-        U = - V_NN.get_grad(t, x)
+        U = -V_NN.get_grad(t, x)
 
         return U
     
@@ -164,19 +144,19 @@ class Analytic(object):
         
         '''Evaluation of the dynamics at a single time instance for closed-loop ODE integration.'''
         
-        U = U_fun([[t]], X.reshape((1,-1))).flatten()
+        U = U_fun([[t]], X.reshape((1, -1))).flatten()
 
         return U
     
     def terminal_cost(self, X):
 
-        return  0
+        return 0
     
-    def running_cost(self,t, X, U):
+    def running_cost(self, t, X, U):
         
-        FF = self.F(torch.tensor(t, dtype=torch.float32, device=self.device),torch.tensor(X.T, dtype=torch.float32, device=self.device)).cpu().detach().numpy()
+        FF = self.F(torch.tensor(t, dtype=torch.float32, device=self.device), torch.tensor(X.T, dtype=torch.float32, device=self.device)).cpu().detach().numpy()
    
-        return 0.5 * np.sum(U * U, axis=0, keepdims=True) +  FF.T
+        return 0.5 * np.sum(U * U, axis=0, keepdims=True) + FF.T
 
     
     def aug_dynamics(self, t, X_aug):
@@ -187,21 +167,20 @@ class Analytic(object):
 
         x = X_aug[:self.dim]
         
-        dFF = self.d_F(torch.tensor(t, dtype=torch.float32, device=self.device),torch.tensor(x.T, dtype=torch.float32, device=self.device)).cpu().detach().numpy()
+        dFF = self.d_F(torch.tensor(t, dtype=torch.float32, device=self.device), torch.tensor(x.T, dtype=torch.float32, device=self.device)).cpu().detach().numpy()
         
         # Costate
         Ax = X_aug[self.dim:2*self.dim]
         
-        dxdt =  U
+        dxdt = U
         
-        dAxdt = - dFF.T
+        dAxdt = -dFF.T
 
         L = self.running_cost(t, x, U)
        
         fun = np.vstack((dxdt, dAxdt, -L))
 
-
         return fun
 
-    
-    
+
+

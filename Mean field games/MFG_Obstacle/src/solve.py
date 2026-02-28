@@ -1,5 +1,6 @@
 import torch
 import time
+import gc
 import numpy as np
 from scipy.integrate import solve_ivp, solve_bvp
 import torch.optim as optim
@@ -9,6 +10,14 @@ import torch.nn as nn
 import warnings
 import ot
 from geomloss import SamplesLoss
+
+
+def clear_gpu_memory():
+    """Clear GPU memory cache."""
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+        torch.cuda.synchronize()
 
 #================================ DGM_HJB =========================================#
 
@@ -32,7 +41,9 @@ def Solve_HJB(obs, V_NN, num_epoch, t, lr, num_samples, device):
     V_NN.train()
     optimizer = optim.Adam(V_NN.parameters(), lr)
 
+    # Sample domain points
     x_rand = obs.sample_x0(num_samples).requires_grad_(True)
+
     T = obs.TT * torch.ones(num_samples, 1, device=device)
 
     old_loss = float('inf')
@@ -79,7 +90,131 @@ def Solve_HJB(obs, V_NN, num_epoch, t, lr, num_samples, device):
                 x_rand = obs.sample_x0(num_samples).requires_grad_(True)
 
     print()
+    clear_gpu_memory()
     return V_NN
+
+def Solve_MFG(obs, V_NN, G_NN, num_epoch, t, lr, num_samples, device):
+    """
+    Joint training of V and G (MFG initialization).
+    Based on the Solve_MFG2 approach from the reference implementation.
+    """
+    V_NN.train()
+    G_NN.train()
+    
+    optimizer_V = optim.Adam(V_NN.parameters(), lr=lr)
+    optimizer_G = optim.Adam(G_NN.parameters(), lr=lr)
+    
+    print('Starting Joint Training of V and G (MFG)...')
+    
+    if not torch.is_tensor(t):
+        t = torch.tensor(t, dtype=torch.float32, device=device)
+    t = t.view(-1, 1)
+
+    for epoch in range(num_epoch + 1):
+        # Sample initial conditions
+        x0_batch = obs.gen_x0(num_samples, Torch=True)
+        
+        # Sample domain points
+        x_domain = obs.sample_x0(num_samples).requires_grad_(True)
+        
+        N_t = t.shape[0]
+        N_x = num_samples
+        
+        
+        t_in = t.repeat_interleave(N_x).view(-1, 1).requires_grad_(True)
+  
+        x0_in = x0_batch.repeat(N_t, 1)
+        x_domain_in = x_domain.repeat(N_t, 1).requires_grad_(True)
+        
+        # --- 1. Train V (HJB) ---
+        X_t = G_NN(t_in, x0_in)
+        X_t_det = X_t.detach().requires_grad_(True)
+        
+        # 1.1 HJB on Trajectories
+        V_pred = V_NN(t_in, X_t_det)
+        
+        V_t = torch.autograd.grad(outputs=V_pred, inputs=t_in,
+                                  grad_outputs=torch.ones_like(V_pred),
+                                  create_graph=True, retain_graph=True)[0]
+        
+        V_x = torch.autograd.grad(outputs=V_pred, inputs=X_t_det,
+                                  grad_outputs=torch.ones_like(V_pred),
+                                  create_graph=True, retain_graph=True)[0]
+        # Congestion term
+
+        cong_term = obs.rho(X_t_det[:, :2].view(N_t, N_x, 2).unsqueeze(2) - 
+                          X_t_det[:, :2].view(N_t, N_x, 2).unsqueeze(1))
+        cong_term = torch.mean(cong_term, dim=2).view(-1, 1)
+        
+        # Obstacle term
+        f_obs = obs.F_obstacle_func_loss(X_t_det)
+        
+        # Hamiltonian
+        Ham = -obs.c * torch.sum(V_x**2, dim=1, keepdim=True) + obs.gamma_obst * f_obs + obs.gamma_cong * cong_term
+        
+        Loss_HJB_traj = torch.mean((V_t + Ham)**2)
+
+        # 1.2 HJB on Domain
+        V_pred_dom = V_NN(t_in, x_domain_in)
+        
+        V_t_dom = torch.autograd.grad(outputs=V_pred_dom, inputs=t_in,
+                                  grad_outputs=torch.ones_like(V_pred_dom),
+                                  create_graph=True, retain_graph=True)[0]
+        
+        V_x_dom = torch.autograd.grad(outputs=V_pred_dom, inputs=x_domain_in,
+                                  grad_outputs=torch.ones_like(V_pred_dom),
+                                  create_graph=True, retain_graph=True)[0]
+        
+        # Congestion on Domain (population is X_t_det)
+        X_pop = X_t_det[:, :2].view(N_t, N_x, 2)
+        X_eval = x_domain_in[:, :2].view(N_t, N_x, 2)
+        
+        Diff = X_eval.unsqueeze(2) - X_pop.unsqueeze(1)
+        cong_term_dom = obs.rho(Diff)
+        cong_term_dom = torch.mean(cong_term_dom, dim=2).view(-1, 1)
+        
+        f_obs_dom = obs.F_obstacle_func_loss(x_domain_in)
+        
+        Ham_dom = -obs.c * torch.sum(V_x_dom**2, dim=1, keepdim=True) + obs.gamma_obst * f_obs_dom + obs.gamma_cong * cong_term_dom
+        
+        Loss_HJB_dom = torch.mean((V_t_dom + Ham_dom)**2)
+        
+        Loss_HJB =  Loss_HJB_traj + Loss_HJB_dom
+        
+        optimizer_V.zero_grad()
+        Loss_HJB.backward()
+        optimizer_V.step()
+        
+        # --- 2. Train G (ODE) ---
+        X_t = G_NN(t_in, x0_in)
+        
+        G_t = G_NN.grad_t(t_in, x0_in)
+        
+        V_pred = V_NN(t_in, X_t)
+        V_x = torch.autograd.grad(outputs=V_pred, inputs=X_t,
+                                  grad_outputs=torch.ones_like(V_pred),
+                                  create_graph=True, retain_graph=True)[0]
+        
+        # ODE Loss: dX/dt = 2c * (-V_x)
+        Loss_ODE = torch.mean((G_t - 2 * obs.c * (-V_x))**2)
+        
+        optimizer_G.zero_grad()
+        Loss_ODE.backward()
+        optimizer_G.step()
+        
+        if epoch % 1000 == 0:
+            print(f"Epoch {epoch:5d}: Loss_HJB = {Loss_HJB.item():.4e}, Loss_ODE = {Loss_ODE.item():.4e}")
+        
+        # Periodic cleanup every 2000 epochs
+        if epoch % 2000 == 0 and epoch > 0:
+            clear_gpu_memory()
+    
+    # Final cleanup
+    del x0_batch, x_domain, t_in, x0_in, x_domain_in, X_t, X_t_det
+    clear_gpu_memory()
+            
+    print('\n')
+    return V_NN, G_NN
 
 #================================  BVP + HJB =========================================#
 
@@ -107,6 +242,7 @@ def Approximate_v(obs, V_NN, data, num_epoch, t, lr, num_samples, Round, device)
     V_NN.train()
     optimizer = optim.Adam(V_NN.parameters(), lr)
 
+    # Sample domain points
     x_rand = obs.sample_x0(num_samples).requires_grad_(True)
 
     old_loss = float('inf')
@@ -138,7 +274,7 @@ def Approximate_v(obs, V_NN, data, num_epoch, t, lr, num_samples, Round, device)
         Loss_v_x  = torch.mean((V_NN.get_grad(data['t'], data['X']) - data['A']) ** 2)
 
         # Total loss (can be weighted if needed)
-        Loss_total = Loss_hjb + Loss_v + Loss_v_x
+        Loss_total = 0.5 * Loss_hjb + Loss_v + Loss_v_x
 
         # Backward and optimize
         optimizer.zero_grad()
@@ -161,106 +297,179 @@ def Approximate_v(obs, V_NN, data, num_epoch, t, lr, num_samples, Round, device)
             old_loss = new_loss
 
     print()
+    clear_gpu_memory()
     return V_NN
 
 
-#================================ solve BVP ===========================================#
 
-def generate_data(obs, V_NN, num_samples, t, lr, num_samples_hjb, device,  num_epoch=1000):
+def generate_data(obs, V_NN, num_samples, t, lr, num_samples_hjb, device, num_epoch=1000, num_workers=4):
+    """
+    Generate BVP data in parallel using ThreadPoolExecutor.
+    Matches the behavior of the sequential version.
+    Memory-optimized: reduced workers to avoid OOM with max_nodes=5000.
+    """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
     
-    def eval_u(t, x):
-        u =  -V_NN.get_grad(t, x).detach().cpu().numpy()
-        return u
+    # Force garbage collection before starting
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
     
-    def bvp_guess(t, x):
-        V_NN.eval()
-        V = V_NN(torch.tensor(t, dtype=torch.float32, device=device), 
-                 torch.tensor(x, dtype=torch.float32, device=device)).detach().cpu().numpy() 
-        V_x = V_NN.get_grad(t, x).detach().cpu().numpy() 
-        return V, V_x
+    def make_eval_u(V_NN_ref):
+        """Create eval_u closure with current V_NN reference."""
+        def eval_u(t, x):
+            u = -V_NN_ref.get_grad(t, x).detach().cpu().numpy()
+            return u
+        return eval_u
+    
+    def make_bvp_guess(V_NN_ref):
+        """Create bvp_guess closure with current V_NN reference."""
+        def bvp_guess(t, x):
+            V_NN_ref.eval()
+            V = V_NN_ref(torch.tensor(t, dtype=torch.float32, device=device), 
+                     torch.tensor(x, dtype=torch.float32, device=device)).detach().cpu().numpy() 
+            V_x = V_NN_ref.get_grad(t, x).detach().cpu().numpy() 
+            return V, V_x
+        return bvp_guess
 
-    print('Generating data...')
+    def solve_single_bvp(args):
+        """Solve a single BVP for initial condition X0."""
+        X0, eval_u, bvp_guess = args
+        try:
+            t_start = 0.0
+            
+            # Integrate closed-loop system
+            SOL = solve_ivp(obs.dynamics, [t_start, obs.TT], X0,
+                            method=obs.ODE_solver,
+                            args=(eval_u,),
+                            rtol=1e-08) 
+            
+            V_guess, A_guess = bvp_guess(SOL.t.reshape(1, -1).T, SOL.y.T)
+            
+            # Solve BVP
+            X_aug_guess = np.vstack((SOL.y, A_guess.T, V_guess.T))
+            SOL_bvp = solve_bvp(obs.aug_dynamics, obs.make_bc(X0), SOL.t, X_aug_guess,
+                                verbose=0,
+                                tol=obs.data_tol,  
+                                max_nodes=obs.max_nodes)
+            
+            # Free memory from IVP solution
+            del SOL, V_guess, A_guess, X_aug_guess
+            
+            if SOL_bvp.success:
+                result = {
+                    't': SOL_bvp.x.reshape(1, -1).T.copy(),
+                    'X': SOL_bvp.y[:obs.dim].T.copy(),
+                    'A': SOL_bvp.y[obs.dim:2*obs.dim].T.copy(),
+                    'V': (SOL_bvp.y[-1:] + obs.terminal_cost(SOL_bvp.y[:obs.dim, -1])).T.copy(),
+                    'success': True
+                }
+                del SOL_bvp
+                return result
+            else:
+                msg = SOL_bvp.message
+                del SOL_bvp
+                return {'success': False, 'message': msg}
+                
+        except Exception as e:
+            return {'success': False, 'message': str(e)}
+
+    print('Generating data (parallel)...')
 
     dim = obs.dim
+    start_time = time.time()
+    x0_int = obs.gen_x0(num_samples * 3, Torch=False)  # Generate extra for failures
 
     X_OUT = np.empty((0, dim))
     A_OUT = np.empty((0, dim))
     V_OUT = np.empty((0, 1))
     t_OUT = np.empty((0, 1))
 
-    Ns_sol = 0  # Initialize the number of successful solutions
+    Ns_sol = 0
+    idx = 0
     failure_count = 0
+    hjb_retrain_count = 0
+    max_hjb_retrains = 5
     
-    start_time = time.time()
-    x0_int = obs.gen_x0(num_samples, Torch=False)
+    # Create initial closures with current V_NN
+    eval_u = make_eval_u(V_NN)
+    bvp_guess = make_bvp_guess(V_NN)
 
-    # ----------------------------------------------------------------------
-
-    while Ns_sol < num_samples:
+    while Ns_sol < num_samples and idx < len(x0_int):
+        # Determine batch size
+        remaining_samples = num_samples - Ns_sol
+        remaining_x0 = len(x0_int) - idx
+        batch_size = min(num_workers, remaining_samples, remaining_x0)
         
-        print('Solving TPBVP #', Ns_sol+1, '...', end='\r')
+        if batch_size <= 0:
+            break
         
-        max_failures = num_samples - Ns_sol
-
-        X0 = x0_int[Ns_sol,:]
-        bc = obs.make_bc(X0)
-
-
-
-        # Integrates the closed-loop system (NN controller)
-
-        SOL = solve_ivp(obs.dynamics, [0., obs.TT], X0,
-                        method=obs.ODE_solver,
-                        args=(eval_u,),
-                        rtol=1e-08)
-
-        V_guess, A_guess = bvp_guess(SOL.t.reshape(1,-1).T, SOL.y.T)
+        # Prepare batch with current closures
+        batch_args = [(x0_int[idx + i, :], eval_u, bvp_guess) for i in range(batch_size)]
         
-        try:
-            # Solves the two-point boundary value problem
+        print(f'Solving BVP batch ({Ns_sol}/{num_samples} done, idx={idx})...', end='\r')
+        
+        batch_success = 0
+        batch_fail = 0
+        
+        with ThreadPoolExecutor(max_workers=num_workers) as executor:
+            futures = [executor.submit(solve_single_bvp, args) for args in batch_args]
+            
+            for future in as_completed(futures):
+                result = future.result()
+                if result['success']:
+                    t_OUT = np.vstack((t_OUT, result['t']))
+                    X_OUT = np.vstack((X_OUT, result['X']))
+                    A_OUT = np.vstack((A_OUT, result['A']))
+                    V_OUT = np.vstack((V_OUT, result['V']))
+                    Ns_sol += 1
+                    batch_success += 1
+                else:
+                    batch_fail += 1
+                    failure_count += 1
+                # Free result memory
+                del result
+        
+        # Free batch memory after each batch
+        del batch_args, futures
+        gc.collect()
+        
+        idx += batch_size
+        
+        # Check if we need to retrain HJB (like original: retrain if Ns_sol < 45 and failures)
+        if batch_fail > 0 and Ns_sol < 45 and hjb_retrain_count < max_hjb_retrains:
+            # High failure rate in this batch
+            if batch_fail >= batch_size // 2:  # More than half failed
+                print(f"\nHigh failure rate ({batch_fail}/{batch_size}), Ns_sol={Ns_sol}, retraining HJB...")
+                V_NN = Solve_HJB(obs, V_NN, num_epoch, t, lr, num_samples_hjb, device)
+                # Recreate closures with updated V_NN
+                eval_u = make_eval_u(V_NN)
+                bvp_guess = make_bvp_guess(V_NN)
+                hjb_retrain_count += 1
+        
+        # If we've used all x0 but still need more samples, regenerate
+        if idx >= len(x0_int) and Ns_sol < num_samples:
+            print(f"\nRegenerating initial conditions (have {Ns_sol}/{num_samples})...")
+            x0_int = obs.gen_x0(num_samples * 3, Torch=False)
+            idx = 0
+            
+            # Also retrain HJB if we haven't reached threshold
+            if Ns_sol < 45 and hjb_retrain_count < max_hjb_retrains:
+                print("Retraining HJB before retry...")
+                V_NN = Solve_HJB(obs, V_NN, num_epoch, t, lr, num_samples_hjb, device)
+                eval_u = make_eval_u(V_NN)
+                bvp_guess = make_bvp_guess(V_NN)
+                hjb_retrain_count += 1
 
-            X_aug_guess = np.vstack((SOL.y, A_guess.T, V_guess.T))
-            SOL = solve_bvp(obs.aug_dynamics, bc, SOL.t, X_aug_guess,
-                            verbose=0,
-                            tol=obs.data_tol,
-                            max_nodes=obs.max_nodes)
-            # Save only successful solutions
-            if SOL.success:
-                V = SOL.y[-1:] + obs.terminal_cost(SOL.y[:dim, -1])
-                t_OUT = np.vstack((t_OUT, SOL.x.reshape(1, -1).T))
-                X_OUT = np.vstack((X_OUT, SOL.y[:dim].T))
-                A_OUT = np.vstack((A_OUT, SOL.y[dim:2*dim].T))
-                V_OUT = np.vstack((V_OUT, V.T))
-                Ns_sol += 1
-                #failure_count = 0  # Reset failure count on success
-            else:
-                print(f"Solver failed ({failure_count + 1}/{max_failures}): {SOL.message}")
-                failure_count += 1
-                if Ns_sol < 25: #45
-                        V_NN = Solve_HJB1(obs, V_NN, num_epoch, t, lr, num_samples_hjb, device)
-                if failure_count >= max_failures:
-                    print("Maximum retries reached. Exiting.")
-                    break
-                # Generate a new initial condition for retry
-                X0 = x0_int[Ns_sol+failure_count,:]
-
-
-        except Warning as e:
-            print(f"Warning encountered: {str(e)}. Skipping...")
-            failure_count += 1
-            if failure_count >= max_failures:
-                print("Maximum warnings reached. Exiting.")
-                break
-
-
-    print('Generated', X_OUT.shape[0], 'data from', Ns_sol,
-        'BVP solutions in %.1f' % (time.time() - start_time), 'sec \n')
+    print(f'\nGenerated {X_OUT.shape[0]} data from {Ns_sol} BVP solutions in {time.time() - start_time:.1f} sec')
+    print(f'Total failures: {failure_count}, HJB retrains: {hjb_retrain_count}\n')
 
     data = {'t': torch.tensor(t_OUT, dtype=torch.float32, device=device), 
             'X': torch.tensor(X_OUT, dtype=torch.float32, device=device), 
             'A': torch.tensor(A_OUT, dtype=torch.float32, device=device), 
             'V': torch.tensor(V_OUT, dtype=torch.float32, device=device)}
 
+    clear_gpu_memory()
     return data, Ns_sol
 
 
@@ -399,8 +608,10 @@ def Train_Gen(obs, G_NN, V_NN, t_tr, x_tr, X_OUT, num_epoch, t, lr, num_samples,
         # Supervised trajectory loss
         Loss_G = torch.mean((G_NN(t_train, X_train) - X_OUT) ** 2)
 
-        # Weighted total loss (dynamics weight = 0.01 for dim=2)
-        Loss_total = Loss_G + 0.01 * Loss_ode
+        # Weighted total loss (dynamics regularization)
+        # Weight can be adjusted based on problem dimension
+        ode_weight = 0.01 / obs.dim  # Scale down for higher dimensions
+        Loss_total = Loss_G + ode_weight * Loss_ode
 
         optimizer.zero_grad()
         Loss_total.backward()
@@ -421,6 +632,9 @@ def Train_Gen(obs, G_NN, V_NN, t_tr, x_tr, X_OUT, num_epoch, t, lr, num_samples,
                 x_rand = obs.gen_x0(num_samples, Torch=True).requires_grad_(True)
 
     print()
+    # Cleanup
+    del t_train, X_train, X_OUT, x_rand
+    clear_gpu_memory()
     return G_NN_original, G_NN
 
 
@@ -453,13 +667,14 @@ def train_v_nn(an, V_NN, num_epochs, num_epoch_hjb, t, lr_v, num_samples_hjb, nu
     print(f"\nTraining V{VV} via HJB...\n")
 
     # Step 1: Initialization 
-    V_NN = Solve_HJB(an, V_NN, num_epoch_hjb, t, lr_v, num_samples_hjb, device)
+    #V_NN = Solve_HJB(an, V_NN, num_epoch_hjb, t, lr_v, num_samples_hjb, device)
+    
 
     # Step 2: Generating
     attempts = 0
     Ns_sol = 0
 
-    while Ns_sol < 25 and attempts < 2:
+    while Ns_sol < 45 and attempts < 2:
         N_sol_bvp = 0
 
         while N_sol_bvp < 1:
@@ -468,11 +683,16 @@ def train_v_nn(an, V_NN, num_epochs, num_epoch_hjb, t, lr_v, num_samples_hjb, nu
 
             if N_sol_bvp == 0:
                 print(f"Re-solving V{VV} via HJB due to insufficient BVP data...")
-                V_NN = Solve_HJB1(an, V_NN, num_epoch_hjb, t, lr_v, num_samples_hjb, device)
+                V_NN = Solve_HJB(an, V_NN, num_epoch_hjb, t, lr_v, num_samples_hjb, device)
 
         # Step 3: Training 
         print(f"\nTraining V{VV} via BVP Approximation...\n")
         V_NN = Approximate_v(an, V_NN, data, num_epochs, t, lr_v, num_samples_hjb, round_num, device)
+        
+        # Free BVP data after training
+        del data
+        clear_gpu_memory()
+        
         attempts += 1
 
     return V_NN
@@ -482,35 +702,6 @@ def train_v_nn(an, V_NN, num_epochs, num_epoch_hjb, t, lr_v, num_samples_hjb, nu
 #==================================Compute J and V ==============================#
 
 
-def Comp_J(obs, t, x, V_NN):
-    
-    t_expanded = t.repeat_interleave(x.shape[0]).view(-1,1)
-    x0_expanded = x.repeat(t.shape[0],1)
-    
-    X_n = obs.G_NN_list[-1](t_expanded, x0_expanded)
-     
-    cov_rho_m = obs.rho((X_n[:, 0:2].reshape(t.shape[0], x.shape[0], 2)).unsqueeze(2) -  (X_n[:,0:2].reshape(t.shape[0], x.shape[0], 2)).unsqueeze(1))
-    cov_rho_m = torch.mean(cov_rho_m, dim=2)
-    
-    f_obs = []
-    for ti in range(t.shape[0]):
-        f_obs_i = obs.F_obstacle_func_loss(X_n[:,0:2].reshape(t.shape[0], x.shape[0], 2)[ti,:,:])
-        f_obs.append(f_obs_i)
-        
-    f_obs = torch.stack(f_obs, dim=0).squeeze(-1)
-
-
-    u = -V_NN.get_grad(t_expanded, X_n).reshape(t.shape[0], x.shape[0], obs.dim)
-    
-
-    l = obs.c * torch.sum(u * u, dim=2) +  obs.gamma_obst * f_obs +  obs.gamma_cong * cov_rho_m
-    
-    g = obs.psi_func(X_n[:,0:2].reshape(t.shape[0], x.shape[0], 2)[-1,:,:]) 
-    
-    J = torch.mean(1/(t.shape[0]-1) * torch.sum(l[0:t.shape[0]-1, :], dim=0) + g.squeeze())
-    
-    return J.item()
-    
 def Comp_J(obs, t, x, V_NN):
     """
     Compute the population cost functional J for a given generator and value network.
@@ -524,41 +715,52 @@ def Comp_J(obs, t, x, V_NN):
     Returns:
         J (float) : Mean cost over the simulated population
     """
+    dim = obs.dim
+    T = t.shape[0]
+    N = x.shape[0]
+    
     # Expand (t, x) to shape [T*N, 1] and [T*N, dim] for G_NN input
-    t_expanded = t.repeat_interleave(x.shape[0], dim=0)         # [T*N, 1]
-    x0_expanded = x.repeat(t.shape[0], 1)                        # [T*N, dim]
+    t_expanded = t.repeat_interleave(N, dim=0)              # [T*N, 1]
+    x0_expanded = x.repeat(T, 1)                            # [T*N, dim]
 
     # Simulate trajectories using latest generator
-    X_n = obs.G_NN_list[-1](t_expanded, x0_expanded)              # [T*N, dim]
-    X_n_reshaped = X_n[:, :2].reshape(t.shape[0], x.shape[0], 2) # [T, N, 2]
+    X_n = obs.G_NN_list[-1](t_expanded, x0_expanded)        # [T*N, dim]
+    X_n_reshaped = X_n.reshape(T, N, dim)                   # [T, N, dim]
+    X_n_2d = X_n_reshaped[:, :, :2]                         # [T, N, 2] for congestion/obstacles
 
-    # Compute congestion term via mean interaction kernel
-    delta_X = X_n_reshaped.unsqueeze(2) - X_n_reshaped.unsqueeze(1)  # [T, N, N, 2]
-    cov_rho_m = obs.rho(delta_X)                                      # [T, N, N]
-    cov_rho_m = torch.mean(cov_rho_m, dim=2)                         # [T, N]
+    # Compute congestion term via mean interaction kernel (only first 2 dims)
+    delta_X = X_n_2d.unsqueeze(2) - X_n_2d.unsqueeze(1)     # [T, N, N, 2]
+    cov_rho_m = obs.rho(delta_X)                            # [T, N, N]
+    cov_rho_m = torch.mean(cov_rho_m, dim=2)                # [T, N]
 
-    # Compute obstacle cost term f_obs(t, x)
+    # Compute obstacle cost term f_obs(t, x) - uses first 2 dims internally
     f_obs = []
-    for ti in range(t.shape[0]):
-        f_obs_i = obs.F_obstacle_func_loss(X_n_reshaped[ti])          # [N, 1]
+    for ti in range(T):
+        f_obs_i = obs.F_obstacle_func_loss(X_n_reshaped[ti])  # [N, 1] - takes full dim, uses [:, :2]
         f_obs.append(f_obs_i)
-    f_obs = torch.stack(f_obs, dim=0).squeeze(-1)                    # [T, N]
+    f_obs = torch.stack(f_obs, dim=0).squeeze(-1)           # [T, N]
 
-    # Compute control cost u = -∇V(t, x)
-    u = -V_NN.get_grad(t_expanded, X_n)                              # [T*N, dim]
-    u = u.reshape(t.shape[0], x.shape[0], obs.dim)                    # [T, N, dim]
-    control_cost = obs.c * torch.sum(u * u, dim=2)                    # [T, N]
+    # Compute control cost u = -∇V(t, x) - all dimensions
+    u = -V_NN.get_grad(t_expanded, X_n)                     # [T*N, dim]
+    u = u.reshape(T, N, dim)                                # [T, N, dim]
+    control_cost = obs.c * torch.sum(u * u, dim=2)          # [T, N]
 
     # Running cost: L = c‖u‖² + γ_obst·f_obs + γ_cong·ρ
     l = control_cost + obs.gamma_obst * f_obs + obs.gamma_cong * cov_rho_m  # [T, N]
 
-    # Terminal cost
-    g = obs.psi_func(X_n_reshaped[-1])                                # [N, 1] or [N]
+    # Terminal cost - uses full dim now
+    g = obs.psi_func(X_n_reshaped[-1])                      # [N, 1]
     
     # Total cost: average over all agents
-    J = torch.mean(torch.sum(l[:-1], dim=0) / (t.shape[0] - 1) + g.squeeze())
+    J = torch.mean(torch.sum(l[:-1], dim=0) / (T - 1) + g.squeeze())
+    
+    J_val = J.item()
+    
+    # Cleanup large tensors
+    del t_expanded, x0_expanded, X_n, X_n_reshaped, X_n_2d, delta_X, cov_rho_m, u
+    clear_gpu_memory()
 
-    return J.item()
+    return J_val
 
 
 
@@ -581,51 +783,59 @@ def Comp_V(x, V_NN):
 
 #==================================Wasserstein==============================#
 
-def wasserstein_fp(obs, G_NN_list,              # BR passés (longueur k)
-                   G_NN_new,               # BR courant   (G_k)
-                   x0, m0,                    # (N,d)  échantillon initial
-                   t_grid,                 # (T,1)  instants
+def wasserstein_fp(obs, G_NN_list,              # Past best responses (length k)
+                   G_NN_new,               # Current best response (G_k)
+                   x0, m0,                 # (N,d) initial samples
+                   t_grid,                 # (T,1) time points
                    p          = 1,
                    blur       = 0.05,
                    device     = "cpu"):
     """
-    W_p(  m̄_k(t) , BR_k(t) )  pour t ∈ t_grid,   avec
-        m̄_k = (1/(k+1)) [ δ_{x0} + Σ_{i=0}^{k-1} δ_{G_i} ].
-    Retourne  np.ndarray shape (T,)  des distances.
+    W_p( m_bar_k(t), BR_k(t) ) for t in t_grid, where
+        m_bar_k = (1/(k+1)) [ delta_{x0} + sum_{i=0}^{k-1} delta_{G_i} ].
+    Returns np.ndarray of shape (T,) with the distances.
+    
+    Note: Uses only first 2 dimensions for Wasserstein computation
+    since the MFG dynamics only depend on (x1, x2).
     """
 
     T       = t_grid.shape[0]
-    N, d    = x0.shape
+    N       = x0.shape[0]
+    d       = obs.dim
     k       = len(G_NN_list)
     loss_fn = SamplesLoss("sinkhorn", p=p, blur=blur, backend="tensorized")
 
-    # ---------- pré-calcul des trajectoires BR_k -------------------
+    # ---------- Precompute BR_k trajectories -------------------
     with torch.no_grad():
         t_big = t_grid.repeat_interleave(N, dim=0)          # (T*N,1)
         x_rep = x0.repeat(T, 1)                             # (T*N,d)
-        br_k  = G_NN_new(t_big, x_rep).view(T, N, d)        # (T,N,d)
+        br_k  = G_NN_new(t_big, x_rep)[:, :2].view(T, N, 2) # (T,N,2) - only first 2 dims
 
-    # ---------- pré-calcul des trajectoires passées ----------------
+    # ---------- Precompute past trajectories ----------------
     past_traj = []  
     for G in G_NN_list:
         with torch.no_grad():
-            past = G(t_big, x_rep).view(T, N, d)
+            past = G(t_big, x_rep)[:, :2].view(T, N, 2)     # (T,N,2)
         past_traj.append(past)
     if past_traj:
-        past_traj = torch.stack(past_traj, dim=0)           # (k,T,N,d)
+        past_traj = torch.stack(past_traj, dim=0)           # (k,T,N,2)
 
-    # ---------- distances -----------------------------------------
+    # ---------- Distances -----------------------------------------
     dists = torch.empty(T, device="cpu")
     for j in range(T):
-        # population : x0 + BR passés (chacun N pts)
+        # population: x0[:, :2] + past BRs (N points each)
         if obs.Round == 0:
-            parts = [m0]                                        # (N,d)
+            parts = [m0[:, :2]]                              # (N,2)
         else:
             parts = [] 
         if k:
-            parts.append(past_traj[:, j, :, :].reshape(k*N, d))
-        X = torch.cat(parts, dim=0)                         # ((k+1)*N,d)
-        Y = br_k[j]                                         # (N,d)
+            parts.append(past_traj[:, j, :, :].reshape(k*N, 2))
+        X = torch.cat(parts, dim=0)                         # ((k+1)*N,2)
+        Y = br_k[j]                                         # (N,2)
         dists[j] = loss_fn(X, Y).cpu()
 
+    # Cleanup
+    del t_big, x_rep, br_k, past_traj
+    clear_gpu_memory()
+    
     return dists.numpy()        # shape (T,)

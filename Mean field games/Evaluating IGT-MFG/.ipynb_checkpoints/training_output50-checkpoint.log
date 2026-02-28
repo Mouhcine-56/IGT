@@ -1,0 +1,220 @@
+Round:  0 \n
+
+ Computing The Best Response 0: 
+
+Approximate solution of MFG 
+
+Starting Joint Training of V and G (MFG)...
+Iteration 0: Loss_HJB = 1.1649e+03, Loss_ODE = 1.7681e-01
+Iteration 1000: Loss_HJB = 1.8078e+01, Loss_ODE = 1.3645e-03
+Iteration 2000: Loss_HJB = 1.9055e+01, Loss_ODE = 2.0413e-04
+Iteration 3000: Loss_HJB = 1.7099e+01, Loss_ODE = 5.8593e-05
+Iteration 4000: Loss_HJB = 1.6385e+01, Loss_ODE = 4.8798e-05
+Iteration 5000: Loss_HJB = 1.9999e+01, Loss_ODE = 2.3899e-05
+
+
+Time t = 0.0
+  Relative L2 Error    = 3.3645e-01
+  Relative Linf Error  = 5.6154e-01
+
+Time t = 0.5
+  Relative L2 Error    = 1.5168e-01
+  Relative Linf Error  = 4.1022e-01
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+Precomputing precise mean with 20000 particles...
+Generating data_OC (ThreadPool, N=512)...
+16 workers will be used.
+
+Generated 42307 data from 512/512 BVP solutions in 219.8 sec
+  → Speed: 2.3 BVP/sec, 192 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 4.6140e+01, Loss_V_x = 2.1030e-01, Loss_HJB = 1.9229e+01, Loss_total = 4.8273e+01
+Iteration 1000: Loss_V = 1.8282e+00, Loss_V_x = 3.7251e-01, Loss_HJB = 3.3428e+01, Loss_total = 5.5435e+00
+Iteration 2000: Loss_V = 4.4987e-01, Loss_V_x = 4.4081e-01, Loss_HJB = 9.2713e+00, Loss_total = 1.8178e+00
+Iteration 3000: Loss_V = 1.6963e-01, Loss_V_x = 3.6097e-01, Loss_HJB = 4.9676e+00, Loss_total = 1.0274e+00
+Iteration 4000: Loss_V = 6.7231e-02, Loss_V_x = 2.7103e-01, Loss_HJB = 2.3267e+00, Loss_total = 5.7093e-01
+Iteration 5000: Loss_V = 7.2266e-02, Loss_V_x = 2.8511e-01, Loss_HJB = 1.8012e+00, Loss_total = 5.3750e-01
+
+
+Generating data_MFG...
+Generated 10752 data from 512 IVP solutions in 60.0 sec 
+
+Iteration 0:  Loss_G = 6.8559e-03,  Loss_ODE = 2.9615e-02,  Loss_total = 9.8173e-03
+Iteration 1000:  Loss_G = 3.9316e-04,  Loss_ODE = 6.2869e-03,  Loss_total = 1.0219e-03
+Iteration 2000:  Loss_G = 3.2693e-04,  Loss_ODE = 4.9266e-03,  Loss_total = 8.1959e-04
+Iteration 3000:  Loss_G = 2.6469e-04,  Loss_ODE = 3.6392e-03,  Loss_total = 6.2862e-04
+
+
+Time t = 0.0
+  Relative L2 Error    = 1.8369e-01
+  Relative Linf Error  = 5.5881e-01
+
+Time t = 0.5
+  Relative L2 Error    = 2.0027e-01
+  Relative Linf Error  = 5.6266e-01
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+k  0 │ L1=2.442e+00 │ L2=5.794e-01 │ L∞=1.709e-01
+
+Find alpha1
+
+Precomputing precise mean with 20000 particles...
+Generating data_OC (ThreadPool, N=512)...
+16 workers will be used.
+
+Generated 211767 data from 512/512 BVP solutions in 776.9 sec
+  → Speed: 0.7 BVP/sec, 273 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 1.3830e+02, Loss_V_x = 2.1237e-01, Loss_total = 1.3851e+02
+Iteration 1000: Loss_V = 8.5282e+00, Loss_V_x = 2.1369e-01, Loss_total = 8.7419e+00
+Iteration 2000: Loss_V = 5.6380e+00, Loss_V_x = 2.1742e-01, Loss_total = 5.8555e+00
+Iteration 3000: Loss_V = 5.5250e+00, Loss_V_x = 2.2315e-01, Loss_total = 5.7482e+00
+Iteration 4000: Loss_V = 4.7256e+00, Loss_V_x = 2.5461e-01, Loss_total = 4.9802e+00
+Iteration 5000: Loss_V = 1.0187e+00, Loss_V_x = 3.6874e-01, Loss_total = 1.3874e+00
+
+
+The Exploitibility is : 23.313745260238647
+
+ Computing The Best Response 1: 
+
+Precomputing precise mean with 20000 particles...
+Generating data_OC (ThreadPool, N=512)...
+16 workers will be used.
+
+Generated 172691 data from 512/512 BVP solutions in 578.0 sec
+  → Speed: 0.9 BVP/sec, 299 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 6.4568e+00, Loss_V_x = 3.2441e-01, Loss_HJB = 9.2125e+01, Loss_total = 1.5994e+01
+Iteration 1000: Loss_V = 2.2438e-01, Loss_V_x = 2.8177e-01, Loss_HJB = 3.1368e+00, Loss_total = 8.1983e-01
+Iteration 2000: Loss_V = 1.1543e-01, Loss_V_x = 2.3777e-01, Loss_HJB = 1.0935e+00, Loss_total = 4.6256e-01
+Iteration 3000: Loss_V = 5.8503e-02, Loss_V_x = 1.9181e-01, Loss_HJB = 1.1957e-01, Loss_total = 2.6227e-01
+Iteration 4000: Loss_V = 4.5593e-02, Loss_V_x = 1.5602e-01, Loss_HJB = 4.3901e-02, Loss_total = 2.0600e-01
+Iteration 5000: Loss_V = 2.6575e-02, Loss_V_x = 1.2960e-01, Loss_HJB = 7.0722e-03, Loss_total = 1.5688e-01
+
+
+Generating data_MFG...
+Generated 10752 data from 512 IVP solutions in 37.1 sec 
+
+Iteration 0:  Loss_G = 2.9122e-03,  Loss_ODE = 1.1152e-02,  Loss_total = 4.0275e-03
+Iteration 1000:  Loss_G = 9.0919e-05,  Loss_ODE = 1.5905e-03,  Loss_total = 2.4997e-04
+Iteration 2000:  Loss_G = 7.9821e-05,  Loss_ODE = 1.2652e-03,  Loss_total = 2.0634e-04
+Iteration 3000:  Loss_G = 7.2413e-05,  Loss_ODE = 1.1258e-03,  Loss_total = 1.8499e-04
+
+
+Time t = 0.0
+  Relative L2 Error    = 1.3094e-01
+  Relative Linf Error  = 4.4581e-01
+
+Time t = 0.5
+  Relative L2 Error    = 1.5864e-01
+  Relative Linf Error  = 4.7497e-01
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+k  1 │ L1=9.512e-01 │ L2=2.229e-01 │ L∞=6.163e-02
+
+Find alpha1
+
+Precomputing precise mean with 20000 particles...
+Generating data_OC (ThreadPool, N=512)...
+16 workers will be used.
+
+Generated 173846 data from 512/512 BVP solutions in 575.8 sec
+  → Speed: 0.9 BVP/sec, 302 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 9.9315e+00, Loss_V_x = 4.8377e-01, Loss_total = 1.0415e+01
+Iteration 1000: Loss_V = 9.4937e-01, Loss_V_x = 5.2497e-01, Loss_total = 1.4743e+00
+Iteration 2000: Loss_V = 3.1849e-01, Loss_V_x = 4.1226e-01, Loss_total = 7.3075e-01
+Iteration 3000: Loss_V = 1.1053e-01, Loss_V_x = 3.2650e-01, Loss_total = 4.3704e-01
+Iteration 4000: Loss_V = 5.2323e-02, Loss_V_x = 2.5473e-01, Loss_total = 3.0705e-01
+Iteration 5000: Loss_V = 1.9950e-02, Loss_V_x = 1.8937e-01, Loss_total = 2.0932e-01
+
+
+The Exploitibility is : 11.23654055595398
+
+ Computing The Best Response 2: 
+
+Precomputing precise mean with 20000 particles...
+Generating data_OC (ThreadPool, N=512)...
+16 workers will be used.
+
+Generated 169322 data from 512/512 BVP solutions in 584.0 sec
+  → Speed: 0.9 BVP/sec, 290 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 2.7218e+00, Loss_V_x = 1.5567e-01, Loss_HJB = 3.4005e+01, Loss_total = 6.2780e+00
+Iteration 1000: Loss_V = 4.5414e-02, Loss_V_x = 1.2539e-01, Loss_HJB = 1.8281e-02, Loss_total = 1.7263e-01
+Iteration 2000: Loss_V = 2.1977e-02, Loss_V_x = 1.0032e-01, Loss_HJB = 4.5214e-03, Loss_total = 1.2275e-01
+Iteration 3000: Loss_V = 1.3061e-02, Loss_V_x = 8.3205e-02, Loss_HJB = 2.1863e-03, Loss_total = 9.6485e-02
+Iteration 4000: Loss_V = 8.3831e-03, Loss_V_x = 6.7720e-02, Loss_HJB = 1.3036e-03, Loss_total = 7.6233e-02
+Iteration 5000: Loss_V = 6.4288e-03, Loss_V_x = 5.6718e-02, Loss_HJB = 1.1694e-03, Loss_total = 6.3264e-02
+
+
+Generating data_MFG...
+Generated 10752 data from 512 IVP solutions in 50.3 sec 
+
+Iteration 0:  Loss_G = 1.6893e-03,  Loss_ODE = 6.2459e-03,  Loss_total = 2.3139e-03
+Iteration 1000:  Loss_G = 6.6098e-05,  Loss_ODE = 1.0934e-03,  Loss_total = 1.7544e-04
+Iteration 2000:  Loss_G = 5.8875e-05,  Loss_ODE = 9.7891e-04,  Loss_total = 1.5677e-04
+Iteration 3000:  Loss_G = 5.3856e-05,  Loss_ODE = 8.7408e-04,  Loss_total = 1.4126e-04
+
+
+Time t = 0.0
+  Relative L2 Error    = 9.3417e-02
+  Relative Linf Error  = 3.5070e-01
+
+Time t = 0.5
+  Relative L2 Error    = 1.0832e-01
+  Relative Linf Error  = 4.2197e-01
+
+Time t = 1.0
+  Relative L2 Error    = 0.0000e+00
+  Relative Linf Error  = 0.0000e+00
+
+k  2 │ L1=9.614e-01 │ L2=2.244e-01 │ L∞=5.990e-02
+
+Find alpha1
+
+Precomputing precise mean with 20000 particles...
+Generating data_OC (ThreadPool, N=512)...
+16 workers will be used.
+
+Generated 196102 data from 512/512 BVP solutions in 661.0 sec
+  → Speed: 0.8 BVP/sec, 297 points/sec
+
+Approximate solution of BVP 
+
+Iteration 0: Loss_V = 5.3729e+00, Loss_V_x = 2.4417e-01, Loss_total = 5.6171e+00
+Iteration 1000: Loss_V = 1.0900e-01, Loss_V_x = 2.4980e-01, Loss_total = 3.5880e-01
+Iteration 2000: Loss_V = 3.7319e-02, Loss_V_x = 1.8904e-01, Loss_total = 2.2636e-01
+Iteration 3000: Loss_V = 1.6323e-02, Loss_V_x = 1.4415e-01, Loss_total = 1.6047e-01
+Iteration 4000: Loss_V = 7.8222e-03, Loss_V_x = 1.0601e-01, Loss_total = 1.1384e-01
+Iteration 5000: Loss_V = 4.2858e-03, Loss_V_x = 7.1308e-02, Loss_total = 7.5594e-02
+
+
+The Exploitibility is : 5.2543416023254395
+
+ Computing The Best Response 3: 
+
+Precomputing precise mean with 20000 particles...
+Generating data_OC (ThreadPool, N=512)...
+16 workers will be used.
+
