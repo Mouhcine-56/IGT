@@ -64,13 +64,18 @@ python main.py
 Key arguments (vary by experiment):
 
 | Argument | Description |
-|----------|-------------|
-| `--dim` | State space dimension | 
-| `--num_epoch` | Training iterations (HJB) |
+|----------|------------|
+| `--dim` | State space dimension |
+| `--Max_Round` | Number of IGT refinement rounds |
+| `--num_epoch_hjb` | Training iterations for HJB | 
+| `--num_epoch_mfg` | Training iterations for MFG |
+| `--num_epoch_v` | Training iterations for V network |
+| `--num_epoch_gen` | Training iterations for Generator |
 | `--num_samples_hjb` | Sample size for HJB loss |
-| `--num_samples_bvp` | Number of BVP trajectories |
-| `--Max_Round` | IGT refinement rounds |
-| `--lr` | Learning rate |
+| `--num_samples_mfg` | Sample size for MFG loss | 
+| `--num_samples_bvp` | Number of BVP trajectories | 
+| `--lr_v` | Learning rate for V network | 1e-4 |
+| `--lr_g` | Learning rate for Generator | 1e-4 |
 
 ---
 
